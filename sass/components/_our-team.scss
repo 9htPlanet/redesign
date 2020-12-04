@@ -1,0 +1,97 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    width: 1200px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+    margin-right: -30px;
+}
+
+.flex-item {
+    max-width: 270px;
+    padding-bottom: 30px;
+    background-color: $white;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 0px 0px 4px 4px;
+    margin-right: 30px;
+    flex-basis: calc(100% - 4 / 3);
+}
+
+.team {
+    background-color: $team-background-color;
+    padding-bottom: 94px;
+    padding-top: 94px;
+}
+.teamheader {
+    margin: 0;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+    letter-spacing: 1.17;
+    color: $main-text-color;
+}
+
+.teamitem {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: 0.03em;
+    color: $main-text-color;
+}
+
+.itemposition {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: 0.03em;
+    color: $secondary-color;
+}
+
+.list-social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-left: 32px;
+    margin-top: 16px;
+    align-items: center;
+    padding-inline-start: 0;
+}
+
+.social-icons-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background-color: $white;
+    border-radius: 50%;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+        background-color: $hover-button-color;
+    }
+    &:hover .social-icons-svg,
+    &:focus .social-icons-svg {
+        fill: $white;
+    }
+}
+
+.social-icons-svg {
+    width: 20px;
+    height: 20px;
+    fill: $social-icons-color;
+}
+
+.social-icons-item:not(:last-child) {
+    margin-right: 10px;
+}

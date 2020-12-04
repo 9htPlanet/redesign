@@ -1,0 +1,16 @@
+.logo {
+    margin-right: 53px;
+    font-family: Raleway, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 1.19;
+    letter-spacing: 0.03em;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    color: $hover-button-color;
+}
+
+.logospan {
+    color: black;
+}

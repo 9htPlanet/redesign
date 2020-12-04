@@ -1,0 +1,73 @@
+.subscribe-to-us {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: $white;
+}
+
+.subscr-mail {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 16px;
+    margin-right: 8px;
+    font-size: 16px;
+    line-height: 1.25;
+    display: inline-block;
+    align-items: center;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.6);
+    background-color: $hero-background-color;
+    width: 358px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.subscr-btn {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 29px;
+    position: relative;
+    display: inline-flex;
+    height: 50px;
+    min-width: 200px;
+    margin: 0 auto;
+
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 1.87;
+    align-items: center;
+    letter-spacing: 0.06em;
+
+    color: $white;
+    background: $hover-button-color;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover,
+    &:focus {
+        background: $white;
+        color: $hover-button-color;
+    }
+
+    &:hover .subscr-btn-arrow-svg,
+    &:focus .subscr-btn-arrow-svg {
+        fill: $hover-button-color;
+    }
+}
+
+.subscr-btn-arrow-svg {
+    position: absolute;
+    top: 13px;
+    right: 28px;
+    height: 24px;
+    width: 24px;
+    fill: $white;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

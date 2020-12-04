@@ -1,0 +1,65 @@
+.description {
+    padding-top: 94px;
+    padding-bottom: 94px;
+}
+.description-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 213px;
+    align-items: center;
+    width: 1200px;
+    align-items: center;
+    padding-left: 0;
+    margin: 0 auto;
+    margin-right: -30px;
+}
+
+.description-item {
+    margin-right: 30px;
+    flex-basis: calc(100% / 4 - 30px);
+    max-width: 270px;
+
+    &::before {
+        display: block;
+        content: "";
+        height: 120px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $team-background-color;
+        border-radius: 4px;
+        margin-bottom: 30px;
+    }
+}
+
+.details-attention::before {
+    background-image: url("../images/antenna1.png");
+}
+
+.being-ontime::before {
+    background-image: url("../images/clock1.png");
+}
+
+.planning::before {
+    background-image: url("../images/diagram1.png");
+}
+
+.technologies::before {
+    background-image: url("../images/astronaut1.png");
+}
+.desctitle {
+    margin-bottom: 10px;
+
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: $main-text-color;
+}
+
+.desctext {
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: 0.03em;
+    color: $secondary-color;
+}
