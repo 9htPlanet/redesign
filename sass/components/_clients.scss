@@ -46,11 +46,11 @@
     width: 210px;
     height: 90px;
 
-    @include for-size(tablet) {
-        width: 226px;
+    @media screen and (min-width: 768px) and (max-width: 1129px) {
+        min-width: 226px;
     }
 
-    @include for-size(tablet) {
+    @include for-size(desktop) {
         width: 170px;
     }
 
