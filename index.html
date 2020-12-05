@@ -157,7 +157,7 @@
                     </ul>
                 </div>
             </section>
-            <!-- <section class="function">
+            <section class="function">
                 <div class="container">
                     <h2 class="functitle">Чем мы занимаемся</h2>
                     <ul class="functitle-list">
@@ -181,13 +181,69 @@
                         </li>
                     </ul>
                 </div>
-            </section> -->
-            <!-- <section class="team">
-                <div class="container">
+            </section>
+            <section class="team">
+                <div class="container team-container">
                     <h2 class="teamheader">Наша команда</h2>
                     <ul class="flex-container">
                         <li class="flex-item">
-                            <img src="./images/img1.jpg" width="270" height="260" alt="Игорь Демьяненко" />
+                            <picture>
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/igor-270.webp    1x,
+                                        ./images/team/desktop/igor-270-2x.webp 2x,
+                                        ./images/team/desktop/igor-270-3x.webp 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/igor-354.webp    1x,
+                                        ./images/team/tablet/igor-354-2x.webp 2x,
+                                        ./images/team/tablet/igor-354-3x.webp 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/mob/igor-480.webp    1x,
+                                        ./images/team/mob/igor-480-2x.webp 2x,
+                                        ./images/team/mob/igor-354-3x.webp 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                    type="image/webp"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/igor-270.jpg    1x,
+                                        ./images/team/desktop/igor-270-2x.jpg 2x,
+                                        ./images/team/desktop/igor-270-3x.jpg 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/igor-354.jpg    1x,
+                                        ./images/team/tablet/igor-354-2x.jpg 2x,
+                                        ./images/team/tablet/igor-354-3x.jpg 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/mob/igor-480.jpg    1x,
+                                        ./images/team/mob/igor-480-2x.jpg 2x,
+                                        ./images/team/mob/igor-480-3x.jpg 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                />
+                                <img src="./images/team/desktop/igor-270.jpg" alt="Игорь Демьяненко" />
+                            </picture>
                             <h5 class="teamitem">Игорь Демьяненко</h5>
                             <p class="itemposition">Product Designer</p>
                             <ul class="list-social-icons">
@@ -246,7 +302,63 @@
                             </ul>
                         </li>
                         <li class="flex-item">
-                            <img src="./images/img2.jpg" width="270" height="260" alt="Ольга Репина" />
+                            <picture>
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/olga-270.webp    1x,
+                                        ./images/team/desktop/olga-270-2x.webp 2x,
+                                        ./images/team/desktop/olga-270-3x.webp 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/olga-354.webp    1x,
+                                        ./images/team/tablet/olga-354-2x.webp 2x,
+                                        ./images/team/tablet/olga-354-3x.webp 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/mob/olga-480.webp    1x,
+                                        ./images/team/mob/olga-480-2x.webp 2x,
+                                        ./images/team/mob/olga-354-3x.webp 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                    type="image/webp"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/olga-270.jpg    1x,
+                                        ./images/team/desktop/olga-270-2x.jpg 2x,
+                                        ./images/team/desktop/olga-270-3x.jpg 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/olga-354.jpg    1x,
+                                        ./images/team/tablet/olga-354-2x.jpg 2x,
+                                        ./images/team/tablet/olga-354-3x.jpg 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/mob/olga-480.jpg    1x,
+                                        ./images/team/mob/olga-480-2x.jpg 2x,
+                                        ./images/team/mob/olga-480-3x.jpg 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                />
+                                <img src="./images/img2.jpg" alt="Ольга Репина" />
+                            </picture>
                             <h5 class="teamitem">Ольга Репина</h5>
                             <p class="itemposition">Frontend Developer</p>
                             <ul class="list-social-icons">
@@ -305,7 +417,63 @@
                             </ul>
                         </li>
                         <li class="flex-item">
-                            <img src="./images/img3.jpg" width="270" height="260" alt="Николай Тарасов" />
+                            <picture>
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/nikolay-270.webp    1x,
+                                        ./images/team/desktop/nikolay-270-2x.webp 2x,
+                                        ./images/team/desktop/nikolay-270-3x.webp 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/nikolay-354.webp    1x,
+                                        ./images/team/tablet/nikolay-354-2x.webp 2x,
+                                        ./images/team/tablet/nikolay-354-3x.webp 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/mob/nikolay-480.webp    1x,
+                                        ./images/team/mob/nikolay-480-2x.webp 2x,
+                                        ./images/team/mob/nikolay-354-3x.webp 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                    type="image/webp"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/nikolay-270.jpg    1x,
+                                        ./images/team/desktop/nikolay-270-2x.jpg 2x,
+                                        ./images/team/desktop/nikolay-270-3x.jpg 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/nikolay-354.jpg    1x,
+                                        ./images/team/tablet/nikolay-354-2x.jpg 2x,
+                                        ./images/team/tablet/nikolay-354-3x.jpg 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/mob/nikolay-480.jpg    1x,
+                                        ./images/team/mob/nikolay-480-2x.jpg 2x,
+                                        ./images/team/mob/nikolay-480-3x.jpg 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                />
+                                <img src="./images/img3.jpg" alt="Николай Тарасов" />
+                            </picture>
                             <h5 class="teamitem">Николай Тарасов</h5>
                             <p class="itemposition">Marketing</p>
                             <ul class="list-social-icons">
@@ -364,7 +532,63 @@
                             </ul>
                         </li>
                         <li class="flex-item">
-                            <img src="./images/img4.jpg" width="270" height="260" alt="Михаил Ермаков" />
+                            <picture>
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/mihail-270.webp    1x,
+                                        ./images/team/desktop/mihail-270-2x.webp 2x,
+                                        ./images/team/desktop/mihail-270-3x.webp 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/mihail-354.webp    1x,
+                                        ./images/team/tablet/mihail-354-2x.webp 2x,
+                                        ./images/team/tablet/mihail-354-3x.webp 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                    type="image/webp"
+                                />
+                                <source
+                                    srcset="
+                                        ./images/team/mob/mihail-480.webp    1x,
+                                        ./images/team/mob/mihail-480-2x.webp 2x,
+                                        ./images/team/mob/mihail-354-3x.webp 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                    type="image/webp"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/desktop/mihail-270.jpg    1x,
+                                        ./images/team/desktop/mihail-270-2x.jpg 2x,
+                                        ./images/team/desktop/mihail-270-3x.jpg 3x
+                                    "
+                                    media="(min-width: 1200px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/tablet/mihail-354.jpg    1x,
+                                        ./images/team/tablet/mihail-354-2x.jpg 2x,
+                                        ./images/team/tablet/mihail-354-3x.jpg 3x
+                                    "
+                                    media="(min-width: 768px)"
+                                />
+
+                                <source
+                                    srcset="
+                                        ./images/team/mob/mihail-480.jpg    1x,
+                                        ./images/team/mob/mihail-480-2x.jpg 2x,
+                                        ./images/team/mob/mihail-480-3x.jpg 3x
+                                    "
+                                    media="(max-width: 767px)"
+                                />
+                                <img src="./images/img4.jpg" alt="Михаил Ермаков" />
+                            </picture>
                             <h5 class="teamitem">Михаил Ермаков</h5>
                             <p class="itemposition">UI Designer</p>
                             <ul class="list-social-icons">
@@ -424,7 +648,7 @@
                         </li>
                     </ul>
                 </div>
-            </section> -->
+            </section>
             <!-- <section class="clients">
                 <div class="container clients-container-list">
                     <h2 class="clients-header">Постоянные клиенты</h2>
@@ -473,8 +697,8 @@
                         </li>
                     </ul>
                 </div>
-            </section>
-        --></main>
+            </section> -->
+        </main>
         <!-- <footer class="footer">
             <div class="container footer-div-box">
                 <div class="footer-widget contact-info">

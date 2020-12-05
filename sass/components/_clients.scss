@@ -4,28 +4,44 @@
 }
 .clients-header {
     margin: 0;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    margin-top: 60px;
     text-align: center;
     font-weight: bold;
-    font-size: 36px;
-    line-height: 42px;
-    text-align: center;
-    letter-spacing: 1.17;
     color: $main-text-color;
+    font-size: 28px;
+    line-height: 1.18;
+    letter-spacing: 0.03em;
+
+    @include for-size(desktop) {
+        margin-bottom: 50px;
+        margin-top: 94px;
+        font-size: 36px;
+        line-height: 1.17;
+        text-align: center;
+    }
 }
 
 .constant-clients-list {
-    display: flex;
-    flex-wrap: wrap;
+    @include for-size(desktop) {
+        display: flex;
+    }
+
     justify-content: center;
     margin: 0 auto;
+    margin-right: -30px;
     align-items: center;
     padding-left: 0;
 }
 
 .constant-clients-list-a {
-    flex-basis: calc(100% / 6 - 30px);
     margin-right: 30px;
+    margin-bottom: 30px;
+
+    @include for-size(desktop) {
+        flex-basis: calc(100% / 6 - 30px);
+        margin-right: 30px;
+    }
 }
 
 .constant-clients-list-item {
