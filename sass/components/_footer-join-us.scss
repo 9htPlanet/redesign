@@ -1,6 +1,6 @@
 .join-us-header {
-    display: flex;
-    flex-wrap: wrap;
+    /*display: flex;
+    flex-wrap: wrap;*/
     margin: 0 auto;
     margin-bottom: 20px;
     font-weight: bold;
@@ -9,14 +9,16 @@
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: $white;
+    text-align: center;
 }
 
 .list-footer-social-icons {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
-    align-items: center;
+    margin-bottom: 60px;
     padding-left: 0;
+    justify-content: center;
 }
 .footer-social-icons-link {
     display: flex;

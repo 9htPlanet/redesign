@@ -30,7 +30,6 @@
         flex-basis: calc(100% / 2 - 30px);
         max-width: 354px;
         margin-right: 30px;
-        align-items: flex-start;
     }
 
     @include for-size(desktop) {

@@ -1,24 +1,30 @@
 .flex-container {
-    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-right: 0;
+    padding-bottom: 44px;
 
-    @media screen and (min-width: 768px) {
-        display: flex;
+    @include for-size(desktop) {
+        padding-bottom: 64px;
+        margin-right: -30px;
     }
-}
 
-.container.team-container {
-    padding: 0;
-    margin: 0;
-    margin-left: auto;
+    @include for-size(tablet) {
+        margin-right: -30px;
+    }
 }
 
 .flex-item {
     width: 100%;
     max-width: 450px;
-    margin-right: auto;
-    margin-left: auto;
+
     margin-bottom: 30px;
     padding-bottom: 30px;
+
     text-align: center;
     background-color: $white;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -26,38 +32,33 @@
 
     @include for-size(tablet) {
         flex-basis: calc(100% / 2 - 30px);
+        margin-right: 30px;
     }
-
     @include for-size(desktop) {
         flex-basis: calc(100% / 4 - 30px);
+        margin-right: 30px;
     }
 }
 
 .team {
-    padding-bottom: 30px;
-    padding-top: 60px;
     background-color: $team-background-color;
-
-    @include for-size(desktop) {
-        padding-bottom: 94px;
-        padding-top: 94px;
-    }
 }
 .teamheader {
     margin: 0;
     margin-bottom: 30px;
+    margin-top: 60px;
     text-align: center;
     font-weight: bold;
     color: $main-text-color;
+    letter-spacing: 0.03em;
     font-size: 28px;
     line-height: 1.18;
-    text-align: center;
-    letter-spacing: 0.03em;
 
     @include for-size(desktop) {
+        margin-top: 94px;
+        margin-bottom: 50px;
         font-size: 36px;
         line-height: 1.17;
-        margin-bottom: 50px;
     }
 }
 
@@ -82,11 +83,12 @@
 
 .list-social-icons {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     margin: 0 auto;
     margin-top: 16px;
     align-items: center;
     padding-left: 0;
+    justify-content: center;
 }
 
 .social-icons-link {

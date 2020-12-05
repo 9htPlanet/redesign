@@ -1,23 +1,30 @@
 .footer {
     padding-top: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: left;
-    padding-top: 60px;
     padding-bottom: 60px;
     background-color: $hero-background-color;
+    flex-direction: column;
+    align-items: center;
+
+    @include for-size(desktop) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: left;
+    }
 }
 
 .footer-list {
     margin-top: 20px;
-    margin-bottom: 0;
+    margin-bottom: 60px;
     margin-left: 0;
     padding-left: 0px;
+    justify-content: center;
+    align-items: center;
 }
 .footer-div-box {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
+    justify-content: center;
 }
 .footer-list-item {
     margin-bottom: 9px;
@@ -25,5 +32,8 @@
 
 .footer-widget {
     min-width: 270px;
-    margin-right: 30px;
+
+    @include for-size(desktop) {
+        margin-right: 30px;
+    }
 }
