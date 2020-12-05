@@ -214,7 +214,6 @@ ul {
 
 .hero {
   background-color: #2f303a;
-  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("../images/hero-image.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -224,14 +223,16 @@ ul {
   max-width: 100%;
   padding-top: 118px;
   padding-bottom: 118px;
-  padding-right: 60px;
   padding-left: 60px;
+  padding-right: 60px;
 }
 
 @media (min-width: 768px) {
   .hero {
-    padding-right: 204px;
     padding-left: 204px;
+    padding-right: 204px;
+    padding-top: 118px;
+    padding-bottom: 118px;
   }
 }
 
@@ -241,6 +242,15 @@ ul {
     height: 600px;
     padding-top: 200px;
     padding-bottom: 200px;
+    padding-left: 0;
+    padding-right: 0;
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("../images/images-hero/hero-1200.jpg");
+  }
+}
+
+@media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2), screen and (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 1200px) and (-o-min-device-pixel-ratio: 2 / 1), screen and (min-width: 1200px) and (min-resolution: 192dpi), screen and (min-width: 1200px) and (min-resolution: 2dppx) {
+  .hero {
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("../images/images-hero/hero-1200-2x.jpg");
   }
 }
 
@@ -252,18 +262,15 @@ ul {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #ffffff;
+  margin-left: auto;
+  margin-top: auto;
   margin-bottom: 30px;
+  margin-right: auto;
 }
 
 @media (min-width: 1200px) {
   .herotitle {
     flex-wrap: wrap;
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: 30px;
-    margin-right: auto;
-    padding-left: auto;
-    padding-right: auto;
     font-weight: 900;
     font-size: 44px;
     line-height: 1.36;
@@ -541,8 +548,15 @@ ul {
 }
 
 .description {
-  padding-top: 94px;
-  padding-bottom: 94px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+@media (min-width: 1200px) {
+  .description {
+    padding-top: 94px;
+    padding-bottom: 94px;
+  }
 }
 
 .description-list {
