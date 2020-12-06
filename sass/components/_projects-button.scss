@@ -1,22 +1,31 @@
 .project-button-group {
     display: flex;
-    flex-wrap: nowrap;
-    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-left: 0;
+
+    margin-bottom: 25px;
+
+    @include for-size(tablet) {
+        justify-content: center;
+        margin-bottom: 15px;
+    }
 
     @include for-size(desktop) {
         margin-top: 0;
-        margin-bottom: 34px;
+        margin-bottom: 35px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 0;
 
-        flex-wrap: wrap;
         justify-content: center;
     }
 }
 
 .projectbutton {
+    display: inline-block;
     padding: 6px 22px;
+    margin-bottom: 15px;
 
     font-weight: 500;
     font-size: 16px;

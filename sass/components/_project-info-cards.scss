@@ -1,5 +1,6 @@
 .ourprojects {
     display: flex;
+    padding-bottom: 60px;
 
     @include for-size(desktop) {
         flex-wrap: wrap;
@@ -12,24 +13,46 @@
     }
 }
 .projects-info {
-    display: flex;
-
     text-align: center;
     padding-left: 0;
     padding-right: 0;
     margin: 0 auto;
 
+    margin-bottom: -30px;
+
+    @include for-size(tablet) {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -30px;
+        margin-left: -30px;
+        margin-bottom: 0;
+    }
+
     @include for-size(desktop) {
+        display: flex;
         flex-wrap: wrap;
         margin-top: -30px;
         margin-left: -30px;
     }
 }
 .project-info-item {
-    max-width: 370px;
-    margin-left: 30px;
-    margin-top: 30px;
-    flex-basis: calc(100% / 3 - 30px);
+    max-width: 450px;
+    margin-bottom: 30px;
+
+    @include for-size(tablet) {
+        margin-left: 30px;
+        margin-top: 30px;
+        margin-bottom: 0;
+        flex-basis: calc(100% / 2 - 30px);
+    }
+
+    @include for-size(desktop) {
+        max-width: 370px;
+        margin-left: 30px;
+        margin-top: 30px;
+        margin-bottom: 0;
+        flex-basis: calc(100% / 3 - 30px);
+    }
 }
 
 .project-img-box {
