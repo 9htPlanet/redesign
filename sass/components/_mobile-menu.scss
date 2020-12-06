@@ -1,0 +1,135 @@
+.mobile-menu {
+    display: none;
+    position: absolute;
+    padding-bottom: 60px;
+    padding-top: 60px;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    opacity: 0;
+
+    left: 0;
+    right: 0;
+    background-color: $white;
+
+    &.is-open {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.mobile-menu-list {
+    margin-bottom: 60px;
+}
+.mobile-menu-item {
+    text-align: center;
+
+    &:not(:last-child) {
+        margin-bottom: 40px;
+    }
+}
+
+.icon-cross {
+    width: 19px;
+    height: 19px;
+}
+.mobile-menu-btn-svg {
+    justify-content: center;
+
+    &:hover {
+        fill: $hover-button-color;
+        cursor: pointer;
+        transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+.mobile-link {
+    font-size: 18px;
+    line-height: 1.17;
+    color: $main-text-color;
+    font-weight: 500;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.current {
+        color: $hover-button-color;
+        position: relative;
+        transition: 5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &.current::after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 4px;
+        margin-top: 8px;
+        background-color: currentColor;
+        border-radius: 2px;
+    }
+    &:hover {
+        color: $hover-button-color;
+    }
+}
+
+.mobile-contacts-item {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.17;
+    color: $social-icons-color;
+    font-weight: 500;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
+    &:hover {
+        color: $hover-button-color;
+    }
+}
+
+.mobile-contacts-svg {
+    fill: currentColor;
+    margin-right: 10px;
+}
+
+.mobile-contacts-svg:hover {
+    fill: $hover-button-color;
+}
+.mobile-contacts-svg-one {
+    width: 16px;
+    height: 12px;
+}
+
+.mobile-contacts-svg-two {
+    width: 10px;
+    height: 16px;
+}
+
+.mobile-menu-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    border: none;
+
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and (max-width: 767px) {
+        .mobile-menu-btn {
+            display: flex;
+        }
+    }
+}
+
+.mobile-menu-btn .icon-menu {
+    display: none;
+}
+.mobile-menu-btn.is-open .icon-menu {
+    display: block;
+}
+
+.mobile-menu-btn.is-open .icon-cross {
+    display: none;
+}

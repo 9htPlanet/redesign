@@ -1,11 +1,13 @@
 .main-nav {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
+    @include for-size(desktop) {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+    }
 }
 
 .site-nav {
-    display: flex;
+    display: none;
     margin-top: 0;
     margin-bottom: 0;
     margin-right: -50px;
@@ -44,12 +46,26 @@
     }
 }
 
+@media screen and (min-width: 768px) {
+    .site-nav {
+        display: flex;
+    }
+}
 .site-nav-item {
     flex-basis: calc(100% / 3 - 50px);
     margin-right: 50px;
 }
 
-.nav-nav {
+.navigation {
     display: flex;
     align-items: center;
+
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 767px) {
+    .navigation {
+        justify-content: space-between;
+        flex-grow: 1;
+    }
 }
