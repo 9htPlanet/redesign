@@ -318,6 +318,7 @@ ul {
   z-index: 100;
   opacity: 1;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: scroll;
 }
 
 .backdrop.is-hidden {
@@ -331,8 +332,8 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  width: 528px;
-  height: 581px;
+  width: 450px;
+  height: 609px;
   background-color: #ffffff;
   padding: 40px;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -342,6 +343,13 @@ ul {
 
 .is-hidden .modal {
   transform: translate(-50%, 0%) scale(0.5);
+}
+
+@media (min-width: 1200px) {
+  .modal {
+    width: 528px;
+    height: 581px;
+  }
 }
 
 .btn-close {
@@ -382,10 +390,16 @@ ul {
   margin-bottom: 12px;
   font-weight: bold;
   font-size: 20px;
-  line-height: 23px;
+  line-height: 1.5;
   text-align: center;
   letter-spacing: 0.03em;
   color: #212121;
+}
+
+@media (min-width: 1200px) {
+  .service-header {
+    line-height: 1.15;
+  }
 }
 
 .form-field::placeholder {
@@ -394,6 +408,7 @@ ul {
 }
 
 .field {
+  position: relative;
   margin-top: 4px;
   width: 100%;
   line-height: 40px;
@@ -418,15 +433,17 @@ ul {
   fill: #2196f3;
 }
 
+@media (min-width: 1200px) {
+  .field {
+    width: 100%;
+  }
+}
+
 .field-label {
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.01em;
   color: #757575;
-}
-
-.field {
-  position: relative;
 }
 
 .service-order-svg {
@@ -477,8 +494,13 @@ ul {
 
 .check {
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 1200px) {
+  .check {
+    justify-content: center;
+  }
 }
 
 .check-input {
@@ -505,10 +527,17 @@ ul {
 }
 
 .policy {
-  font-size: 14px;
-  line-height: 1.71;
+  font-size: 12px;
+  line-height: 1.17;
   letter-spacing: 0.03em;
   color: #757575;
+}
+
+@media (min-width: 1200px) {
+  .policy {
+    font-size: 14px;
+    line-height: 1.71;
+  }
 }
 
 .checkbox-check {
@@ -521,12 +550,19 @@ ul {
 }
 
 .conditions-link {
-  font-size: 14px;
-  line-height: 1.71;
+  font-size: 12px;
+  line-height: 1.17;
   letter-spacing: 0.03em;
   text-decoration-line: underline;
   color: #2196f3;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 1200px) {
+  .conditions-link {
+    font-size: 14px;
+    line-height: 1.71;
+  }
 }
 
 .service-order-btn {
@@ -537,7 +573,7 @@ ul {
   padding-left: 56px;
   margin: 0 auto;
   margin-top: 30px;
-  margin-left: 125px;
+  margin-left: 85px;
   height: 50px;
   min-width: 200px;
   font-weight: bold;
@@ -553,6 +589,12 @@ ul {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 1200px) {
+  .service-order-btn {
+    margin-left: 125px;
+  }
 }
 
 .description {
