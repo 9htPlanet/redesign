@@ -36,6 +36,12 @@
 }
 
 .constant-clients-list-item {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    flex-basis: calc(100% / 2 - 30px);
+
     margin-left: 30px;
 
     @media screen and (min-width: 768px) and (max-width: 1129px) {
@@ -48,25 +54,11 @@
     }
 }
 .constant-clients-list-link {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    height: 90px;
-    flex-basis: calc(100% / 2 - 30px);
-
     border: 1px solid #afb1b8;
     border-radius: 4px;
     color: $social-icons-color;
+    align-items: center;
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    @media screen and (min-width: 768px) and (max-width: 1129px) {
-        flex-basis: calc(100% / 3 - 30px);
-    }
-
-    @include for-size(desktop) {
-        flex-basis: calc(100% / 6 - 30px);
-        margin-top: 0;
-    }
 
     &:hover,
     &:focus {
