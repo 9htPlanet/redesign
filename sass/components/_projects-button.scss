@@ -1,12 +1,18 @@
 .project-button-group {
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 0;
-    margin-bottom: 34px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0;
-    justify-content: center;
+    flex-wrap: nowrap;
+    margin-bottom: 40px;
+
+    @include for-size(desktop) {
+        margin-top: 0;
+        margin-bottom: 34px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 .projectbutton {

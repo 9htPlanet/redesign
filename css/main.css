@@ -580,7 +580,7 @@ ul {
     margin-top: 213px;
     padding-left: 0;
     margin: 0 auto;
-    margin-right: -30px;
+    margin-left: -30px;
   }
 }
 
@@ -591,8 +591,7 @@ ul {
 @media (min-width: 768px) {
   .description-item {
     flex-basis: calc(100% / 2 - 30px);
-    max-width: 354px;
-    margin-right: 30px;
+    margin-left: 30px;
   }
 }
 
@@ -674,13 +673,14 @@ ul {
   align-items: center;
   margin: 0 auto;
   padding-left: 0;
-  margin-right: -30px;
+  margin-top: -30px;
+  margin-left: -30px;
 }
 
 .functitle-list-item {
-  max-width: 370px;
   flex-basis: calc(100% / 3 - 30px);
-  margin-right: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
 .what-we-do {
@@ -712,19 +712,19 @@ ul {
   padding-left: 0px;
   margin-top: 0px;
   margin-right: 0;
-  padding-bottom: 44px;
-}
-
-@media (min-width: 1200px) {
-  .flex-container {
-    padding-bottom: 64px;
-    margin-right: -30px;
-  }
+  padding-bottom: 30px;
 }
 
 @media (min-width: 768px) {
   .flex-container {
-    margin-right: -30px;
+    margin-left: -30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .flex-container {
+    margin-left: -30px;
+    padding-bottom: 64px;
   }
 }
 
@@ -742,14 +742,14 @@ ul {
 @media (min-width: 768px) {
   .flex-item {
     flex-basis: calc(100% / 2 - 30px);
-    margin-right: 30px;
+    margin-left: 30px;
   }
 }
 
 @media (min-width: 1200px) {
   .flex-item {
     flex-basis: calc(100% / 4 - 30px);
-    margin-right: 30px;
+    margin-left: 30px;
   }
 }
 
@@ -760,7 +760,7 @@ ul {
 .teamheader {
   margin: 0;
   margin-bottom: 30px;
-  margin-top: 60px;
+  padding-top: 60px;
   text-align: center;
   font-weight: bold;
   color: #212121;
@@ -863,31 +863,38 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: -30px;
+  margin-left: -30px;
   list-style-type: none;
   padding-left: 0px;
   margin-top: 0px;
-  margin-bottom: -30px;
-  margin-right: -30px;
-  padding-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 @media (min-width: 1200px) {
   .constant-clients-list {
-    padding-bottom: 94px;
+    margin-bottom: 94px;
+    justify-content: flex-start;
   }
 }
 
 .constant-clients-list-a {
-  margin-right: 30px;
-  margin-bottom: 30px;
+  height: 90px;
+  flex-basis: calc(100% / 2 - 30px);
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1129px) {
+  .constant-clients-list-a {
+    flex-basis: calc(100% / 3 - 30px);
+  }
 }
 
 .constant-clients-list-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 210px;
-  height: 90px;
   border: 1px solid #afb1b8;
   border-radius: 4px;
   color: #afb1b8;
@@ -896,13 +903,13 @@ ul {
 
 @media screen and (min-width: 768px) and (max-width: 1129px) {
   .constant-clients-list-item {
-    min-width: 226px;
+    flex-basis: calc(100% / 2 - 30px);
   }
 }
 
 @media (min-width: 1200px) {
   .constant-clients-list-item {
-    width: 170px;
+    flex-basis: calc(100% / 6 - 30px);
   }
 }
 
@@ -1225,13 +1232,20 @@ ul {
 
 .project-button-group {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 0;
-  margin-bottom: 34px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 0;
-  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 40px;
+}
+
+@media (min-width: 1200px) {
+  .project-button-group {
+    margin-top: 0;
+    margin-bottom: 34px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .projectbutton {
@@ -1260,25 +1274,34 @@ ul {
 
 .ourprojects {
   display: flex;
-  flex-wrap: wrap;
-  padding-top: 94px;
-  padding-bottom: 94px;
-  padding-left: 0;
-  padding-right: 0;
-  margin: 0 auto;
-  align-items: center;
+}
+
+@media (min-width: 1200px) {
+  .ourprojects {
+    flex-wrap: wrap;
+    padding-top: 94px;
+    padding-bottom: 94px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 auto;
+    align-items: center;
+  }
 }
 
 .projects-info {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   text-align: center;
   padding-left: 0;
   padding-right: 0;
   margin: 0 auto;
-  margin-top: -30px;
-  margin-left: -30px;
+}
+
+@media (min-width: 1200px) {
+  .projects-info {
+    flex-wrap: wrap;
+    margin-top: -30px;
+    margin-left: -30px;
+  }
 }
 
 .project-info-item {
