@@ -382,6 +382,7 @@ ul {
   min-width: 200px;
   height: 50px;
   text-align: center;
+  outline: none;
   background: #2196f3;
   font-weight: bold;
   font-size: 16px;
@@ -815,6 +816,7 @@ ul {
   align-items: center;
   text-align: center;
   letter-spacing: 0.06em;
+  outline: none;
   color: #ffffff;
   background: #2196f3;
   border: 0;
@@ -1496,6 +1498,7 @@ ul {
   height: 50px;
   min-width: 200px;
   margin: 0 auto;
+  outline: none;
   font-weight: bold;
   font-size: 16px;
   line-height: 1.87;
@@ -1559,6 +1562,7 @@ ul {
   display: inline-block;
   padding: 6px 22px;
   margin-bottom: 15px;
+  outline: none;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
