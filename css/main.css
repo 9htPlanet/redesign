@@ -426,7 +426,7 @@ ul {
 }
 
 .mobile-menu-btn {
-  display: none;
+  display: block;
   justify-content: center;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -438,9 +438,9 @@ ul {
   height: 24px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 767px) {
   .mobile-menu-btn {
-    display: block;
+    display: none;
   }
 }
 
@@ -476,6 +476,8 @@ ul {
 }
 
 .mobile-link {
+  display: inline-block;
+  position: relative;
   font-size: 18px;
   line-height: 1.17;
   color: #212121;
@@ -495,7 +497,7 @@ ul {
 .mobile-link.mobile-current::after {
   position: absolute;
   content: "";
-  display: block;
+  display: inline-block;
   width: 100%;
   height: 4px;
   bottom: -10px;
