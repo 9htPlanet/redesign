@@ -1,5 +1,4 @@
 .page-header {
-    position: relative;
     padding-top: 16px;
     padding-bottom: 16px;
 
@@ -11,6 +10,7 @@
     @include for-size(tablet) {
         padding-top: 26px;
         padding-bottom: 26px;
+        display: flex;
     }
 }
 

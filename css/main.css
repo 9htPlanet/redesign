@@ -82,7 +82,6 @@ ul {
 }
 
 .page-header {
-  position: relative;
   padding-top: 16px;
   padding-bottom: 16px;
 }
@@ -98,6 +97,7 @@ ul {
   .page-header {
     padding-top: 26px;
     padding-bottom: 26px;
+    display: flex;
   }
 }
 
@@ -105,11 +105,18 @@ ul {
   border-bottom: 1px solid #ececec;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .main-nav {
+    display: flex;
+    margin: 0 auto;
+  }
+}
+
 @media (min-width: 1200px) {
   .main-nav {
     display: flex;
-    align-items: center;
     margin: 0 auto;
+    align-items: center;
   }
 }
 
@@ -118,6 +125,7 @@ ul {
   margin-top: 0;
   margin-bottom: 0;
   margin-right: -50px;
+  padding-left: 0;
 }
 
 .site-nav .link {
@@ -141,7 +149,13 @@ ul {
   transition: 5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.site-nav .current::after {
+@media (min-width: 768px) {
+  .site-nav {
+    display: flex;
+  }
+}
+
+.current::after {
   content: "";
   display: block;
   width: 100%;
@@ -152,9 +166,9 @@ ul {
   position: absolute;
 }
 
-@media screen and (min-width: 768px) {
-  .site-nav {
-    display: flex;
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .current::after {
+    margin-top: 30.6px;
   }
 }
 
@@ -178,22 +192,26 @@ ul {
 
 .upper-contacts {
   display: none;
-  margin-left: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: 10px;
+  margin: 0 auto;
   padding-left: 0;
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .upper-contacts {
+    display: flex;
+    flex-direction: column;
+  }
   .upper-contacts .item + .item {
-    margin-left: 50px;
+    margin-left: 0;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 1200px) {
   .upper-contacts {
     display: flex;
+  }
+  .upper-contacts .item + .item {
+    margin-left: 50px;
   }
 }
 
@@ -214,11 +232,18 @@ ul {
 
 .upper-contacts-item {
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
   letter-spacing: 0.02em;
   color: #757575;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 12px;
+  line-height: 1.17;
+}
+
+@media (min-width: 1200px) {
+  .upper-contacts-item {
+    font-size: 14px;
+    line-height: 1.14;
+  }
 }
 
 .upper-contacts-item:hover {
@@ -230,15 +255,22 @@ ul {
 }
 
 .logo {
-  margin-right: 53px;
+  margin-right: 93px;
   font-family: Raleway, sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 26px;
-  line-height: 1.19;
+  font-size: 24px;
+  line-height: 1.17;
   letter-spacing: 0.03em;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   color: #2196f3;
+}
+
+@media (min-width: 1200px) {
+  .logo {
+    font-size: 26px;
+    line-height: 1.19;
+  }
 }
 
 .logospan {
@@ -360,6 +392,49 @@ ul {
   opacity: 1;
 }
 
+@media screen and (min-width: 767px) {
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+.mobile-menu-btn {
+  display: none;
+  justify-content: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+}
+
+.mobile-menu-btn .icon-cross {
+  display: none;
+}
+
+.mobile-menu-btn.is-open .icon-cross {
+  display: block;
+}
+
+.mobile-menu-btn.is-open .icon-menu {
+  display: none;
+}
+
+.mobile-menu-btn-svg:hover {
+  fill: #2196f3;
+  cursor: pointer;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .mobile-menu-list {
   margin-bottom: 60px;
 }
@@ -370,21 +445,6 @@ ul {
 
 .mobile-menu-item:not(:last-child) {
   margin-bottom: 40px;
-}
-
-.icon-cross {
-  width: 19px;
-  height: 19px;
-}
-
-.mobile-menu-btn-svg {
-  justify-content: center;
-}
-
-.mobile-menu-btn-svg:hover {
-  fill: #2196f3;
-  cursor: pointer;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mobile-link {
@@ -450,36 +510,6 @@ ul {
 .mobile-contacts-svg-two {
   width: 10px;
   height: 16px;
-}
-
-.mobile-menu-btn {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-  border: none;
-  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@media screen and (max-width: 767px) {
-  .mobile-menu-btn .mobile-menu-btn {
-    display: flex;
-  }
-}
-
-.mobile-menu-btn .icon-menu {
-  display: none;
-}
-
-.mobile-menu-btn.is-open .icon-menu {
-  display: block;
-}
-
-.mobile-menu-btn.is-open .icon-cross {
-  display: none;
 }
 
 .service-order {
