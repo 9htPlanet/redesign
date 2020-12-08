@@ -1539,8 +1539,8 @@ ul {
   flex-wrap: wrap;
   justify-content: flex-start;
   padding-left: 0;
-  margin-top: 60px;
   margin-bottom: 25px;
+  margin-top: 0;
 }
 
 @media (min-width: 768px) {
@@ -1552,7 +1552,6 @@ ul {
 
 @media (min-width: 1200px) {
   .project-button-group {
-    margin-top: 94px;
     margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -1597,11 +1596,13 @@ ul {
 .ourprojects {
   display: flex;
   padding-bottom: 60px;
+  padding-top: 60px;
 }
 
 @media (min-width: 1200px) {
   .ourprojects {
     flex-wrap: wrap;
+    padding-top: 94px;
     padding-bottom: 94px;
     padding-left: 0;
     padding-right: 0;
