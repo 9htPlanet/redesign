@@ -3,17 +3,17 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     padding-left: 0;
-
+    margin-top: 60px;
     margin-bottom: 25px;
 
     @include for-size(tablet) {
         justify-content: center;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
 
     @include for-size(desktop) {
-        margin-top: 0;
-        margin-bottom: 35px;
+        margin-top: 94px;
+        margin-bottom: 50px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 0;
@@ -38,6 +38,10 @@
     border-radius: 4px;
     border: 0;
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 0;
+    }
 
     &:hover,
     &:focus {
