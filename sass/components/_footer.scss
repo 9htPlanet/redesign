@@ -1,59 +1,60 @@
 .footer {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    background-color: $hero-background-color;
-    flex-direction: column;
-    align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: $hero-background-color;
+  flex-direction: column;
+  align-items: center;
 
-    @include for-size(desktop) {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        align-items: left;
-    }
+  @include for-size(desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: left;
+  }
 }
 
 .footer-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 60px;
-    margin-left: 0;
-    padding-left: 0px;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  margin-left: 0;
+  padding-left: 0px;
+  justify-content: center;
 
-    @include for-size(desktop) {
-        flex-wrap: wrap;
-        align-items: normal;
-        margin-top: 0;
-        margin-bottom: 0;
-    }
+  @include for-size(desktop) {
+    flex-wrap: wrap;
+    align-items: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
-.footer-div-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    @include for-size(tablet) {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: baseline;
-        justify-content: space-around;
-    }
+.footer-div-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include for-size(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-around;
+  }
 }
 
 .footer-list-item {
-    margin-bottom: 9px;
+  margin-bottom: 9px;
 
-    @include for-size(desktop) {
-    }
+  @include for-size(desktop) {
+  }
 }
 
 .footer-widget {
-    min-width: 206px;
+  min-width: 206px;
 
-    @include for-size(desktop) {
-        margin-right: 70px;
-    }
+  @include for-size(desktop) {
+    margin-right: 70px;
+  }
 }

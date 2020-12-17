@@ -1,72 +1,72 @@
 .upper-contacts {
-    display: none;
-    margin: 0 auto;
-    padding-left: 0;
+  display: none;
+  margin: 0 auto;
+  padding-left: 0;
 
-    @media screen and (min-width: 768px) and (max-width: 1199px) {
-        display: flex;
-        flex-direction: column;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: flex;
+    flex-direction: column;
 
-        .item + .item {
-            margin-left: 0;
-        }
+    .item + .item {
+      margin-left: 0;
     }
+  }
 
-    @include for-size(desktop) {
-        display: flex;
-        & .item + .item {
-            margin-left: 50px;
-        }
+  @include for-size(desktop) {
+    display: flex;
+    & .item + .item {
+      margin-left: 50px;
     }
+  }
 }
 
 .upper-contacts-svg {
-    fill: currentColor;
-    margin-right: 10px;
+  fill: currentColor;
+  margin-right: 10px;
 }
 
 .upper-contacts-svg-one {
-    @include for-size(tablet) {
-        width: 14px;
-        height: 10px;
-    }
+  @include for-size(tablet) {
+    width: 14px;
+    height: 10px;
+  }
 
-    @include for-size(desktop) {
-        width: 16px;
-        height: 12px;
-    }
+  @include for-size(desktop) {
+    width: 16px;
+    height: 12px;
+  }
 }
 
 .upper-contacts-svg-two {
-    @include for-size(tablet) {
-        width: 10px;
-        height: 14px;
-    }
+  @include for-size(tablet) {
+    width: 10px;
+    height: 14px;
+  }
 
-    @include for-size(desktop) {
-        width: 10px;
-        height: 16px;
-    }
+  @include for-size(desktop) {
+    width: 10px;
+    height: 16px;
+  }
 }
 
 .upper-contacts-item {
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: $secondary-color;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    font-size: 12px;
-    line-height: 1.17;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: $secondary-color;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 12px;
+  line-height: 1.17;
 
-    @include for-size(desktop) {
-        font-size: 14px;
-        line-height: 1.14;
-    }
+  @include for-size(desktop) {
+    font-size: 14px;
+    line-height: 1.14;
+  }
 
-    &:hover {
-        color: $hover-button-color;
-    }
+  &:hover {
+    color: $hover-button-color;
+  }
 
-    & .upper-contacts-svg:hover {
-        fill: $hover-button-color;
-    }
+  & .upper-contacts-svg:hover {
+    fill: $hover-button-color;
+  }
 }

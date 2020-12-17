@@ -1,96 +1,98 @@
 .description {
-    padding-top: 60px;
-    padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
 
-    @include for-size(tablet) {
-        padding-top: 30px;
-    }
+  @include for-size(tablet) {
+    padding-top: 30px;
+  }
 
-    @include for-size(desktop) {
-        padding-top: 94px;
-        padding-bottom: 94px;
-    }
+  @include for-size(desktop) {
+    padding-top: 94px;
+    padding-bottom: 94px;
+  }
 }
+
 .description-list {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include for-size(tablet) {
+    display: flex;
+    flex-wrap: wrap;
+
     padding-left: 0;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-left: -30px;
+  }
+
+  @include for-size(desktop) {
+    display: flex;
+    flex-wrap: nowrap;
     margin-top: 0;
-    margin-bottom: 0;
-
-    @include for-size(tablet) {
-        display: flex;
-        flex-wrap: wrap;
-
-        padding-left: 0;
-        margin: 0 auto;
-        margin-top: 30px;
-        margin-left: -30px;
-    }
-
-    @include for-size(desktop) {
-        display: flex;
-        flex-wrap: nowrap;
-        margin-top: 0;
-    }
+  }
 }
 
 .description-item {
+  margin-bottom: 30px;
+
+  @include for-size(tablet) {
+    flex-basis: calc(100% / 2 - 30px);
+
+    margin-left: 30px;
+  }
+
+  @include for-size(desktop) {
+    flex-basis: calc(100% / 4 - 30px);
+    max-width: 270px;
+    margin-left: 30px;
+
+    margin-bottom: 0;
+  }
+
+  &::before {
+    display: block;
+    content: "";
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $team-background-color;
+    border-radius: 4px;
     margin-bottom: 30px;
-
-    @include for-size(tablet) {
-        flex-basis: calc(100% / 2 - 30px);
-
-        margin-left: 30px;
-    }
-
-    @include for-size(desktop) {
-        flex-basis: calc(100% / 4 - 30px);
-        max-width: 270px;
-        margin-left: 30px;
-
-        margin-bottom: 0;
-    }
-
-    &::before {
-        display: block;
-        content: "";
-        height: 120px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-color: $team-background-color;
-        border-radius: 4px;
-        margin-bottom: 30px;
-    }
+  }
 }
 
 .details-attention::before {
-    background-image: url("../images/antenna1.png");
+  background-image: url("../images/antenna1.png");
 }
 
 .being-ontime::before {
-    background-image: url("../images/clock1.png");
+  background-image: url("../images/clock1.png");
 }
 
 .planning::before {
-    background-image: url("../images/diagram1.png");
+  background-image: url("../images/diagram1.png");
 }
 
 .technologies::before {
-    background-image: url("../images/astronaut1.png");
+  background-image: url("../images/astronaut1.png");
 }
-.desctitle {
-    margin-bottom: 10px;
 
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 1.14;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: $main-text-color;
+.desctitle {
+  margin-bottom: 10px;
+
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: $main-text-color;
 }
 
 .desctext {
-    font-size: 14px;
-    line-height: 1.71;
-    letter-spacing: 0.03em;
-    color: $secondary-color;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: $secondary-color;
 }

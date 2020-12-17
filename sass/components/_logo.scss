@@ -1,22 +1,22 @@
 .logo {
-    margin-right: 93px;
-    font-family: Raleway, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 1.17;
+  margin-right: 93px;
+  font-family: Raleway, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 1.17;
 
-    letter-spacing: 0.03em;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.03em;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    color: $hover-button-color;
+  color: $hover-button-color;
 
-    @include for-size(desktop) {
-        font-size: 26px;
-        line-height: 1.19;
-    }
+  @include for-size(desktop) {
+    font-size: 26px;
+    line-height: 1.19;
+  }
 }
 
 .logospan {
-    color: black;
+  color: black;
 }
