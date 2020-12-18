@@ -38,6 +38,13 @@
   }
 }
 
+.loadmorebutton{
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  margin-top: 50px;
+}
+
 .project-info-item {
   max-width: 450px;
   margin-bottom: 30px;
@@ -61,6 +68,12 @@
 .project-img-box {
   position: relative;
   overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
 }
 
 .project-box-desc {
@@ -112,6 +125,12 @@
   letter-spacing: 0.06em;
   text-align: left;
   color: $main-text-color;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .projectdesc {

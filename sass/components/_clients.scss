@@ -36,6 +36,7 @@
   }
 }
 
+
 .constant-clients-list-item {
   justify-content: center;
   align-items: center;
@@ -54,6 +55,14 @@
   @include for-size(desktop) {
     flex-basis: calc(100% / 6 - 30px);
     margin-top: 0;
+  }
+
+  a {
+    padding-left: 5px;
+    padding-right: 5px;
+    &:hover {
+      color: $hover-button-color;
+    }
   }
 }
 

@@ -289,11 +289,11 @@ ul {
   max-width: 100%;
   padding-top: 118px;
   padding-bottom: 118px;
-  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/hero/hero-480.jpg);
+  background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../img/Canada2.jpg);
 }
 @media screen and (min-device-pixel-ratio: 2), screen and (-webkit-min-device-pixel-ratio: 2), screen and (-o-min-device-pixel-ratio: 2/1), screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
   .hero {
-    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("../images/hero/hero-480-2x.jpg");
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../img/Canada2.jpg);
   }
 }
 @media (min-width: 1200px) {
@@ -302,12 +302,12 @@ ul {
     height: 600px;
     padding-top: 200px;
     padding-bottom: 200px;
-    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("../images/hero/hero-1200.jpg");
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../img/Canada2.jpg);
   }
 }
 @media screen and (min-width: 1200px) and (min-device-pixel-ratio: 2), screen and (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 1200px) and (-o-min-device-pixel-ratio: 2/1), screen and (min-width: 1200px) and (min-resolution: 192dpi), screen and (min-width: 1200px) and (min-resolution: 2dppx) {
   .hero {
-    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("../images/hero/hero-1200-2x.jpg");
+    background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../img/Canada2.jpg);
   }
 }
 
@@ -320,17 +320,14 @@ ul {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #ffffff;
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: 30px;
-  margin-right: auto;
+  margin: auto auto 30px;
 }
 @media (min-width: 1200px) {
   .herotitle {
     flex-wrap: wrap;
-    width: 696px;
+    width: 695px;
     font-weight: 900;
-    font-size: 44px;
+    font-size: 26px;
     line-height: 1.36;
   }
 }
@@ -783,6 +780,10 @@ ul {
   }
 }
 
+.aboutus {
+  font-size: 20px;
+}
+
 .description-list {
   padding-left: 0;
   margin-top: 0;
@@ -952,6 +953,9 @@ ul {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
 }
+.flex-item img {
+  width: 100%;
+}
 @media (min-width: 768px) {
   .flex-item {
     flex-basis: calc(100% / 2 - 30px);
@@ -1101,6 +1105,13 @@ ul {
     flex-basis: calc(100% / 6 - 30px);
     margin-top: 0;
   }
+}
+.constant-clients-list-item a {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.constant-clients-list-item a:hover {
+  color: #2196f3;
 }
 
 .constant-clients-list-link {
@@ -1483,6 +1494,37 @@ ul {
   margin-right: 8px;
 }
 
+.categorybutton {
+  display: inline-block;
+  padding: 6px 22px;
+  margin-bottom: 15px;
+  outline: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.62;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #212121;
+  background: #f5f4fa;
+  border-radius: 4px;
+  border: 0;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media screen and (min-width: 768px) {
+  .categorybutton {
+    margin-bottom: 0;
+  }
+}
+.categorybutton:hover, .categorybutton:focus {
+  background-color: #2196f3;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.category-button-item:not(:last-child) {
+  margin-right: 8px;
+}
+
 .ourprojects {
   display: flex;
   padding-bottom: 60px;
@@ -1525,6 +1567,13 @@ ul {
   }
 }
 
+.loadmorebutton {
+  margin: 0 auto;
+  display: block;
+  width: 200px;
+  margin-top: 50px;
+}
+
 .project-info-item {
   max-width: 450px;
   margin-bottom: 30px;
@@ -1550,6 +1599,11 @@ ul {
 .project-img-box {
   position: relative;
   overflow: hidden;
+}
+.project-img-box img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 
 .project-box-desc {
@@ -1595,6 +1649,11 @@ ul {
   letter-spacing: 0.06em;
   text-align: left;
   color: #212121;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .projectdesc {
