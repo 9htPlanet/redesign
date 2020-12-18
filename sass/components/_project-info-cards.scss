@@ -38,11 +38,110 @@
   }
 }
 
-.loadmorebutton{
-  margin: 0 auto;
+.loadmorebutton {
   display: block;
   width: 200px;
-  margin-top: 50px;
+  margin: 50px auto 0;
+}
+
+.bottomline {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardthumb {
+  text-align: center;
+  align-self: flex-end;
+  padding-right: 5px;
+  display: flex;
+  height: 32px;
+  justify-content: flex-end;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  min-width: 70px;
+
+  span {
+    align-self: center;
+    color: $social-icons-color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 18px;
+    padding-right: 5px;
+  }
+
+  svg {
+    fill: $social-icons-color;
+    height: 24px;
+    width: 24px;
+
+    &:hover,
+    &:focus {
+      fill: $main-text-color;
+    }
+
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  }
+
+  &:hover,
+  &:focus {
+    span {
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      color: $main-text-color;
+    }
+
+    svg {
+      transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      fill: $main-text-color;
+    }
+  }
+}
+
+.getLike {
+  span {
+    color: $hover-button-color;
+  }
+
+  svg {
+    fill: $hover-button-color;
+  }
+
+  &:hover,
+  &:focus {
+    span {
+      color: $hover-button-color;
+    }
+
+    svg {
+      fill: $hover-button-color;
+    }
+  }
+}
+
+.percentscale-container {
+
+  font-size: 13px;
+  color: white;
+  width: 100%;
+  background: $secondary-section-background-color;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+
+  span {
+    display: none;
+    position: absolute;
+    color: #eeeeee;
+    text-shadow: 1px 1px 1px #2196FB;
+  }
+
+  .percentscale {
+    background: $hover-button-color;
+    width: 65%;
+    height: 3px;
+    box-shadow: 1px 1px 8px $hover-button-color;
+    border-radius: 2px;
+  }
+
 }
 
 .project-info-item {
@@ -79,10 +178,7 @@
 .project-box-desc {
   display: inline-block;
   position: absolute;
-  padding-top: 63px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 63px;
+  padding: 63px 24px;
   right: 0;
   bottom: 0;
   width: 100%;
@@ -135,11 +231,14 @@
 
 .projectdesc {
   margin-top: 0;
-  margin-bottom: 20;
   margin-right: auto;
   text-align: left;
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.03em;
   color: $secondary-color;
+
+  span {
+    color: $hover-button-color;
+  }
 }

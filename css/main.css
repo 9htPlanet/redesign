@@ -1014,8 +1014,7 @@ ul {
 .list-social-icons {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
-  margin-top: 16px;
+  margin: 16px auto 0;
   align-items: center;
   padding-left: 0;
   justify-content: center;
@@ -1566,10 +1565,86 @@ ul {
 }
 
 .loadmorebutton {
-  margin: 0 auto;
   display: block;
   width: 200px;
-  margin-top: 50px;
+  margin: 50px auto 0;
+}
+
+.bottomline {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardthumb {
+  text-align: center;
+  align-self: flex-end;
+  padding-right: 5px;
+  display: flex;
+  height: 32px;
+  justify-content: flex-end;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  min-width: 70px;
+}
+.cardthumb span {
+  align-self: center;
+  color: #afb1b8;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 18px;
+  padding-right: 5px;
+}
+.cardthumb svg {
+  fill: #afb1b8;
+  height: 24px;
+  width: 24px;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cardthumb svg:hover, .cardthumb svg:focus {
+  fill: #212121;
+}
+.cardthumb:hover span, .cardthumb:focus span {
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: #212121;
+}
+.cardthumb:hover svg, .cardthumb:focus svg {
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  fill: #212121;
+}
+
+.getLike span {
+  color: #2196f3;
+}
+.getLike svg {
+  fill: #2196f3;
+}
+.getLike:hover span, .getLike:focus span {
+  color: #2196f3;
+}
+.getLike:hover svg, .getLike:focus svg {
+  fill: #2196f3;
+}
+
+.percentscale-container {
+  font-size: 13px;
+  color: white;
+  width: 100%;
+  background: #e5e5e5;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.percentscale-container span {
+  display: none;
+  position: absolute;
+  color: #eeeeee;
+  text-shadow: 1px 1px 1px #2196FB;
+}
+.percentscale-container .percentscale {
+  background: #2196f3;
+  width: 65%;
+  height: 3px;
+  box-shadow: 1px 1px 8px #2196f3;
+  border-radius: 2px;
 }
 
 .project-info-item {
@@ -1607,10 +1682,7 @@ ul {
 .project-box-desc {
   display: inline-block;
   position: absolute;
-  padding-top: 63px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 63px;
+  padding: 63px 24px;
   right: 0;
   bottom: 0;
   width: 100%;
@@ -1656,13 +1728,15 @@ ul {
 
 .projectdesc {
   margin-top: 0;
-  margin-bottom: 20;
   margin-right: auto;
   text-align: left;
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.03em;
   color: #757575;
+}
+.projectdesc span {
+  color: #2196f3;
 }
 
 /*# sourceMappingURL=main.css.map */
