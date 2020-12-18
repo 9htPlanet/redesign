@@ -30,8 +30,7 @@
   margin-bottom: 60px;
 
   @include for-size(desktop) {
-    flex-wrap: nowrap;
-    margin-top: 0;
+    flex-wrap: wrap;
     margin-bottom: 94px;
   }
 }
@@ -48,13 +47,12 @@
   margin-left: 30px;
   margin-top: 30px;
 
-  @media screen and (min-width: 768px) and (max-width: 1129px) {
+  @media screen and (min-width: 768px) {
     flex-basis: calc(100% / 3 - 30px);
   }
 
   @include for-size(desktop) {
-    flex-basis: calc(100% / 6 - 30px);
-    margin-top: 0;
+    flex-basis: calc(100% / 5 - 30px);
   }
 
   a {
