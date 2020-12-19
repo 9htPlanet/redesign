@@ -1135,8 +1135,14 @@ ul {
 .constant-clients-list-link:hover, .constant-clients-list-link:focus {
   border-color: #2196f3;
 }
+.constant-clients-list-link span {
+  margin: 3px;
+}
 
 .clients-examples-svg {
+  width: 40px;
+  height: 40px;
+  margin: 3px;
   fill: #afb1b8;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }

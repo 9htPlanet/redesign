@@ -49,7 +49,7 @@ function loadDreams(url) {
             let likesCount = newData[key].likesCount;
 
             let cardTemplate2 = `<li class="project-info-item">
-                    <a class="project-box-link" target="_blank" rel="noopener noreferer" href="#">
+                    <a class="project-box-link" href="donate.html?${getDreamId}" rel="noopener noreferer" href="#">
                         <div class="project-img-box">
                             <img src="${image}" alt=""/>
                             <p class="project-box-desc">${dreamDescrip}</p>

@@ -8,14 +8,18 @@ function GetDreamById(dreamId){
 	let userId = window.localStorage.getItem("UserId");
 
     let token = window.localStorage.getItem("Token");
+    let headers = {
+        accept: "application/json"
+    }
+    if (token) {
+        headers.accessToken = token
+    }
+
     $.ajax({
         crossDomain: true,
         url: getFullPathDream,
         type: 'GET',
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
+        headers: headers
     })
         .then(function (data) {
             console.log("GetDreamWithToken Success", data);            
