@@ -39,28 +39,61 @@
             </button>
         </nav>
 
-        <ul class="upper-contacts">
-            <li class="item">
-                <a href="mailto:info@devstudio.com" class="upper-contacts-item"
-                >
-                    Gleb Klimov</a
-                >
-            </li><li class="item">
-                <a href="mailto:info@devstudio.com" class="upper-contacts-item"
-                >
-                    Log out</a
-                >
+        <ul class="upper-contacts" id="header-right-buttons">
+            <li class="item" id="loginId">
+                <button class="upper-contacts-item" data-modal-login-open>
+                    Log In
+                </button>
             </li>
-           <!-- <li class="item">
-                <a href="tel:+380961111111" class="upper-contacts-item">
-                    <svg class="upper-contacts-svg-two upper-contacts-svg">
-                        <use href="./images/sprite.svg#phone"></use>
-                    </svg
-                    >
-                    +38 096 111 11 11</a
-                >
+            <li class="item" id="signUpId">
+                <button class="upper-contacts-item" data-modal-login-open>
+                    Sign Up
+                </button>
+            </li>
+            <!--<li class="item" id="profile-name">
+                <button class="upper-contacts-item" data-modal-login-open>
+                    Profile name
+                </button>
             </li>-->
         </ul>
+        <div class="backdrop is-hidden" data-modal-login>
+            <div class="modal">
+                <button class="btn-close" data-modal-login-close>
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+                    <p class="service-header">Welcome Back</p>
+                    <form class="service-order" id="log_in_id">
+                        <div class="form-field">
+                            <label class="field-label" for="log_in_email">Email address</label>
+                            <input type="email" name="name" id="log_in_email" class="field" autofocus/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#envelope2-1"></use>
+                            </svg>
+                        </div>
+                        <div class="form-field">
+                            <label class="field-label" for="log_in_password">Password</label>
+                            <input type="password" name="pass" id="log_in_password" class="field"/>
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#security"></use>
+                            </svg>
+                        </div>
+
+                        <div class="form-field checkbox-text error_msg">
+                        </div>
+
+                        <div class="form-field checkbox-text">
+                            <a class="link" href="index.html">Forgot your password?</a>
+                        </div>
+
+                        <button class="service-order-btn" type="submit" id="log_in_btn">Log in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="mobile-menu" id="mobile-menu" data-menu>
         <ul class="list mobile-menu-list">
@@ -281,7 +314,8 @@
                         <div class="project-info-box">
                             <h5 class="projecthead">Технокряк</h5>
                             <div class="bottomline">
-                                <p class="projectdesc"><span>13</span> days to go <br/> <span>0k</span> out of <span>0k</span></p>
+                                <p class="projectdesc"><span>13</span> days to go <br/> <span>0k</span> out of
+                                    <span>0k</span></p>
                                 <button class="cardthumb">
                                     <span>1002</span>
                                     <svg>
@@ -387,7 +421,10 @@
             <h2 class="functitle">About us</h2>
 
             <p class="aboutus">
-                9th planet is a young, energetic company of like-minded people, striving to win the top positions in the market and creating a platform accessible to everyone with the possibility of realizing their dreams and the dreams of others on a gratuitous basis. Stay with us! Together we will bring Canada to the 1st place in the world by the level of happiness!
+                9th planet is a young, energetic company of like-minded people, striving to win the top positions in the
+                market and creating a platform accessible to everyone with the possibility of realizing their dreams and
+                the dreams of others on a gratuitous basis. Stay with us! Together we will bring Canada to the 1st place
+                in the world by the level of happiness!
             </p>
 
         </div>

@@ -26,10 +26,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-
   max-width: 450px;
   width: 100%;
-  height: 609px;
   background-color: $white;
   padding: 40px;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -42,7 +40,6 @@
 
   @include for-size(desktop) {
     max-width: 528px;
-    height: 581px;
   }
 }
 
@@ -177,6 +174,19 @@
 
 .checkbox-text {
   margin-top: 20px;
+
+  .link {
+    color: $secondary-color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      color: $hover-button-color;
+    }
+  }
+}
+
+.error_msg {
+  color: $error-color;
 }
 
 .check {
@@ -248,15 +258,9 @@
 
 .service-order-btn {
   position: relative;
-  display: inline-flex;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 56px;
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-left: 85px;
-  height: 50px;
-  min-width: 200px;
+  display: block;
+  padding: 10px 34px;
+  margin: 30px auto 0 auto;
   font-weight: bold;
   font-size: 16px;
   line-height: 1.87;
@@ -272,8 +276,4 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  @include for-size(desktop) {
-    margin-left: 125px;
-  }
 }

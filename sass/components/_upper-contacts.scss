@@ -2,10 +2,11 @@
   display: none;
   margin: 0 auto;
   padding-left: 0;
+  align-items: center;
 
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: flex;
-    flex-direction: column;
+    //flex-direction: column;
 
     .item + .item {
       margin-left: 0;
@@ -39,13 +40,13 @@
 
 .upper-contacts-svg-two {
   @include for-size(tablet) {
-    width: 10px;
-    height: 14px;
+    width: 24px;
+    height: 24px;
   }
 
   @include for-size(desktop) {
-    width: 10px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -54,13 +55,20 @@
   letter-spacing: 0.02em;
   color: $secondary-color;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 12px;
-  line-height: 1.17;
+  font-size: 14px;
+  line-height: 1.14;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  margin-top: 6px;
+  /*
 
   @include for-size(desktop) {
     font-size: 14px;
     line-height: 1.14;
   }
+  */
 
   &:hover {
     color: $hover-button-color;

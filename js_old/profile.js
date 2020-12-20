@@ -57,9 +57,50 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
+    //Обновить данные логина  в header-е
+    function updateLoginDataInHeader() {
+        let token = window.localStorage.getItem("Token");
+        let userName = window.localStorage.getItem("UserName");
+
+        if (token != null && userName != null) {
+            $("#profile-name").remove();
+            $("#logoutid").remove();
+
+
+            const dropDown = `<li class="item" id="profile-name">
+									<a href="profile.html" class="upper-contacts-item">
+										${userName}
+									</a>
+								</li>
+								<li class="item" id="logoutid">
+									<button class="upper-contacts-item" title="Log out">
+										<svg class="upper-contacts-svg-two upper-contacts-svg">
+											<use href="./images/sprite.svg#exit"></use>
+										</svg>
+									</button>
+								</li>
+								`;
+
+            //$("#headerSectionRight").append(dropDown);
+
+            const op = document.getElementById("header-right-buttons");
+            op.innerHTML = dropDown;
+
+            onLogoutClickSetup()
+        }
+	}
+
+	//Показать имя пользователя и кнопку Log out, если пользователь авторизирован
+	$(function () {
+		updateLoginDataInHeader()
+	})
+
 	// Получить имя пользователя и вывести это в шапке
 	$(function () {
 		let token = window.localStorage.getItem("Token");
+		if (token == null) {
+			return
+		}
 		$.ajax({
 			crossDomain: true,
 			url: "https://api.9thplanet.ca/user",
@@ -71,22 +112,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			.then(function (response) {
 				let stringified = JSON.stringify(response);
 				var person = JSON.parse(stringified);
+				const userName = person["firstName"] + ' ' + person["lastName"]
+
 				console.log(person);
 				window.localStorage.setItem("UserId", person["id"]);
+				window.localStorage.setItem("UserName", userName);
 
-				let firstName = person["firstName"];
-				let lastName = person["lastName"];
-				let dropDown =
-					'<div class="dropdown dropdown_override  header__item headerButton"><a href="#" data-toggle="dropdown" class="dropdown" id="profile-name">' +
-					firstName +
-					" " +
-					lastName +
-					'</a><ul class="dropdown-menu dropdown_list_override"><li><a href="profile.html">Profile</a></li><li><a href="#" id="logoutid">Log out</a></li></ul></div>';
-				//$("#headerSectionRight").append(dropDown);
-
-				var op = document.getElementById("headerButtonId");
-				op.insertAdjacentHTML("beforebegin", dropDown);
-				LogoutProfile();
+				updateLoginDataInHeader()
 			})
 			.catch(function (err) {
 				console.log("err", err);
@@ -259,7 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
 							dreamPercent
 						);
 						getIdDreamPercentProgressBar.style.height = dreamPercent + "%";
-					} 
+					}
 					else {
 						let startBtn =
 							'<div class="container-fluid"><div class="row"><div class="col text_style_profile"><h3>You haven\'t got a dream yet</h3></div></div></div><div class="container-fluid"><div class="row"><div class="col col_style_acc col_style_acc_button"><div id="headerButtonId" class="headerButton"><a class="btn btn-light btn_start_dream_override font-weight-bold" href="start_dream.html">Start Dream</a></div></div></div></div>';
@@ -284,10 +316,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 
-	function LogoutProfile() {
+	function onLogoutClickSetup() {
 		let logout = document.getElementById("logoutid");
 		logout.onclick = function () {
 			let token = window.localStorage.getItem("Token");
+
+			window.localStorage.removeItem("Token");
+			window.localStorage.removeItem("UserId");
+
 			$.ajax({
 				crossDomain: true,
 				url: "https://api.9thplanet.ca/auth",
@@ -301,6 +337,23 @@ document.addEventListener("DOMContentLoaded", function () {
 					window.localStorage.removeItem("Token");
 					window.localStorage.removeItem("UserId");
 					document.location.href = "index.html";
+					/*$("#profile-name").remove();
+					$("#logoutid").remove();
+
+					let loginButtons  = '<li class="item" id="loginId">\n' +
+						'                <button class="upper-contacts-item" data-modal-login-open>\n' +
+						'                    Log In\n' +
+						'                </button>\n' +
+						'            </li>\n' +
+						'            <li class="item" id="signUpId">\n' +
+						'                <button class="upper-contacts-item" data-modal-login-open>\n' +
+						'                    Sign Up\n' +
+						'                </button>\n' +
+						'            </li>'
+
+					const op = document.getElementById("header-right-buttons");
+					op.innerHTML = loginButtons;*/
+
 					console.log("Success: ", response);
 				})
 				.catch(function (err) {

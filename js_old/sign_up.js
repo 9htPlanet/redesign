@@ -89,7 +89,7 @@ $('document').ready(function() {
                 $.post("https://api.9thplanet.ca/auth", { email: log_in_email, password: log_in_password },
                         function(data) {
                             window.localStorage.setItem('Token', data.accessToken);
-                            document.location.href = "profile.html"
+                            document.location.href = "index.html"
                         }
 
                     )
