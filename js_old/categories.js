@@ -8,7 +8,7 @@ function LoadTitle(title) {
 
 function diffDates(day_one, day_two) {
     return Math.round((day_one - day_two) / (60 * 60 * 24 * 1000));
-};
+}
 
 function FindCategory(url) {
 
@@ -46,18 +46,15 @@ function FindCategory(url) {
     }
 
 
-
-
 }
 
 
-
-$('document').ready(function() {
+$('document').ready(function () {
 
     let per = window.location.href.toString().split('.html?')[1];
     loadDreams(per);
     let category = FindCategory(per);
-    if(!!category)
+    if (!!category)
         LoadTitle(category);
     else
         LoadTitle('Popular Dreams');

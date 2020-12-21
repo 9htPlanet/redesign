@@ -9,7 +9,7 @@ dropdown.classList.add('open');
 // inputField.focus(); // Demo purposes only
 
 var valueArray = [];
-dropdownItems.forEach(function(item) {
+dropdownItems.forEach(function (item) {
     valueArray.push(item.textContent);
     console.log(item.textContent);
 
@@ -20,7 +20,7 @@ var closeDropdown = function closeDropdown() {
     dropdown.classList.remove('open');
 };
 
-inputField.addEventListener('input', function() {
+inputField.addEventListener('input', function () {
     dropdown.classList.add('open');
     var inputValue = inputField.value.toLowerCase();
     var valueSubstring = undefined;
@@ -39,29 +39,29 @@ inputField.addEventListener('input', function() {
     }
 });
 
-dropdownItems.forEach(function(item) {
-    item.addEventListener('click', function(evt) {
+dropdownItems.forEach(function (item) {
+    item.addEventListener('click', function (evt) {
         inputField.value = item.textContent;
-        dropdownItems.forEach(function(dropdown) {
+        dropdownItems.forEach(function (dropdown) {
             dropdown.classList.add('closed');
         });
     });
 });
 
-inputField.addEventListener('focus', function() {
+inputField.addEventListener('focus', function () {
     inputField.placeholder = 'Type to filter';
     dropdown.classList.add('open');
-    dropdownItems.forEach(function(dropdown) {
+    dropdownItems.forEach(function (dropdown) {
         dropdown.classList.remove('closed');
     });
 });
 
-inputField.addEventListener('blur', function() {
+inputField.addEventListener('blur', function () {
     inputField.placeholder = 'Select state';
     dropdown.classList.remove('open');
 });
 
-document.addEventListener('click', function(evt) {
+document.addEventListener('click', function (evt) {
     var isDropdown = dropdown.contains(evt.target);
     var isInput = inputField.contains(evt.target);
     if (!isDropdown && !isInput) {

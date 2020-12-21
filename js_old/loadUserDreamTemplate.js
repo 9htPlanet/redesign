@@ -1,6 +1,6 @@
 'use strict';
-const generate =()=>{
-	const userDreamTemp = `
+const generate = () => {
+    const userDreamTemp = `
             <footer>
             <div class="footer-container" id="footer">
                 <div class="footer-cards">
@@ -49,6 +49,6 @@ const generate =()=>{
         </footer>
 
 	`;
-	document.body.insertAdjacentHTML('beforeend', footer);
+    document.body.insertAdjacentHTML('beforeend', footer);
 }
 // generateHeader();

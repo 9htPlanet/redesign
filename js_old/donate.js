@@ -1,11 +1,11 @@
 function diffDates(day_one, day_two) {
     return Math.round((day_one - day_two) / (60 * 60 * 24 * 1000));
-};
+}
 
-function GetDreamById(dreamId){
+function GetDreamById(dreamId) {
 
-	let getFullPathDream = "https://api.9thplanet.ca/dreams/" + dreamId;
-	let userId = window.localStorage.getItem("UserId");
+    let getFullPathDream = "https://api.9thplanet.ca/dreams/" + dreamId;
+    let userId = window.localStorage.getItem("UserId");
 
     let token = window.localStorage.getItem("Token");
     let headers = {
@@ -22,13 +22,13 @@ function GetDreamById(dreamId){
         headers: headers
     })
         .then(function (data) {
-            console.log("GetDreamWithToken Success", data);            
+            console.log("GetDreamWithToken Success", data);
 
             let percent = Math.round(data['money'] * 100 / data['price'])
             let dreamDescrip = data['infoAboutDream'];
             let aboutAuthor = data['infoAboutYourself'];
             let dayCount = diffDates(new Date(data['expirationTime']), new Date());
-            if (dayCount<0) {
+            if (dayCount < 0) {
                 dayCount = '0';
             }
             let moneyRound = Math.round(data['money'] / 100000, 1);
@@ -41,16 +41,16 @@ function GetDreamById(dreamId){
             try {
                 image = data['photos'][0]['sizes']['medium'];
             } catch (error) {
-                
-                image ='img/No_image.png';
+
+                image = 'img/No_image.png';
             }
             let getLike = '';
-            if (data['likes'].indexOf( userId ) != -1) {
+            if (data['likes'].indexOf(userId) != -1) {
                 getLike = 'fas';
             } else {
                 getLike = 'far';
             }
-            
+
             let getFavorite = '';
             let isFavorite = data['isInFavorites'];
             if (isFavorite) {
@@ -59,28 +59,27 @@ function GetDreamById(dreamId){
                 getFavorite = 'far';
             }
 
-    
+
             let getLikeCount = data['likesCount'];
             let backers = data['donatesCount'];
-    
-                //#endregion
-    
+
+            //#endregion
+
             document.getElementById('donate_dream_name').innerHTML = data['name'];
-            document.getElementById('donate_dream_percent').innerHTML =percent + "%";
-            document.getElementById('donate_dream_count_day').innerHTML =dayCount;
-            document.getElementById('donate_dream_count_backer').innerHTML =backers;
-            document.getElementById('donate_dream_count_money').innerHTML =dollarCurrently + "k";
-            document.getElementById('donate_dream_count_price').innerHTML =dollarNeeded + "k";
+            document.getElementById('donate_dream_percent').innerHTML = percent + "%";
+            document.getElementById('donate_dream_count_day').innerHTML = dayCount;
+            document.getElementById('donate_dream_count_backer').innerHTML = backers;
+            document.getElementById('donate_dream_count_money').innerHTML = dollarCurrently + "k";
+            document.getElementById('donate_dream_count_price').innerHTML = dollarNeeded + "k";
             // document.getElementById('donate_dream_location').innerHTML =dreamLocation;
             $('#donate_dream_location').attr('title', dreamLocation);
             $('#donate_dream_like').attr('title', getLikeCount + " likes");
-    
-            document.getElementById('donate_dream_about_author').innerHTML =aboutAuthor;
-            document.getElementById('donate_dream_about_dream').innerHTML =dreamDescrip;
+
+            document.getElementById('donate_dream_about_author').innerHTML = aboutAuthor;
+            document.getElementById('donate_dream_about_dream').innerHTML = dreamDescrip;
             document.getElementById('donate_dream_like').classList.add(getLike);
             document.getElementById('donate_favorite_icon').classList.add(getFavorite);
             $('#donate_dream_progress_bar').attr('aria-valuenow', percent).css('height', percent + "%");
-
 
 
         })
@@ -89,44 +88,40 @@ function GetDreamById(dreamId){
         });
 
 
-
-
-
-
-    // $.getJSON(getFullPathDream, function(data) 
+    // $.getJSON(getFullPathDream, function(data)
     // {
-	// 	console.log(data['isInFavorites']);
-	// 	//#region Шаблон карточки с переменными
-	// 	let percent = Math.round(data['money'] * 100 / data['price'])
-	// 	let dreamDescrip = data['infoAboutDream'];
-	// 	let aboutAuthor = data['infoAboutYourself'];
+    // 	console.log(data['isInFavorites']);
+    // 	//#region Шаблон карточки с переменными
+    // 	let percent = Math.round(data['money'] * 100 / data['price'])
+    // 	let dreamDescrip = data['infoAboutDream'];
+    // 	let aboutAuthor = data['infoAboutYourself'];
 
-	// 	let dayCount = diffDates(new Date(data['expirationTime']), new Date());
-	// 	if (dayCount<0) {
-	// 		dayCount = '0';
-	// 	}
-	// 	let moneyRound = Math.round(data['money'] / 100000, 1);
-	// 	let priceRound = Math.round(data['price'] / 100000, 1);
-	// 	let dollarCurrently = (moneyRound).toString().replace('.', ',');
-	// 	let dollarNeeded = (priceRound).toString().replace('.', ',');
-	// 	let dreamLocation = data['city']['names']['en-us']
+    // 	let dayCount = diffDates(new Date(data['expirationTime']), new Date());
+    // 	if (dayCount<0) {
+    // 		dayCount = '0';
+    // 	}
+    // 	let moneyRound = Math.round(data['money'] / 100000, 1);
+    // 	let priceRound = Math.round(data['price'] / 100000, 1);
+    // 	let dollarCurrently = (moneyRound).toString().replace('.', ',');
+    // 	let dollarNeeded = (priceRound).toString().replace('.', ',');
+    // 	let dreamLocation = data['city']['names']['en-us']
     //     let image = '';
     //     Carusel(data['photos']);
-	// 	try {
-	// 		image = data['photos'][0]['sizes']['medium'];
-	// 	} catch (error) {
-			
-	// 		image ='img/No_image.png';
-	// 	}
-	// 	let getLike = '';
-	// 	if (data['likes'].indexOf( userId ) != -1) {
-	// 		getLike = 'fas';
-	// 	} else {
-	// 		getLike = 'far';
-	// 	}
+    // 	try {
+    // 		image = data['photos'][0]['sizes']['medium'];
+    // 	} catch (error) {
 
-	// 	let getLikeCount = data['likesCount'];
-	// 	let backers = data['donatesCount'];
+    // 		image ='img/No_image.png';
+    // 	}
+    // 	let getLike = '';
+    // 	if (data['likes'].indexOf( userId ) != -1) {
+    // 		getLike = 'fas';
+    // 	} else {
+    // 		getLike = 'far';
+    // 	}
+
+    // 	let getLikeCount = data['likesCount'];
+    // 	let backers = data['donatesCount'];
 
     //         //#endregion
 
@@ -136,19 +131,20 @@ function GetDreamById(dreamId){
     //     document.getElementById('donate_dream_count_backer').innerHTML =backers;
     //     document.getElementById('donate_dream_count_money').innerHTML =dollarCurrently + "k";
     //     document.getElementById('donate_dream_count_price').innerHTML =dollarNeeded + "k";
-	// 	// document.getElementById('donate_dream_location').innerHTML =dreamLocation;
-	// 	$('#donate_dream_location').attr('title', dreamLocation);
-	// 	$('#donate_dream_like').attr('title', getLikeCount + " likes");
+    // 	// document.getElementById('donate_dream_location').innerHTML =dreamLocation;
+    // 	$('#donate_dream_location').attr('title', dreamLocation);
+    // 	$('#donate_dream_like').attr('title', getLikeCount + " likes");
 
     //     document.getElementById('donate_dream_about_author').innerHTML =aboutAuthor;
     //     document.getElementById('donate_dream_about_dream').innerHTML =dreamDescrip;
     //     document.getElementById('donate_dream_like').classList.add(getLike);
-	// 	$('#donate_dream_progress_bar').attr('aria-valuenow', percent).css('height', percent + "%");
+    // 	$('#donate_dream_progress_bar').attr('aria-valuenow', percent).css('height', percent + "%");
     // });
 
 
-};
-function PutLikeToDream (dreamId, elem) {
+}
+
+function PutLikeToDream(dreamId, elem) {
     let token = window.localStorage.getItem("Token");
     $.ajax({
         crossDomain: true,
@@ -161,14 +157,15 @@ function PutLikeToDream (dreamId, elem) {
     })
         .then(function (response) {
             console.log("Put like response", response);
-            elem.classList.remove("far"); 
-            elem.classList.add("fas"); 
+            elem.classList.remove("far");
+            elem.classList.add("fas");
         })
         .catch(function (err) {
             console.log("Put like error", err);
         });
-};
-function RemoveLikeToDream (dreamId, elem) {
+}
+
+function RemoveLikeToDream(dreamId, elem) {
     let token = window.localStorage.getItem("Token");
     $.ajax({
         crossDomain: true,
@@ -181,16 +178,16 @@ function RemoveLikeToDream (dreamId, elem) {
     })
         .then(function (response) {
             console.log("Remove like response", response);
-            elem.classList.remove("fas"); 
-            elem.classList.add("far"); 
+            elem.classList.remove("fas");
+            elem.classList.add("far");
 
         })
         .catch(function (err) {
             console.log("Remove like error", err);
         });
-};
+}
 
-function PutFavoriteToDream (dreamId, elem) {
+function PutFavoriteToDream(dreamId, elem) {
     let token = window.localStorage.getItem("Token");
     $.ajax({
         crossDomain: true,
@@ -203,14 +200,15 @@ function PutFavoriteToDream (dreamId, elem) {
     })
         .then(function (response) {
             console.log("Put favorite response", response);
-            elem.classList.remove("far"); 
-            elem.classList.add("fas"); 
+            elem.classList.remove("far");
+            elem.classList.add("fas");
         })
         .catch(function (err) {
             console.log("Put favorite error", err);
         });
-};
-function RemoveFavoriteToDream (dreamId, elem) {
+}
+
+function RemoveFavoriteToDream(dreamId, elem) {
     let token = window.localStorage.getItem("Token");
     $.ajax({
         crossDomain: true,
@@ -223,27 +221,28 @@ function RemoveFavoriteToDream (dreamId, elem) {
     })
         .then(function (response) {
             console.log("Remove favorite response", response);
-            elem.classList.remove("fas"); 
-            elem.classList.add("far"); 
+            elem.classList.remove("fas");
+            elem.classList.add("far");
 
         })
         .catch(function (err) {
             console.log("Remove favorite error", err);
         });
-};
+}
+
 function Carusel(photoList) {
     temp = '';
     for (let key in photoList) {
         const urlImg = photoList[key]['sizes']['orig'];
-        let itemTemplate = '<div class="carousel-item"><img class="d-block w-100" src="'+urlImg+'" alt="..."></div>';
-        temp+=itemTemplate;
+        let itemTemplate = '<div class="carousel-item"><img class="d-block w-100" src="' + urlImg + '" alt="..."></div>';
+        temp += itemTemplate;
     }
     document.getElementById('donateCarouselId').innerHTML = temp;
     document.getElementsByClassName('carousel-item')[0].classList.add('active')
 }
 
 
-function GetDreamWithToken (getFullPathDream) {
+function GetDreamWithToken(getFullPathDream) {
     let token = window.localStorage.getItem("Token");
     $.ajax({
         crossDomain: true,
@@ -262,35 +261,33 @@ function GetDreamWithToken (getFullPathDream) {
             console.log("GetDreamWithToken Error", err);
         });
 
-};
+}
 
 
-$('document').ready(function() {
-	let getDreamId = window.location.href.toString().split('.html?')[1];
+$('document').ready(function () {
+    let getDreamId = window.location.href.toString().split('.html?')[1];
     GetDreamById(getDreamId);
-    
-	window.onclick=function(e){
+
+    window.onclick = function (e) {
         var elem = e ? e.target : window.event.returnValue;
-        if (elem.id=="donate_favorite_icon") {
+        if (elem.id == "donate_favorite_icon") {
             if (elem.classList.contains("far")) {
-                PutFavoriteToDream (getDreamId, elem);
+                PutFavoriteToDream(getDreamId, elem);
             }
             if (elem.classList.contains("fas")) {
-                RemoveFavoriteToDream (getDreamId, elem);
+                RemoveFavoriteToDream(getDreamId, elem);
             }
-		}
-		if (elem.id=="donate_dream_like") {
+        }
+        if (elem.id == "donate_dream_like") {
             if (elem.classList.contains("far")) {
-                PutLikeToDream (getDreamId, elem);
+                PutLikeToDream(getDreamId, elem);
             }
             if (elem.classList.contains("fas")) {
-                RemoveLikeToDream (getDreamId, elem);
+                RemoveLikeToDream(getDreamId, elem);
             }
         }
         document.getElementById("donateBuckItid").href = "payment.html?" + getDreamId;
     }
-
-    
 
 
 });

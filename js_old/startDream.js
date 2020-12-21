@@ -1,6 +1,6 @@
-$('document').ready(function() {
+$('document').ready(function () {
 
-    $.getJSON("https://api.9thplanet.ca/dictionary/cities", function(data) {
+    $.getJSON("https://api.9thplanet.ca/dictionary/cities", function (data) {
         let contents = []
         for (let key in data) {
             let city = data[key]['id'];
@@ -10,7 +10,7 @@ $('document').ready(function() {
         $('#empty').hide()
     });
 
-    $.getJSON("https://api.9thplanet.ca/dictionary/categories", function(data) {
+    $.getJSON("https://api.9thplanet.ca/dictionary/categories", function (data) {
         let contents = []
         for (let key in data) {
             let category = data[key]['key'];
@@ -19,8 +19,6 @@ $('document').ready(function() {
         $('#menuItems').append(contents.join(""))
         $('#empty').hide()
     });
-
-
 
 
     //Find the input searchCategory box
@@ -83,19 +81,19 @@ $('document').ready(function() {
     }
 
     //If the user clicks on any item, set the title of the button as the text of the item
-    $('#menuItems').on('click', '.dropdown-item', function() {
+    $('#menuItems').on('click', '.dropdown-item', function () {
         $('#dropdown_categories').text($(this)[0].value)
         $("#dropdown_categories").dropdown('toggle');
     })
 
-    $('#menuItems_2').on('click', '.dropdown-item', function() {
-            $('#dropdown_cities').text($(this)[0].value)
-            $("#dropdown_cities").dropdown('toggle');
-        })
-        // buildDropDown(categories)
-        // buildDropDown_2(cities)
+    $('#menuItems_2').on('click', '.dropdown-item', function () {
+        $('#dropdown_cities').text($(this)[0].value)
+        $("#dropdown_cities").dropdown('toggle');
+    })
+    // buildDropDown(categories)
+    // buildDropDown_2(cities)
 
-    $("#publishDream_id").submit(function(event) {
+    $("#publishDream_id").submit(function (event) {
 
         let allLinks = document.getElementById('gallery');
         let matches = allLinks.querySelectorAll("img");

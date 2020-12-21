@@ -1,7 +1,7 @@
 'use strict';
 
-const generateHeader =()=>{
-	const footer = `
+const generateHeader = () => {
+    const footer = `
             <footer class="footer-main">
             <div class="footer-container" id="footer">
                 <div class="footer-cards">
@@ -53,6 +53,6 @@ const generateHeader =()=>{
         </footer>
 
 	`;
-	document.body.insertAdjacentHTML('beforeend', footer);
+    document.body.insertAdjacentHTML('beforeend', footer);
 }
 // generateHeader();

@@ -1,10 +1,9 @@
-
-$(document).ready(function() {
+$(document).ready(function () {
     // $(function() {
     //     $("#header").load("header.html");
     // });
 
-    $("#menu").on("click", "a", function(event) {
+    $("#menu").on("click", "a", function (event) {
         //отменяем стандартную обработку нажатия по ссылке
         event.preventDefault();
 
@@ -15,7 +14,7 @@ $(document).ready(function() {
             top = $(id).offset().top;
 
         //анимируем переход на расстояние - top за 1500 мс
-        $('body,html').animate({ scrollTop: top }, 1500);
+        $('body,html').animate({scrollTop: top}, 1500);
     });
 });
 
@@ -23,7 +22,7 @@ $(document).ready(function() {
 var header = $('.header'),
     scrollPrev = 0;
 
-$(window).scroll(function() {
+$(window).scroll(function () {
     var scrolled = $(window).scrollTop();
 
     if (scrolled > 100 && scrolled > scrollPrev) {
@@ -53,10 +52,10 @@ let progressbar = $("<div/>", {
 })
 
 let verticalProgressBar = $("<div/>", {
-        "class": "progress progress-bar-vertical",
-        html: progressbar
-    })
-    //#endregion
+    "class": "progress progress-bar-vertical",
+    html: progressbar
+})
+//#endregion
 
 //#region Main INFO
 let imgCardInside = $("<img/>", {
@@ -81,11 +80,12 @@ let dreamTitle = $("<div/>", {
     "class": "dream_title",
     html: "DREAM#1"
 });
+
 //#endregion
 
 
 function loadDreams() {
-    $.getJSON("json/gen_dreams.json", function(data) {
+    $.getJSON("json/gen_dreams.json", function (data) {
         $("<div/>", {
             "class": "dream-card",
             html: verticalProgressBar
@@ -125,9 +125,6 @@ function loadDreams() {
         }).appendTo("#dream_bottom");
 
 
-
-
-
         // dreamSec = document.getElementById("dream_cards");
         // $('#dream_cards').html('< p > adcda < /p>');
         // for (var key in data) {
@@ -149,8 +146,8 @@ function loadDreams() {
 
 //переключение вкладок
 
-$(document).ready(function() {
-    $('#pills-log-in-tab').on('click', function(e) {
+$(document).ready(function () {
+    $('#pills-log-in-tab').on('click', function (e) {
         e.preventDefault()
         $(this).addClass('active');
         let twoTab = document.getElementById('pills-sign-up-tab');
@@ -165,7 +162,7 @@ $(document).ready(function() {
         $(secondContent).removeClass('active');
 
     });
-    $('#pills-sign-up-tab').on('click', function(e) {
+    $('#pills-sign-up-tab').on('click', function (e) {
         e.preventDefault()
         $(this).addClass('active');
         let two = document.getElementById('pills-log-in-tab');
@@ -185,7 +182,7 @@ $(document).ready(function() {
 
 
 //Открытие Start Dreams если авторизован
-$(document).ready(function() {
+$(document).ready(function () {
     let getToken = window.localStorage.getItem('Token');
     if (getToken != null) {
         $(".btn_event").attr("href", "start_dream.html");

@@ -1,32 +1,28 @@
-$('document').ready(function() {
-    $(function() {
+$('document').ready(function () {
+    $(function () {
 
         //Вход
-        $("#log_in_id").submit(function(event) {
+        $("#log_in_id").submit(function (event) {
             LogInFoo('log_in_email', 'log_in_password');
             event.preventDefault();
         });
 
-        $("#log_in_id_popup").submit(function(event) {
+        $("#log_in_id_popup").submit(function (event) {
             LogInFoo('log_in_email_popup', 'log_in_password_popup');
             event.preventDefault();
         });
 
 
         //Регистрация
-        $("#sign_up_id").submit(function(event) {
+        $("#sign_up_id").submit(function (event) {
             SignUpFoo('firstName_id', 'lastName_id', 'email_id', 'sign_up_password');
             event.preventDefault();
         });
 
-        $("#sign_up_id_popup").submit(function(event) {
+        $("#sign_up_id_popup").submit(function (event) {
             SignUpFoo('firstName_id_popup', 'lastName_id_popup', 'email_id_popup', 'sign_up_password_popup');
             event.preventDefault();
         });
-
-
-
-
 
 
         function SignUpFoo(firstNameId, lastNameId, emailId, signUpPasswordId) {
@@ -35,7 +31,7 @@ $('document').ready(function() {
             let email_id = document.getElementById(emailId).value;
             let psw_id = document.getElementById(signUpPasswordId).value;
 
-            $(function() {
+            $(function () {
 
                 let chb_1 = $('#chb_1').prop('checked');
                 let chb_2 = $('#chb_2').prop('checked');
@@ -54,7 +50,7 @@ $('document').ready(function() {
                             email: email_id,
                             password: psw_id
                         },
-                        function(data) {
+                        function (data) {
                             window.localStorage.setItem('Token', data['access']['accessToken']);
                             document.location.href = "profile.html"
                         }
@@ -84,16 +80,15 @@ $('document').ready(function() {
 
             let log_in_password = document.getElementById(passId).value;
 
-            $(function() {
+            $(function () {
 
-                $.post("https://api.9thplanet.ca/auth", { email: log_in_email, password: log_in_password },
-                        function(data) {
-                            window.localStorage.setItem('Token', data.accessToken);
-                            document.location.href = "index.html"
-                        }
-
-                    )
-                    .fail(function(error) {
+                $.post("https://api.9thplanet.ca/auth", {email: log_in_email, password: log_in_password},
+                    function (data) {
+                        window.localStorage.setItem('Token', data.accessToken);
+                        document.location.href = "index.html"
+                    }
+                )
+                    .fail(function (error) {
                         $('.error_msg').html(error.responseJSON['errorMessage']);
                     });
 

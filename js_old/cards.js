@@ -1,6 +1,6 @@
 function diffDates(day_one, day_two) {
     return Math.round((day_one - day_two) / (60 * 60 * 24 * 1000));
-};
+}
 
 function loadDreams(url) {
     let userId = window.localStorage.getItem("UserId");
@@ -122,7 +122,7 @@ function PutLikeToDream(elem) {
         .catch(function (err) {
             console.log("Put like error", err);
         });
-};
+}
 
 function RemoveLikeToDream(elem) {
     let token = window.localStorage.getItem("Token");
@@ -144,7 +144,7 @@ function RemoveLikeToDream(elem) {
         .catch(function (err) {
             console.log("Remove like error", err);
         });
-};
+}
 
 $('document').ready(function () {
 
