@@ -28,4 +28,19 @@
     function toggleModalLogin() {
         refsLogin.modal.classList.toggle('is-hidden');
     }
+
+
+    //open sign up
+    const refsSignUp = {
+        openModalBtn: document.querySelector('[data-modal-sign-up-open]'),
+        closeModalBtn: document.querySelector('[data-modal-sign-up-close]'),
+        modal: document.querySelector('[data-modal-sign-up]'),
+    };
+
+    refsSignUp.openModalBtn.addEventListener('click', toggleModalSignUp);
+    refsSignUp.closeModalBtn.addEventListener('click', toggleModalSignUp);
+
+    function toggleModalSignUp() {
+        refsSignUp.modal.classList.toggle('is-hidden');
+    }
 })();

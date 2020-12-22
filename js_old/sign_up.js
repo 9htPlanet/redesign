@@ -32,17 +32,17 @@ $('document').ready(function () {
             let psw_id = document.getElementById(signUpPasswordId).value;
 
             $(function () {
+                $('.error_msg_small').html("");
 
-                let chb_1 = $('#chb_1').prop('checked');
                 let chb_2 = $('#chb_2').prop('checked');
+                let chb_3 = $('#chb_3').prop('checked');
                 let checkEmail = checkmail(email_id);
                 let checkPassword = CheckPassword(psw_id);
+                let checkFirstName = checkFirstOrLastName(firstName_id)
+                let checkLastName = checkFirstOrLastName(lastName_id)
 
-                console.log(checkPassword);
-                if (chb_2 && checkEmail) {
-                    let msg = '';
-                    $('.error_msg').html(msg);
-                    // document.getElementById('error_id').innerHTML = msg;
+                if (chb_2 && chb_3 && checkEmail && checkPassword && checkFirstName && checkLastName) {
+                    $('.error_msg').html("");
 
                     $.post("https://api.9thplanet.ca/auth/reg", {
                             firstName: firstName_id,
@@ -54,23 +54,33 @@ $('document').ready(function () {
                             window.localStorage.setItem('Token', data['access']['accessToken']);
                             document.location.href = "profile.html"
                         }
-                    )
+                    ).fail(function (error) {
+                        $('.error_msg').html(error.responseJSON['errorMessage']);
+                    });
+
+                } else {
+                    if (!checkEmail) {
+                        $('#email_error_id').html('Your e-mail is incorrect, Please check it');
+                    }
+                    if (!checkPassword) {
+                        $('#password_error_id').html('Password is incorrect. Please check your password.The password has to contain 6 - 30 symbols');
+                    }
+                    if (!checkFirstName) {
+                        $('#first_name_error_id').html("Please fill this field");
+                    }
+                    if (!checkLastName) {
+                        $('#last_name_error_id').html("Please fill this field");
+                    }
+
+                    if (!chb_2 && !chb_3) {
+                        $('.error_msg').html("Please sign agreements and prove that you are adult");
+                    } else if (!chb_2) {
+                        $('.error_msg').html("Please prove that you are adult");
+
+                    } else {
+                        $('.error_msg').html("Please sign all agreements");
+                    }
                 }
-                if (!checkEmail) {
-
-                    let msg = 'Your e-mail is incorrect, Please check it';
-                    // document.getElementById('error_id').innerHTML = msg;
-                    $('.error_msg').html(msg);
-
-
-                }
-                if (!checkPassword) {
-                    let msg = 'Password is incorrect. Please check your password.The password has to contain 6-30 symbols';
-                    // document.getElementById('error_id').innerHTML = msg;
-                    $('.error_msg').html(msg);
-
-                }
-
             });
 
         }
@@ -128,6 +138,16 @@ $('document').ready(function () {
                 return false;
             }
             if (pswd.length > 30) {
+                return false;
+            }
+            return true;
+        }
+
+        function checkFirstOrLastName(name) {
+            if (name === "") {
+                return false;
+            }
+            if (name.length < 1) {
                 return false;
             }
             return true;
