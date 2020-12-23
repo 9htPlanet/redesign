@@ -2,10 +2,21 @@ function diffDates(day_one, day_two) {
     return Math.round((day_one - day_two) / (60 * 60 * 24 * 1000));
 }
 
-function loadDreams(url) {
+function loadDreams(categories = null, page = 1) {
+    infiniteScroll.loading = true
+
     let userId = window.localStorage.getItem("UserId");
 
-    $.getJSON(url, function (data) {
+    let url = "https://api.9thplanet.ca/dreams"
+    let queryParams = {
+        page: page
+    }
+    if (categories != null) {
+        queryParams.categories = categories;
+    }
+
+
+    $.getJSON(url, queryParams, function (data) {
         temp = '';
         let currentHref = window.location.href;
         let newData = [];
@@ -79,11 +90,21 @@ function loadDreams(url) {
 
             temp += cardTemplate2;
 
-
             //#endregion
 
         }
-        document.getElementById('dream_cards').innerHTML = temp;
+        if (page > 1) {
+            document.getElementById('dream_cards').innerHTML += temp;
+        } else {
+            document.getElementById('dream_cards').innerHTML = temp;
+
+        }
+
+        infiniteScroll.loading = false;
+        infiniteScroll.curPage++;
+        if (newData.length < 20) {
+            infiniteScroll.scrollFinished = true;
+        }
     });
 
 }
@@ -147,14 +168,49 @@ function RemoveLikeToDream(elem) {
 }
 
 $('document').ready(function () {
+    let categories = null
 
-    let URL = "";
+    const urlParams = new URLSearchParams(window.location.search);
+
     if (window.location.href.indexOf("categories.html") > -1) {
-        URL = window.location.href.toString().split('.html?')[1];
-    } else if (window.location.href.indexOf("index.html") > -1) {
-
-        URL = "https://api.9thplanet.ca/dreams";
+        categories = urlParams.get('categories');
     }
-    loadDreams(URL);
+    loadDreams(categories);
     ToggleLike();
 });
+
+
+function showShimmers() {
+    let shimmerHtml = `<li class="project-info-item" >
+                    <div class="project-box-link" rel="noopener noreferer">
+                        <div class="project-img-box">
+                            <span class="shine"></span>
+
+                        </div>
+
+                        <div class="project-info-box">
+                            <h5 class="projecthead">
+                                <span class="shine h5_shine"></span>
+                            </h5>
+                            <div class="bottomline">
+                                <p class="projectdesc">
+                                    <span class="shine descr_shine"></span><br/><span class="shine descr_shine"></span>
+                                </p>
+
+                                <button class="cardthumb shine"></button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </li>`
+
+
+    let html = "";
+    for (i = 0; i < 20; i++) {
+        html += shimmerHtml
+    }
+
+    $("#dream_cards").html(html)
+    curPage = 0
+}
