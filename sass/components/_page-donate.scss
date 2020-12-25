@@ -35,28 +35,41 @@
 }
 .donate-column-2{
   flex: 30%;
-  h2, h3{
+  h2, h3, p {
     text-align: left;
     margin-bottom: 15px;
     margin-left: 26px;
+    //font-size: 18px;
   }
-  .donate-btn{
+
+  .donate-btn {
     text-align: center;
     line-height: 50px;
     margin-bottom: 15px;
     margin-left: 26px;
 
   }
-  span{
+
+  .herobutton {
+
+    &:hover {
+      background: $secondary-section-background-color;
+      color: $main-text-color;
+    }
+  }
+
+  span {
     color: $hover-button-color;
   }
-  .donate-group-btn{
+
+  .donate-group-btn {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-left: 26px;
   }
-  svg{
+
+  svg {
     fill: $social-icons-color;
   }
   }
