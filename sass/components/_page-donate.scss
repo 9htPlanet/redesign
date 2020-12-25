@@ -41,7 +41,7 @@
 
 .donate-column-2 {
   flex: 10%;
-  padding-left: 26px;
+  padding-left: 0;
 
   @include for-size(mobile) {
     padding-left: 0;
@@ -53,10 +53,6 @@
 
   @include for-size(desktop) {
     padding-left: 26px;
-  }
-
-  @media (max-width: 768px) {
-    padding-left: 0;
   }
 
   h2, h3, p {
