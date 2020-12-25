@@ -1778,29 +1778,25 @@ ul {
 }
 
 .donate-column-2 {
-    flex: 30%;
+  flex: 30%;
 }
-
 .donate-column-2 h2, .donate-column-2 h3, .donate-column-2 p {
-    text-align: left;
-    margin-bottom: 15px;
-    margin-left: 26px;
+  text-align: left;
+  margin-bottom: 15px;
+  margin-left: 26px;
 }
-
 .donate-column-2 .donate-btn {
-    text-align: center;
-    line-height: 50px;
-    margin-bottom: 15px;
-    margin-left: 26px;
+  text-align: center;
+  line-height: 50px;
+  margin-bottom: 15px;
+  margin-left: 26px;
 }
-
 .donate-column-2 .herobutton:hover {
-    background: #e5e5e5;
-    color: #212121;
+  background: #e5e5e5;
+  color: #212121;
 }
-
 .donate-column-2 span {
-    color: #2196f3;
+  color: #2196f3;
 }
 .donate-column-2 .donate-group-btn {
   display: flex;
