@@ -11,8 +11,8 @@ const infiniteScroll = {
                 clientHeight
             } = document.documentElement;
 
-            if (scrollTop + clientHeight >= scrollHeight - 100) {
-                debugger;
+            console.log(scrollTop + clientHeight, scrollHeight)
+            if (scrollTop + clientHeight >= scrollHeight - 500) {
                 if (infiniteScroll.curPage > 0 && !infiniteScroll.loading && !infiniteScroll.scrollFinished) {
                     loadDreams(infiniteScroll.currentCategories, infiniteScroll.curPage + 1)
                 }
