@@ -40,20 +40,44 @@
 }
 
 .donate-column-2 {
-  flex: 30%;
+  flex: 10%;
+  padding-left: 26px;
+
+  @include for-size(mobile) {
+    padding-left: 0;
+  }
+
+  @include for-size(tablet) {
+    padding-left: 21px;
+  }
+
+  @include for-size(desktop) {
+    padding-left: 26px;
+  }
+
+  /*
+    @media (min-width: 1200px) {
+      padding-left: 26px;
+    }*/
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
 
   h2, h3, p {
     text-align: left;
     margin-bottom: 15px;
-    margin-left: 26px;
-    //font-size: 18px;
+  }
+
+  h3 {
+    color: $hover-button-color;
+    font-size: 28px;
   }
 
   .donate-btn {
     text-align: center;
     line-height: 50px;
     margin-bottom: 15px;
-    margin-left: 26px;
 
   }
 
