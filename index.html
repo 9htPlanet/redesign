@@ -46,15 +46,10 @@
                 </button>
             </li>
             <li class="item" id="signUpId">
-                <button class="upper-contacts-item" data-modal-login-open>
+                <button class="upper-contacts-item" data-modal-sign-up-open>
                     Sign Up
                 </button>
             </li>
-            <!--<li class="item" id="profile-name">
-                <button class="upper-contacts-item" data-modal-login-open>
-                    Profile name
-                </button>
-            </li>-->
         </ul>
         <div class="backdrop is-hidden" data-modal-login>
             <div class="modal">
@@ -94,6 +89,99 @@
                 </div>
             </div>
         </div>
+
+        <div class="backdrop is-hidden" data-modal-sign-up>
+            <div class="modal">
+                <button class="btn-close" data-modal-sign-up-close>
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+                    <p class="service-header">Welcome</p>
+                    <form class="service-order" id="sign_up_id">
+                        <div class="form-field">
+                            <label class="field-label" for="firstName_id">First name</label>
+                            <input autofocus class="field" id="firstName_id" name="name" type="text"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="first_name_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="lastName_id">Last name</label>
+                            <input class="field" id="lastName_id" name="name" type="text"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="last_name_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="email_id">Email address:</label>
+                            <input class="field" id="email_id" name="name" type="email"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#envelope2-1"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="email_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="sign_up_password">Password:</label>
+                            <input class="field" id="sign_up_password" name="name" type="password"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#security"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="password_error_id"></div>
+                        </div>
+
+
+                        <div class="form-field checkbox-text error_msg" id="error_id">
+                        </div>
+
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_1">
+                                <input class="check-input" id="chb_1" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">Sign me up for the 9thPlanet letter</span>
+                            </label>
+                        </div>
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_2">
+                                <input class="check-input" id="chb_2" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">I am adult</span>
+                            </label>
+                        </div>
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_3">
+                                <input class="check-input" id="chb_3" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">
+                                    I agree to the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Terms of Use</a>
+                                    and have read and understand the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Privacy Policy</a>
+                                </span>
+
+                            </label>
+                        </div>
+
+                        <button class="service-order-btn" id="btn_submit" type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="mobile-menu" id="mobile-menu" data-menu>
         <ul class="list mobile-menu-list">
