@@ -1761,7 +1761,9 @@ ul {
   padding-bottom: 140px;
 }
 .donate-column-1 .line-under-img svg {
-  fill: #757575;
+    fill: #757575;
+    width: 24px;
+    height: 24px;
 }
 .donate-column-1 .line-under-img .donate-location {
   float: left;
