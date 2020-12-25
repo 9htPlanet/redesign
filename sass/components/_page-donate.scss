@@ -1,7 +1,8 @@
-.donate-row{
+.donate-row {
   display: flex;
   flex-wrap: wrap;
 }
+
 .donate-column-1 {
   flex: 70%;
 
@@ -11,32 +12,36 @@
     margin: 24px 5px 10px;
     padding-bottom: 140px;
 
-    svg{
+    svg {
       fill: $secondary-color;
       width: 24px;
       height: 24px;
     }
 
-    .donate-location{
+    .donate-location {
       float: left;
     }
 
-    .donate-like-track{
+    .donate-like-track {
       display: flex;
 
       float: right;
-      .like-it{
+
+      .like-it {
         margin-right: 26px;
       }
-      .track-it, .like-it{
+
+      .track-it, .like-it {
         cursor: pointer;
       }
     }
 
   }
 }
-.donate-column-2{
+
+.donate-column-2 {
   flex: 30%;
+
   h2, h3, p {
     text-align: left;
     margin-bottom: 15px;
@@ -74,17 +79,19 @@
   svg {
     fill: $social-icons-color;
   }
-  }
-.donate-column-3{
-  h2, h3{
+}
+
+.donate-column-3 {
+  h2, h3 {
     text-align: left;
     margin-bottom: 28px;
   }
 
-  p{
+  p {
     line-height: 36px;
     padding-bottom: 64px;
-  };
+  }
+;
 
 }
 
