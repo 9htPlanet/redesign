@@ -48,15 +48,60 @@ function FindCategory(url) {
 
 }
 
+function processCategory(category) {
+    showShimmers()
+    loadDreams(category)
+}
+
+
+function setupButtonsToCategory(categories) {
+    $(".category-button").removeClass("selected-button")
+    if (categories == null) {
+        $("#btn_all").toggleClass("selected-button");
+        infiniteScroll.currentCategories = null
+    } else {
+        const categoriesArr = categories.split(",");
+        categoriesArr.forEach(function (value, index, array) {
+            if (value == null || value === "all") {
+                $("#btn_all").toggleClass("selected-button");
+                infiniteScroll.currentCategories = null
+            } else {
+                $("#btn_" + value).toggleClass("selected-button");
+                infiniteScroll.currentCategories = value
+            }
+        })
+    }
+
+    infiniteScroll.curPage = 0;
+    infiniteScroll.loading = false;
+    infiniteScroll.scrollFinished = false;
+
+}
 
 $('document').ready(function () {
+    infiniteScroll.initScroll()
+    $(".category-button").click(function (data) {
+        const category = data.target.id.split("btn_").join("")
+        setupButtonsToCategory(category)
+        //push state
+        const queryParams = new URLSearchParams(window.location.search);
+        queryParams.set("categories", category);
+        history.pushState(null, null, "?" + queryParams.toString());
+        processCategory(category)
+    })
 
-    let per = window.location.href.toString().split('.html?')[1];
-    loadDreams(per);
-    let category = FindCategory(per);
-    if (!!category)
-        LoadTitle(category);
-    else
-        LoadTitle('Popular Dreams');
+    const urlParams = new URLSearchParams(window.location.search);
+    const categories = urlParams.get('categories')
 
+    setupButtonsToCategory(categories)
+
+    window.addEventListener('popstate', (event) => {
+        console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const categories = urlParams.get('categories')
+
+        setupButtonsToCategory(categories)
+        processCategory(categories)
+    });
 });

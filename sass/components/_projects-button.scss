@@ -37,17 +37,17 @@
   border-radius: 4px;
   border: 0;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 
-  @media screen and (min-width: 768px) {
-    margin-bottom: 0;
-  }
-
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $hover-button-color;
     color: $white;
-    cursor: pointer;
   }
+}
+
+.selected-button {
+  background-color: $hover-button-color;
+  color: $white;
 }
 
 .project-button-item:not(:last-child) {
