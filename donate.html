@@ -12,6 +12,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
     />
+    <link rel="stylesheet" href="css/">
     <link rel="stylesheet" href="./css/main.min.css"/>
 </head>
 <body>
@@ -20,7 +21,6 @@
         <nav class="navigation">
             <a href="./index.html" class="logo">9th<span class="logospan">Planet</span></a>
             <ul class="site-nav">
-                <!--                <li class="site-nav-item"><a href="./index.html" class="link current">Home</a></li>-->
                 <li class="site-nav-item"><a href="./portfolio.html" class="link">Categories</a></li>
                 <li class="site-nav-item"><a href="" class="link">Reviews</a></li>
                 <li class="site-nav-item"><a href="" class="link">Team</a></li>
@@ -52,15 +52,6 @@
                     Log out</a
                 >
             </li>
-            <!-- <li class="item">
-                 <a href="tel:+380961111111" class="upper-contacts-item">
-                     <svg class="upper-contacts-svg-two upper-contacts-svg">
-                         <use href="./images/sprite.svg#phone"></use>
-                     </svg
-                     >
-                     +38 096 111 11 11</a
-                 >
-             </li>-->
         </ul>
     </div>
     <div class="mobile-menu" id="mobile-menu" data-menu>
@@ -98,8 +89,81 @@
 <main>
     <section class="ourprojects">
         <div class="container">
-            <h2 class="clients-header">Categories</h2>
-            <img class="" src="https://9thplanet-files.s3.ca-central-1.amazonaws.com/users/5f53e29168d4d32a42eb0754/photos/5f53e2e968d4d32a42eb0755/orig.jpeg"/>
+            <div class="donate-row">
+                <div class="donate-column-1">
+                    <img id="donate_dream_photo" style="width: 100%" src=""/>
+
+                    <div class="line-under-img">
+                        <div class="donate-location">
+                            <svg class="footer-social-icons-svg"><use href="./images/sprite.svg#location"></use></svg>
+                            <span id="donate_dream_location"></span>
+                        </div>
+                        <div class="donate-like-track">
+                            <div class="like-it">
+                                <svg class="footer-social-icons-svg"><use href="./img/sprite.svg#thumbs"></use></svg>
+                                <span><span id="donate_dream_like"></span> Like It</span>
+                            </div>
+
+                            <div class="track-it">
+                                <svg class="footer-social-icons-svg"><use href="./images/sprite.svg#twitter"></use></svg>
+                                <span><span id="">0</span> Track It</span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="donate-column-2">
+                    <h2 id="donate_dream_name" class="functitle"></h2>
+                    <h2 id="donate_dream_percent" class="footerlogo"></h2>
+                    <p><span id="donate_dream_count_money"></span> out of <span id="donate_dream_count_price"></span>
+                    </p>
+                    <p><span id="donate_dream_count_backer"></span> backers</p>
+                    <p><span id="donate_dream_count_day"></span> days to go</p>
+                    <a href="" class="herobutton donate-btn">Back It</a>
+                    <div class="donate-group-btn">
+                        <ul class="list-footer-social-icons">
+                            <li class="footer-social-icons-item">
+                                <a
+                                        class="footer-social-icons-link"
+                                        href="https://twitter.com/"
+                                        target="_blank"
+                                        rel="noopener noreferer"
+                                        aria-label="Twitter"
+                                >
+                                    <svg class="footer-social-icons-svg">
+                                        <use href="./images/sprite.svg#twitter"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="footer-social-icons-item">
+                                <a
+                                        class="footer-social-icons-link"
+                                        href="https://facebook.com/"
+                                        target="_blank"
+                                        rel="noopener noreferer"
+                                        aria-label="Facebook"
+                                >
+                                    <svg class="footer-social-icons-svg">
+                                        <use href="./images/sprite.svg#facebook"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+                <div class="donate-column-3">
+                    <h2 class="functitle">About author</h2>
+                    <p><span id="donate_dream_about_author"></span></p>
+                    <h2 class="functitle">Dream information</h2>
+                    <p><span id="donate_dream_about_dream"></span></p>
+
+                </div>
+            </div>
         </div>
     </section>
 </main>
@@ -205,11 +269,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js"
         integrity="sha512-53CQcu9ciJDlqhK7UD8dZZ+TF2PFGZrOngEYM/8qucuQba+a+BXOIRsp9PoMNJI3ZeLMVNIxIfZLbG/CdHI5PA=="
         crossorigin="anonymous"></script>
-<script src="js_old/bootstrap.min.js"></script>
-<script src="js_old/main.js"></script>
-<script src="js_old/profile.js"></script>
-<script src="js_old/donate.js"></script>
-<script src="js_old/generateFooter.js"></script>
-<script src="js_old/starsBackground.js"></script>
+<script src="js/Dream.js"></script>
+<script src="js/donate.js"></script>
+<!--<script src="js_old/bootstrap.min.js"></script>-->
+<!--<script src="js_old/main.js"></script>-->
+<!--<script src="js_old/profile.js"></script>-->
+<!--<script src="js_old/donate.js"></script>-->
+<!--<script src="js_old/generateFooter.js"></script>-->
+<!--<script src="js_old/starsBackground.js"></script>-->
 </body>
 </html>
