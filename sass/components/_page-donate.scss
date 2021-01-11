@@ -5,6 +5,26 @@
 
 .donate-column-1 {
   flex: 70%;
+  width: 70%;
+  height: 100%;
+
+  .donate-img {
+    display: flex;
+
+    #donate_dream_photo-var-2 {
+      flex: 99%;
+    }
+
+    .percentscale-container {
+      flex: 1%;
+
+      .percentscale {
+        width: 100%;
+        height: 15%;
+      }
+    }
+
+  }
 
   .line-under-img {
     color: $secondary-color;
@@ -36,6 +56,92 @@
       }
     }
 
+  }
+
+  .percentscale-container-donate {
+
+    font-size: 13px;
+    color: white;
+    width: 100%;
+    background: $secondary-section-background-color;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+
+    span {
+      display: none;
+      position: absolute;
+      color: #eeeeee;
+      text-shadow: 1px 1px 1px #2196FB;
+    }
+
+    .percentscale-donate {
+      background: $hover-button-color;
+      width: 65%;
+      height: 3px;
+      box-shadow: 1px 1px 8px $hover-button-color;
+      border-radius: 2px;
+    }
+
+  }
+
+
+  .percentscale-donate-var2 {
+    background: $hover-button-color;
+    height: 20%;
+    box-shadow: 1px 1px 8px $hover-button-color;
+    border-radius: 2px;
+  }
+
+
+  .percentscale-container-donate-var2 {
+
+    font-size: 13px;
+    color: white;
+    width: 1%;
+    background: $secondary-section-background-color;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    transform: rotateX(180deg);
+
+    span {
+      display: none;
+      position: absolute;
+      color: #eeeeee;
+      text-shadow: 1px 1px 1px #2196FB;
+    }
+
+    .percentscale-donate-var2 {
+      background: $hover-button-color;
+      height: 20%;
+      box-shadow: 1px 1px 8px $hover-button-color;
+      border-radius: 2px;
+    }
+
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
   }
 }
 
@@ -88,7 +194,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-left: 26px;
   }
 
   svg {

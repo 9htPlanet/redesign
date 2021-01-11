@@ -13,11 +13,21 @@ function fillCurrentDream(data) {
     let dollarNeeded = (priceRound).toString().replace('.', ',');
     let dreamLocation = data['city']['names']['en-us']
     let image = '';
-    try {
-        image = data['photos'][0]['sizes']['medium'];
-    } catch (error) {
+    console.log(data['photos'].length)
+    for (let i = 0; i < data['photos'].length; i++) {
+        try {
+            //image += data['photos'][0]['sizes']['medium'];
+            let div = document.createElement('div');
+            div.className = 'swiper-slide';
+            let img = document.createElement('img');
+            img.src = data['photos'][i]['sizes']['medium'];
+            div.appendChild(img);
+            document.getElementsByClassName('swiper-wrapper')[0].appendChild(div);
+        } catch (error) {
 
-        image = 'img/No_image.png';
+            image += 'img/No_image.png';
+        }
+
     }
     let getLike = '';
     // if (data['likes'].indexOf(userId) != -1) {
@@ -46,9 +56,11 @@ function fillCurrentDream(data) {
     document.getElementById('donate_dream_count_backer').innerHTML = backers;
     document.getElementById('donate_dream_count_money').innerHTML = dollarCurrently + "k";
     document.getElementById('donate_dream_count_price').innerHTML = dollarNeeded + "k";
-    document.getElementById('donate_dream_location').innerHTML =dreamLocation;
-    document.getElementById('donate_dream_like').innerHTML =getLikeCount;
-    document.getElementById('donate_dream_photo').src =image;
+    document.getElementById('donate_dream_location').innerHTML = dreamLocation;
+    document.getElementById('donate_dream_like').innerHTML = getLikeCount;
+    // document.getElementById('donate_dream_photo').src =image;
+    // document.getElementById('donate_dream_photo-var-2_1').src = data['photos'][0]['sizes']['medium'];
+    document.getElementsByClassName('percentscale-donate-var2')[0].setAttribute("style", "height:" + percent + "%;");
     // document.getElementById('donate_dream_like').innerHTML =getLikeCount;
 
     document.getElementById('donate_dream_about_author').innerHTML = aboutAuthor;
@@ -56,7 +68,18 @@ function fillCurrentDream(data) {
     // document.getElementById('donate_dream_like').classList.add(getLike);
     // document.getElementById('donate_favorite_icon').classList.add(getFavorite);
     // $('#donate_dream_progress_bar').attr('aria-valuenow', percent).css('height', percent + "%");
-
+    let swiper = new Swiper('.swiper-container', {
+        spaceBetween: 10,
+        effect: 'fade',
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
 }
 
 function GetDreamById(dreamId) {
@@ -91,3 +114,21 @@ $('document').ready(function () {
 
     GetDreamById(getDreamId)
 });
+
+(() => {
+
+    //open back it
+    const refsBackIt = {
+        openModalBtn: document.querySelector('[data-modal-back-it-open]'),
+        closeModalBtn: document.querySelector('[data-modal-back-it-close]'),
+        modal: document.querySelector('[data-modal-back-it]'),
+    };
+
+    refsBackIt.openModalBtn.addEventListener('click', toggleModalBackIt);
+    refsBackIt.closeModalBtn.addEventListener('click', toggleModalBackIt);
+
+    function toggleModalBackIt() {
+        refsBackIt.modal.classList.toggle('is-hidden');
+    }
+
+})();
