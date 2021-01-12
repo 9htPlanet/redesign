@@ -1,4 +1,4 @@
-function CalculatePayment(money123) {
+function calculatePayment(money123) {
     let input = document.getElementById("donate_count");
     let stripeCommision = document.getElementById("paymentStripeId");
     let planetCommision = document.getElementById("paymentPlanetId");
@@ -27,7 +27,7 @@ function CalculatePayment(money123) {
     };
 }
 
-function Calc(input) {
+function calc(input) {
     let stripeCommision = document.getElementById("paymentStripeId");
     let planetCommision = document.getElementById("paymentPlanetId");
     let paymentBtn = document.getElementById("button-text");
@@ -49,7 +49,7 @@ function getMoneyById(dreamId) {
         let balance = data["price"] - data["money"];
         let input = document.getElementById("donate_count");
         input.value = balance / 1000;
-        Calc(input);
+        calc(input);
     });
 }
 
@@ -63,7 +63,7 @@ function getMoneyById2(dreamId) {
     return money;
 }
 
-function FillMoney(dreamId) {
+function fillMoney(dreamId) {
     window.onclick = function (e) {
         var elem = e ? e.target : window.event.returnValue;
         if (elem.id === "fullPaymentButtonId") {
@@ -72,13 +72,13 @@ function FillMoney(dreamId) {
     };
 }
 
-function FillMoney2(balance) {
+function fillMoney2(balance) {
     window.onclick = function (e) {
         var elem = e ? e.target : window.event.returnValue;
         if (elem.id === "fullPaymentButtonId") {
             let input = document.getElementById("donate_count");
             input.value = balance;
-            let calc = Calc(input);
+            let calc = calc(input);
         }
     };
 }
@@ -90,8 +90,8 @@ $("document").ready(function () {
     $.getJSON(getFullPathDream, function (data) {
         let balance = data["price"] - data["money"];
         let money123 = balance / 1000;
-        FillMoney2(money123);
-        CalculatePayment(money123);
+        fillMoney2(money123);
+        calculatePayment(money123);
         let input = document.getElementById("donate_count");
         input.setAttribute("max", money123);
         $("#donate_count").on("input", function () {
@@ -222,118 +222,3 @@ var loading = function (isLoading) {
         document.querySelector("#button-text").classList.remove("hidden");
     }
 };
-
-
-function PAY(getDreamId, money) {
-    let token = window.localStorage.getItem("Token");
-    var stripe = Stripe(
-        "pk_test_51HQdT5HFUELd0t0Ai498kAvRxEb4BqIq7DyiQP0RYkc2Sjc1yQjuzqmallekbQClxFhtzqscrJXFxTEUF1FbifNF00oZ0oFqBx"
-    );
-    const formData = new FormData();
-    formData.append("dreamId", getDreamId);
-    formData.append("donate", money);
-
-    document.querySelector("button").disabled = true;
-    // const formData = new FormData();
-    // formData.append("donate", money);
-    // formData.append("dreamId", dreamId);
-
-    fetch("https://api.9thplanet.ca/payment/createPaymentIntent", {
-        method: "POST",
-        headers: {
-            accessToken: token,
-        },
-        body: formData,
-    })
-        .then(function (result) {
-            return result.json();
-        })
-        .then(function (data) {
-            var elements = stripe.elements();
-            var style = {
-                base: {
-                    color: "#32325d",
-                    fontFamily: "Arial, sans-serif",
-                    fontSmoothing: "antialiased",
-                    fontSize: "16px",
-                    "::placeholder": {},
-                },
-                invalid: {
-                    fontFamily: "Arial, sans-serif",
-                    color: "#fa755a",
-                },
-            };
-            var card = elements.create("card", {style: style});
-            // Stripe injects an iframe into the DOM
-            card.mount("#card-element");
-            card.on("change", function (event) {
-                // Disable the Pay button if there are no card details in the Element
-                document.querySelector("button").disabled = event.empty;
-                document.querySelector("#card-error").textContent = event.error
-                    ? event.error.message
-                    : "";
-            });
-            var form = document.getElementById("payment-form");
-            form.addEventListener("submit", function (event) {
-                event.preventDefault();
-                // Complete payment when the submit button is clicked
-                payWithCard(stripe, card, data.secret);
-            });
-        });
-
-
-    // Calls stripe.confirmCardPayment
-    // If the card requires authentication Stripe shows a pop-up modal to
-    // prompt the user to enter authentication details without leaving your page.
-    var payWithCard = function (stripe, card, clientSecret) {
-        loading(true);
-        stripe
-            .confirmCardPayment(clientSecret, {
-                payment_method: {
-                    card: card,
-                },
-            })
-            .then(function (result) {
-                if (result.error) {
-                    // Show error to your customer
-                    showError(result.error.message);
-                } else {
-                    // The payment succeeded!
-                    orderComplete(result.paymentIntent.id);
-                }
-            });
-    };
-    /* ------- UI helpers ------- */
-    // Shows a success message when the payment is complete
-    var orderComplete = function (paymentIntentId) {
-        loading(false);
-        // document.querySelector(".result-message a").setAttribute(
-        //     "href",
-        //     "https://dashboard.stripe.com/test/payments/" + paymentIntentId
-        //   );
-        document.querySelector(".result-message").classList.remove("hidden");
-        document.querySelector("button").disabled = true;
-    };
-    // Show the customer the error from Stripe if their card fails to charge
-    var showError = function (errorMsgText) {
-        loading(false);
-        var errorMsg = document.querySelector("#card-error");
-        errorMsg.textContent = errorMsgText;
-        setTimeout(function () {
-            errorMsg.textContent = "";
-        }, 4000);
-    };
-    // Show a spinner on payment submission
-    var loading = function (isLoading) {
-        if (isLoading) {
-            // Disable the button and show a spinner
-            document.querySelector("button").disabled = true;
-            document.querySelector("#spinner").classList.remove("hidden");
-            document.querySelector("#button-text").classList.add("hidden");
-        } else {
-            document.querySelector("button").disabled = false;
-            document.querySelector("#spinner").classList.add("hidden");
-            document.querySelector("#button-text").classList.remove("hidden");
-        }
-    };
-}
