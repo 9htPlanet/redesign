@@ -12,7 +12,10 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
     />
+
     <link rel="stylesheet" href="./css/main.min.css"/>
+    <link href="./css/dropzone.css" rel="stylesheet"/>
+
 </head>
 <body>
 <header class="page-header border-bottom">
@@ -182,6 +185,7 @@
             </div>
         </div>
 
+
     </div>
     <div class="mobile-menu" id="mobile-menu" data-menu>
         <ul class="list mobile-menu-list">
@@ -223,73 +227,113 @@
                 9th Planet - Is A Unique Alternative World Where The Relations Of The Society Are Built And Concentrated
                 Not On Profit Or Oil Prices, But Only On Gratuitous Help To People In Realization Of Their Dreams.
             </h1>
-            <button class="herobutton" type="button" data-modal-open>Start Dream</button>
-            <div class="backdrop is-hidden" data-modal data-modal-close>
+            <button class="herobutton" data-modal-start-dream-open type="button">Start Dream</button>
+
+            <!--            Open modal Start Dream-->
+            <div class="backdrop is-hidden" data-modal-start-dream>
                 <div class="modal">
-                    <button class="btn-close" data-modal-close>
+                    <button class="btn-close" data-modal-start-dream-close>
                         <svg class="close-btn-svg">
                             <use href="./images/sprite.svg#btnclose"></use>
                         </svg>
                     </button>
                     <div class="fieldset">
-                        <p class="service-header">Оставьте свои данные, мы вам перезвоним</p>
-                        <form class="service-order">
-                            <div class="form-field">
-                                <label class="field-label" for="name">Имя</label>
+                        <p class="service-header">Start Dream</p>
 
-                                <input type="text" name="name" id="name" class="field"/>
+                        <form class="service-order" id="start_dream_id">
+                            <div class="form-field">
+
+                                <label class="field-label">Category:</label>
+                                <div class="select-box select-box-category">
+                                    <div class="options-container options-container-category">
+                                    </div>
+
+                                    <div class="selected selected-category">
+                                        <svg class="service-order-svg select-icon">
+                                            <use href="./images/sprite.svg#category"></use>
+                                        </svg>
+                                        <span class="select-label">Select Category...</span>
+                                    </div>
+
+                                    <div class="search-box search-box-category">
+                                        <input name="category" placeholder="Start Typing..." type="text"/>
+                                    </div>
+                                </div>
+
+
+                                <label class="field-label">City:</label>
+                                <div class="select-box select-box-city">
+                                    <div class="options-container options-container-city">
+                                    </div>
+
+                                    <div class="selected selected-city">
+                                        <svg class="service-order-svg select-icon">
+                                            <use href="./images/sprite.svg#location"></use>
+                                        </svg>
+                                        <span class="select-label">Select City...</span>
+                                    </div>
+
+                                    <div class="search-box search-box-city">
+                                        <input name="city" placeholder="Start Typing..." type="text"/>
+                                    </div>
+                                </div>
+
+
+                                <label class="field-label" for="info_id">Information about youself:</label>
+                                <textarea class="field" id="info_id" name="infoAboutYourself"
+                                          placeholder="Max 250 symbols"
+                                          type="text"></textarea>
                                 <svg class="service-order-svg">
-                                    <use href="./images/sprite.svg#person-black-1"></use>
+                                    <use href="./images/sprite.svg#person-info"></use>
                                 </svg>
-                            </div>
-                            <div class="form-field">
-                                <label class="field-label" for="tel">Телефон</label>
-                                <input type="tel" name="tel" id="tel" class="field"/>
+
+                                <div class="error_msg_small" id="info_error_id"></div>
+
+
+                                <label class="field-label" for="dream_info_id">Information about dream:</label>
+                                <textarea class="field" id="dream_info_id" name="infoAboutDream"
+                                          placeholder="Max 700 symbols"
+                                          type="text"></textarea>
                                 <svg class="service-order-svg">
-                                    <use href="./images/sprite.svg#phone-black-1"></use>
+                                    <use href="./images/sprite.svg#info"></use>
                                 </svg>
-                            </div>
+                                <div class="error_msg_small" id="dream_info_error_id"></div>
 
-                            <div class="form-field">
-                                <label class="field-label">Почта</label>
-                                <input type="mail" name="mail" id="mail" class="field"/>
+
+                                <label class="field-label" for="required_money_id">Required amount of money:</label>
+                                <input class="field" id="required_money_id" name="price" type="text"/>
                                 <svg class="service-order-svg">
-                                    <use href="./images/sprite.svg#envelope2-1"></use>
+                                    <use href="./images/sprite.svg#dollar"></use>
                                 </svg>
+                                <div class="error_msg_small" id="required_money_error_id"></div>
+
+
+                                <div class="dropzone" id="upload_file_id"></div>
+
+
+                                <div class="form-field checkbox-text">
+                                    <label class="check" for="chb_strt_drm">
+                                        <input class="check-input" id="chb_strt_drm" name="checkbox" type="checkbox"/>
+                                        <span class="checkbox-check"></span>
+                                        <span class="policy">
+                                    I agree to the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Terms of Use</a>
+                                    and have read and understand the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Privacy Policy</a>
+                                </span>
+
+                                    </label>
+                                </div>
+
+
                             </div>
 
-                            <div class="form-field">
-                                <label class="field-label">Комментарий</label>
-                                <textarea
-                                        class="text-area"
-                                        name="comment"
-                                        id="comment"
-                                        rows="6"
-                                        placeholder="Введите текст"
-                                ></textarea>
-                            </div>
-                            <div class="form-field checkbox-text">
-                                <label class="check">
-                                    <input class="check-input" type="checkbox" name="checkbox"/>
-                                    <span class="checkbox-check"></span>
-                                    <span class="policy">
-                                                Соглашаюсь с рассылкой и принимаю
-                                                <a
-                                                        class="conditions-link"
-                                                        href="#"
-                                                        target="_blank"
-                                                        rel="noopener noreferer"
-                                                >Условия договора</a
-                                                >
-                                            </span>
-                                </label>
-                            </div>
-
-                            <button class="service-order-btn" type="submit">Отправить</button>
+                            <button class="service-order-btn" id="dream_submit" type="submit">Start</button>
                         </form>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -863,13 +907,19 @@
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
-
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script> -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>-->
 <script
         src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
-        crossorigin="anonymous "
-></script>
+        crossorigin="anonymous ">
+
+</script>
+
+<script src="js/startDream.js"></script>
+<script src="js/startDreamSelectBox.js"></script>
+<script src="js/dropzone.js"></script>
+<script src="js/startDreamUploadPhoto.js"></script>
+
 <script src="js_old/bootstrap.min.js "></script>
 <script src="js_old/main.js "></script>
 <script src="js_old/toTop.js "></script>
