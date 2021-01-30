@@ -812,34 +812,33 @@ ul {
 }
 
 .question-svg {
-    left: 0;
-    transform: none;
-    position: relative;
-    top: 3px;
-    fill: #2196f3;
+  left: 0;
+  transform: none;
+  position: relative;
+  top: 3px;
+  fill: #2196f3;
 }
 
 textarea {
-    resize: none;
-    line-height: 30px !important;
-    text-indent: 5px;
-    padding-top: 5px !important;
-    height: 40px;
+  resize: none;
+  line-height: 30px !important;
+  text-indent: 5px;
+  padding-top: 5px !important;
+  height: 40px;
 }
 
 select {
-    height: 40px;
+  height: 40px;
 }
 
 .description {
-    padding-top: 60px;
-    padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
-
 @media (min-width: 768px) {
-    .description {
-        padding-top: 30px;
-    }
+  .description {
+    padding-top: 30px;
+  }
 }
 @media (min-width: 1200px) {
   .description {
@@ -2008,141 +2007,140 @@ select {
 }
 
 .donate-column-3 h2, .donate-column-3 h3 {
-    text-align: left;
-    margin-bottom: 28px;
+  text-align: left;
+  margin-bottom: 28px;
 }
-
 .donate-column-3 p {
-    line-height: 36px;
-    padding-bottom: 64px;
+  line-height: 36px;
+  padding-bottom: 64px;
 }
 
 .select-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .select-box .options-container {
-    z-index: 1;
-    position: absolute;
-    background: #ffffff;
-    color: #212121;
-    max-height: 0;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.4s;
-    border-radius: 8px;
-    overflow: hidden;
-    order: 1;
+  z-index: 1;
+  position: absolute;
+  background: #ffffff;
+  color: #212121;
+  max-height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  border-radius: 8px;
+  overflow: hidden;
+  order: 1;
 }
 
 .selected {
-    background: #ffffff;
-    color: #212121;
-    margin-bottom: 8px;
-    position: relative;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
-    height: 40px;
-    cursor: pointer;
-    width: 100%;
-    order: 0;
+  background: #ffffff;
+  color: #212121;
+  margin-bottom: 8px;
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  height: 40px;
+  cursor: pointer;
+  width: 100%;
+  order: 0;
 }
 
 .selected::after {
-    content: "";
-    background-image: url("../images/arrow-down.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    position: absolute;
-    height: 100%;
-    width: 25px;
-    right: 10px;
-    top: 7px;
-    transition: all 0.4s;
+  content: "";
+  background-image: url("../images/arrow-down.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 100%;
+  width: 25px;
+  right: 10px;
+  top: 7px;
+  transition: all 0.4s;
 }
 
 .select-label {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .select-icon {
-    position: absolute;
-    left: 13px;
-    top: -5px;
+  position: absolute;
+  left: 13px;
+  top: -5px;
 }
 
 .select-box .options-container.active {
-    max-height: 200px;
-    opacity: 1;
-    overflow-y: scroll;
-    margin-top: 91px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
+  max-height: 200px;
+  opacity: 1;
+  overflow-y: scroll;
+  margin-top: 91px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
 }
 
 .select-box .options-container.active + .selected::after {
-    transform: rotateX(180deg);
-    top: -6px;
+  transform: rotateX(180deg);
+  top: -6px;
 }
 
 .select-box .options-container::-webkit-scrollbar {
-    width: 8px;
-    background: white;
-    border-radius: 0 8px 8px 0;
+  width: 8px;
+  background: white;
+  border-radius: 0 8px 8px 0;
 }
 
 .select-box .options-container::-webkit-scrollbar-thumb {
-    background: #2196f3;
-    border-radius: 0 8px 8px 0;
+  background: #2196f3;
+  border-radius: 0 8px 8px 0;
 }
 
 .select-box .option,
 .selected {
-    padding: 12px 24px;
-    cursor: pointer;
+  padding: 12px 24px;
+  cursor: pointer;
 }
 
 .select-box .option:hover {
-    background: #2196f3;
-    color: white;
+  background: #2196f3;
+  color: white;
 }
 
 .select-box label {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .select-box .option .radio {
-    display: none;
+  display: none;
 }
 
 /* Searchbox */
 .search-box input {
-    width: 100%;
-    padding: 12px 16px;
-    font-family: "Roboto", sans-serif;
-    font-size: 16px;
-    position: absolute;
-    border-radius: 4px 4px 0 0;
-    z-index: 100;
-    border: 1px solid #2196f3;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.4s;
+  width: 100%;
+  padding: 12px 16px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  position: absolute;
+  border-radius: 4px 4px 0 0;
+  z-index: 100;
+  border: 1px solid #2196f3;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
 }
 
 .search-box input:focus {
-    outline: none;
+  outline: none;
 }
 
 .select-box .options-container.active ~ .search-box input {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /*# sourceMappingURL=main.css.map */
