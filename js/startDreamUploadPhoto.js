@@ -1,49 +1,53 @@
 "use strict";
 
 let token = window.localStorage.getItem("Token");
-
 Dropzone.autoDiscover = false;
+Dropzone.options.myAwesomeDropzone = false;
 
-const doStuffAsync = (file, done) => {
+/**
+ * Здесь будет храниться список id загруженных файлов
+ */
+let fileIds = [];
 
-    fetch('https://api.9thplanet.ca/photos/upload', {
+async function upload(file) {
+    const uploadRequest = await fetch('https://api.9thplanet.ca/photos/upload', {
         headers: {
             "Content-Type": "application/json",
             accessToken: token,
         },
+    });
+    const json = await uploadRequest.json();
+    const urlForUpload = "https://api.9thplanet.ca/photos/" + json['id'];
+
+    let result = await fetch(urlForUpload, {
+        method: 'PUT',
+        body: file,
+        headers: {
+            accessToken: token
+        }
+    });
+
+    fileIds.push(json['id']);
+    return result;
+}
+
+let myDropzone = new Dropzone("#upload_file_id", {
+        method: "put",
+        acceptedFiles: "image/*",
+        uploadMultiple: false,
+        url: async files => {
+            await upload(files[0])
+        },
+        headers: {
+            accept: "application/json",
+            accessToken: token,
+        },
+
+        /*success: function () {
+            alert("Success!")
+        },
+        error: function (error) {
+            alert("error!")
+        }*/
     })
-        .then(function (response) {
-            response.json()
-                .then(function (data) {
-                    file.dynamicUploadUrl = "https://api.9thplanet.ca/photos/" + data['id']
-                    done();
-                })
-        })
-}
-
-const getMeSomeUrl = (files) => {
-    return `${files[0].dynamicUploadUrl}`;
-}
-
-let myDropzone = new Dropzone("div#upload_file_id", {
-    method: "put",
-    uploadMultiple: true,  //upload multiple files
-    maxFilesize: 10,
-    addRemoveLinks: true,
-    accept: doStuffAsync,
-    url: getMeSomeUrl,
-    headers: {
-        accept: "application/json",
-        accessToken: token,
-        'Cache-Control': null,
-        'X-Requested-With': null
-    },
-    success: function (file, response) {
-        console.log(file)
-        console.log(response)
-    },
-    error: function (response) {
-        console.log(response)
-    },
-
-});
+;
