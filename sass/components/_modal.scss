@@ -339,6 +339,18 @@
   fill: $hover-button-color;
 }
 
+textarea {
+  resize: none;
+  line-height: 30px !important;
+  text-indent: 5px;
+  padding-top: 5px !important;
+  height: 40px;
+}
+
+select {
+  height: 40px;
+}
+
 //.stripe-commission{
 //  display: flex;
 //}

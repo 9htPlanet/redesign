@@ -1,18 +1,17 @@
 (() => {
 
-    const refs = {
-        openModalBtn: document.querySelector('[data-modal-open]'),
-        closeModalBtn: document.querySelector('[data-modal-close]'),
-        modal: document.querySelector('[data-modal]'),
-    };
-
-    refs.openModalBtn.addEventListener('click', toggleModal);
-    refs.closeModalBtn.addEventListener('click', toggleModal);
-
-    function toggleModal() {
-        refs.modal.classList.toggle('is-hidden');
-    }
-
+    // const refs = {
+    //     openModalBtn: document.querySelector('[data-modal-open]'),
+    //     closeModalBtn: document.querySelector('[data-modal-close]'),
+    //     modal: document.querySelector('[data-modal]'),
+    // };
+    //
+    // refs.openModalBtn.addEventListener('click', toggleModal);
+    // refs.closeModalBtn.addEventListener('click', toggleModal);
+    //
+    // function toggleModal() {
+    //     refs.modal.classList.toggle('is-hidden');
+    // }
 
 
     //open login
@@ -43,4 +42,20 @@
     function toggleModalSignUp() {
         refsSignUp.modal.classList.toggle('is-hidden');
     }
+
+
+    //open start dream
+    const refsStartDream = {
+        openModalBtn: document.querySelector('[data-modal-start-dream-open]'),
+        closeModalBtn: document.querySelector('[data-modal-start-dream-close]'),
+        modal: document.querySelector('[data-modal-start-dream]'),
+    };
+
+    refsStartDream.openModalBtn.addEventListener('click', toggleModalStartDream);
+    refsStartDream.closeModalBtn.addEventListener('click', toggleModalStartDream);
+
+    function toggleModalStartDream() {
+        refsStartDream.modal.classList.toggle('is-hidden');
+    }
+
 })();
