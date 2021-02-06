@@ -28,6 +28,7 @@ async function upload(file) {
     });
 
     fileIds.push(json['id']);
+    window.localStorage.setItem("photosId", fileIds);
     return result;
 }
 
@@ -42,7 +43,13 @@ let myDropzone = new Dropzone("#upload_file_id", {
             accept: "application/json",
             accessToken: token,
         },
-
+        error: function (file, error) {
+            if (file && error) {
+                var msgEl = $(file.previewElement).find('.dz-error-message');
+                msgEl.text(error.message);
+                msgEl.show();
+            }
+        }
         /*success: function () {
             alert("Success!")
         },

@@ -243,6 +243,15 @@
                         <form class="service-order" id="start_dream_id">
                             <div class="form-field">
 
+
+                                <label class="field-label" for="dream_name_id">Dream name:</label>
+                                <input class="field" id="dream_name_id" name="dreamName" required type="text"/>
+                                <svg class="service-order-svg">
+                                    <use href="./images/sprite.svg#person"></use>
+                                </svg>
+                                <div class="error_msg_small" id="dream_name_error_id"></div>
+
+
                                 <label class="field-label">Category:</label>
                                 <div class="select-box select-box-category">
                                     <div class="options-container options-container-category">
@@ -280,7 +289,7 @@
 
 
                                 <label class="field-label" for="info_id">Information about youself:</label>
-                                <textarea class="field" id="info_id" name="infoAboutYourself"
+                                <textarea class="field" id="info_id" name="infoAboutYourself" required
                                           placeholder="Max 250 symbols"
                                           type="text"></textarea>
                                 <svg class="service-order-svg">
@@ -291,7 +300,7 @@
 
 
                                 <label class="field-label" for="dream_info_id">Information about dream:</label>
-                                <textarea class="field" id="dream_info_id" name="infoAboutDream"
+                                <textarea class="field" id="dream_info_id" name="infoAboutDream" required
                                           placeholder="Max 700 symbols"
                                           type="text"></textarea>
                                 <svg class="service-order-svg">
@@ -301,7 +310,8 @@
 
 
                                 <label class="field-label" for="required_money_id">Required amount of money:</label>
-                                <input class="field" id="required_money_id" name="price" type="text"/>
+                                <input class="field" id="required_money_id" min="0.00" name="price" required step="0.01"
+                                       type="number"/>
                                 <svg class="service-order-svg">
                                     <use href="./images/sprite.svg#dollar"></use>
                                 </svg>
@@ -313,7 +323,8 @@
 
                                 <div class="form-field checkbox-text">
                                     <label class="check" for="chb_strt_drm">
-                                        <input class="check-input" id="chb_strt_drm" name="checkbox" type="checkbox"/>
+                                        <input class="check-input" id="chb_strt_drm" name="checkbox" required
+                                               type="checkbox"/>
                                         <span class="checkbox-check"></span>
                                         <span class="policy">
                                     I agree to the
@@ -329,6 +340,7 @@
                             </div>
 
                             <button class="service-order-btn" id="dream_submit" type="submit">Start</button>
+                            <div class="error_msg_small" id="server_response_id"></div>
                         </form>
                     </div>
                 </div>
