@@ -1811,15 +1811,15 @@ select {
 }
 
 .shine {
-  background: #f6f7f8 linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) no-repeat;
-  background-size: 800px 304px;
-  display: inline-block;
-  position: relative;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: forwards;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-name: placeholderShimmer;
-  -webkit-animation-timing-function: linear;
+    background: #f6f7f8 linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) no-repeat;
+    background-size: 800px 500px;
+    display: inline-block;
+    position: relative;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-name: placeholderShimmer;
+    -webkit-animation-timing-function: linear;
 }
 
 .h5_shine {
@@ -1833,22 +1833,48 @@ select {
 }
 
 @-webkit-keyframes placeholderShimmer {
-  0% {
-    background-position: -468px 0;
-  }
-  100% {
-    background-position: 468px 0;
-  }
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
 }
+
+.img_shine {
+    height: 500px;
+    width: 100%;
+}
+
+.icon_shine {
+    height: 44px;
+    width: 44px;
+}
+
+.about_user_shine {
+    height: 38px;
+    width: 250px;
+}
+
+.about_dream_shine {
+    height: 38px;
+    width: 350px;
+}
+
+.text_shine {
+    height: 100px;
+    width: 260%;
+}
+
 .donate-row {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .donate-column-1 {
-  flex: 70%;
-  width: 70%;
-  height: 100%;
+    flex: 70%;
+    width: 70%;
+    height: 100%;
 }
 .donate-column-1 .donate-img {
   display: flex;
@@ -2153,6 +2179,18 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.tabs__block {
+    position: relative;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 24px;
+    display: none;
+}
+
+.tabs__block:target {
+    display: block;
 }
 
 /*# sourceMappingURL=main.css.map */

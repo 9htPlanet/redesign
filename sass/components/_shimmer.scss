@@ -1,6 +1,6 @@
 .shine {
   background: #f6f7f8 linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) no-repeat;
-  background-size: 800px 304px;
+  background-size: 800px 500px;
   display: inline-block;
   position: relative;
 
@@ -29,5 +29,31 @@
   100% {
     background-position: 468px 0;
   }
+}
+
+//Для станицы профиля
+.img_shine {
+  height: 500px;
+  width: 100%;
+}
+
+.icon_shine {
+  height: 44px;
+  width: 44px;
+}
+
+.about_user_shine {
+  height: 38px;
+  width: 250px;
+}
+
+.about_dream_shine {
+  height: 38px;
+  width: 350px;
+}
+
+.text_shine {
+  height: 100px;
+  width: 260%;
 }
 
