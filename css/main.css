@@ -1812,7 +1812,7 @@ select {
 
 .shine {
   background: #f6f7f8 linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%) no-repeat;
-  background-size: 800px 304px;
+  background-size: 800px 500px;
   display: inline-block;
   position: relative;
   -webkit-animation-duration: 1s;
@@ -1840,6 +1840,31 @@ select {
     background-position: 468px 0;
   }
 }
+.img_shine {
+  height: 500px;
+  width: 100%;
+}
+
+.icon_shine {
+  height: 44px;
+  width: 44px;
+}
+
+.about_user_shine {
+  height: 38px;
+  width: 250px;
+}
+
+.about_dream_shine {
+  height: 38px;
+  width: 350px;
+}
+
+.text_shine {
+  height: 100px;
+  width: 260%;
+}
+
 .donate-row {
   display: flex;
   flex-wrap: wrap;
@@ -2135,24 +2160,36 @@ select {
 }
 
 .search-box input:focus {
-    outline: none;
+  outline: none;
 }
 
 .select-box .options-container.active ~ .search-box input {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.tabs__block {
+  position: relative;
+  padding: 20px;
+  font-size: 18px;
+  line-height: 24px;
+  display: none;
+}
+
+.tabs__block:target {
+  display: block;
 }
 
 /*# sourceMappingURL=main.css.map */
