@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Profile</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+            rel="stylesheet"
+    />
+    <link href="./css/main.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<header class="page-header border-bottom">
+    <div class="container main-nav">
+        <nav class="navigation">
+            <a class="logo" href="./index.html">9th<span class="logospan">Planet</span></a>
+            <ul class="site-nav">
+                <!--                <li class="site-nav-item"><a href="./index.html" class="link current">Home</a></li>-->
+                <li class="site-nav-item"><a class="link current" href="./portfolio.html">Categories</a></li>
+                <li class="site-nav-item"><a class="link" href="">Reviews</a></li>
+                <li class="site-nav-item"><a class="link" href="">Team</a></li>
+            </ul>
+            <button
+                    aria-controls="mobile-menu"
+                    aria-expanded="false"
+                    class="mobile-menu-btn"
+                    data-menu-button
+                    type="button"
+            >
+                <svg class="mobile-menu-btn-svg" height="24" width="24">
+                    <use class="icon-menu" href="./images/sprite.svg#header-menu-button"></use>
+                    <use class="icon-close" href="./images/sprite.svg#header-menu-close"></use>
+                </svg>
+            </button>
+        </nav>
+
+        <ul class="upper-contacts" id="header-right-buttons">
+            <li class="item" id="loginId">
+                <button class="upper-contacts-item" data-modal-login-open>
+                    Log In
+                </button>
+            </li>
+            <li class="item" id="signUpId">
+                <button class="upper-contacts-item" data-modal-sign-up-open>
+                    Sign Up
+                </button>
+            </li>
+        </ul>
+        <div class="backdrop is-hidden" data-modal-login>
+            <div class="modal">
+                <button class="btn-close" data-modal-login-close>
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+                    <p class="service-header">Welcome Back</p>
+                    <form class="service-order" id="log_in_id">
+                        <div class="form-field">
+                            <label class="field-label" for="log_in_email">Email address</label>
+                            <input autofocus class="field" id="log_in_email" name="name" type="email"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#envelope2-1"></use>
+                            </svg>
+                        </div>
+                        <div class="form-field">
+                            <label class="field-label" for="log_in_password">Password</label>
+                            <input class="field" id="log_in_password" name="pass" type="password"/>
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#security"></use>
+                            </svg>
+                        </div>
+
+                        <div class="form-field checkbox-text error_msg">
+                        </div>
+
+                        <div class="form-field checkbox-text">
+                            <a class="link" href="index.html">Forgot your password?</a>
+                        </div>
+
+                        <button class="service-order-btn" id="log_in_btn" type="submit">Log in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="backdrop is-hidden" data-modal-sign-up>
+            <div class="modal">
+                <button class="btn-close" data-modal-sign-up-close>
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+                    <p class="service-header">Welcome</p>
+                    <form class="service-order" id="sign_up_id">
+                        <div class="form-field">
+                            <label class="field-label" for="firstName_id">First name</label>
+                            <input autofocus class="field" id="firstName_id" name="name" type="text"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="first_name_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="lastName_id">Last name</label>
+                            <input class="field" id="lastName_id" name="name" type="text"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="last_name_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="email_id">Email address:</label>
+                            <input class="field" id="email_id" name="name" type="email"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#envelope2-1"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="email_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="sign_up_password">Password:</label>
+                            <input class="field" id="sign_up_password" name="name" type="password"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#security"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="password_error_id"></div>
+                        </div>
+
+
+                        <div class="form-field checkbox-text error_msg" id="error_id">
+                        </div>
+
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_1">
+                                <input class="check-input" id="chb_1" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">Sign me up for the 9thPlanet letter</span>
+                            </label>
+                        </div>
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_2">
+                                <input class="check-input" id="chb_2" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">I am adult</span>
+                            </label>
+                        </div>
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_3">
+                                <input class="check-input" id="chb_3" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">
+                                    I agree to the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Terms of Use</a>
+                                    and have read and understand the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Privacy Policy</a>
+                                </span>
+
+                            </label>
+                        </div>
+
+                        <button class="service-order-btn" id="btn_submit" type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="backdrop is-hidden" data-modal-back-it>
+            <div class="modal">
+                <button class="btn-close" data-modal-back-it-close>
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+
+                    <form class="service-order" id="payment-form">
+
+                        <div class="form-field">
+                            <label class="field-label" for="card-element">Card number:</label>
+                            <div class="field form-field-card" id="card-element">
+                                <!--Stripe.js injects the Card Element--></div>
+                        </div>
+                        <div class="form-field">
+                            <label class="field-label" for="donate_count">Amount:</label>
+                            <div class="form-field-amount">
+                                <div class="form-field-amount-left">
+                                    <input class="field" id="donate_count" name="pass" type="text"/>
+                                    <svg class="service-order-svg">
+                                        <use href="./images/sprite.svg#dollar"></use>
+                                    </svg>
+                                </div>
+                                <div class="form-field-amount-right">
+                                    <span class="form-field-amount-right-cad">CAD</span>
+                                    <a class="form-field-amount-right-full-money" id="fullPaymentButtonId"
+                                       type="button">Full money</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-field service-order-stripe-commission">
+                            <span>Stripe Commission — <span id="paymentStripeId"
+                                                            style="font-weight:bold">0</span> CAD</span>
+                            <div class="question" style="display: inline-block" title="Commision for payment system">
+                                <svg class="service-order-svg question-svg">
+                                    <use href="./images/sprite.svg#question"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="form-field service-order-9thPlanet-commission">
+                            <span>9-th Planet Commission — <span id="paymentPlanetId" style="font-weight:bold">0</span> CAD</span>
+                        </div>
+                        <button class="service-order-btn" id="submit">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Pay 0 CAD</span>
+                        </button>
+                        <p class="service-order-stripe-commission hidden" id="card-error" role="alert"></p>
+                        <p class="service-order-stripe-commission result-message hidden">
+                            Payment succeeded.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="mobile-menu" data-menu id="mobile-menu">
+        <ul class="list mobile-menu-list">
+            <li class="mobile-menu-item">
+                <a class="mobile-link mobile-current" href="./index.html">Home</a>
+            </li>
+            <li class="mobile-menu-item"><a class="mobile-link " href="./portfolio.html">Categories</a></li>
+            <li class="mobile-menu-item"><a class="mobile-link" href="">Контакты</a></li>
+        </ul>
+
+        <ul class="list mobile-contacts">
+            <li class="mobile-contacts-item">
+                <a class="mobile-contacts-item" href="mailto:info@devstudio.com"
+                >
+                    <svg class="mobile-contacts-svg-one mobile-contacts-svg">
+                        <use href="./images/sprite.svg#envelope"></use>
+                    </svg
+                    >
+                    info@devstudio.com</a
+                >
+            </li>
+            <li class="mobile-contacts-item">
+                <a class="mobile-contacts-item" href="tel:+380961111111">
+                    <svg class="mobile-contacts-svg-two mobile-contacts-svg">
+                        <use href="./images/sprite.svg#phone"></use>
+                    </svg
+                    >
+                    +38 096 111 11 11</a
+                >
+            </li>
+        </ul>
+    </div>
+</header>
+<main>
+    <section class="ourprojects">
+        <div class="container">
+            <h1></h1>
+            <ul class="project-button-group">
+                <li class="project-button-item">
+                    <a class="projectbutton category-button" href="#btn_myDream" type="button">Profile</a>
+                </li>
+                <li class="project-button-item">
+                    <a class="projectbutton category-button" href="#btn_tracing" type="button">Tracing</a>
+                </li>
+                <li class="project-button-item">
+                    <a class="projectbutton category-button" href="#btn_myInvest" type="button">My investment</a>
+                </li>
+            </ul>
+
+            <ul class="projects-info">
+                <div class="tabs__body">
+                    <div class="tabs__block" id="btn_myDream">
+                        <section class="ourprojects" style="padding-top: 0">
+                            <div class="container">
+                                <div class="donate-row">
+                                    <div class="donate-column-1">
+                                        <div class="donate-img" id="donate_img_id" style="width: 100%">
+                                            <span class="shine img_shine"></span>
+                                        </div>
+
+
+                                        <div class="line-under-img">
+                                            <div class="donate-location" id="donate_dream_location">
+                                                <span class="shine h5_shine"></span>
+
+                                            </div>
+                                            <div class="donate-like-track" id="donate_dream_like">
+                                                <span class="shine h5_shine"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="donate-column-2">
+                                        <h2 class="functitle" id="donate_dream_name">
+                                            <span class="shine h5_shine"></span>
+                                        </h2>
+                                        <h3 id="donate_dream_percent">
+                                            <span class="shine h5_shine"></span>
+                                        </h3>
+                                        <p id="donate_dream_count_money">
+                                            <span class="shine h5_shine"></span>
+                                        </p>
+                                        <p id="donate_dream_count_backer">
+                                            <span class="shine h5_shine"></span>
+                                        </p>
+                                        <p id="donate_dream_count_day">
+                                            <span class="shine h5_shine"></span>
+                                        </p>
+                                        <a class="herobutton donate-btn shine" data-modal-back-it-open id="backIt_id"
+                                           type="button">Back
+                                            It</a>
+                                        <div class="donate-group-btn">
+                                            <ul class="list-footer-social-icons" id="social_icons_id">
+                                                <li class="footer-social-icons-item">
+                                                    <span class="shine icon_shine"></span>
+                                                </li>
+                                                <li class="footer-social-icons-item">
+                                                    <span class="shine icon_shine"></span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="donate-column-3">
+                                        <h2 class="functitle" id="aboutYourself_id">
+                                            <span class="shine about_user_shine"></span>
+                                        </h2>
+                                        <p id="donate_dream_about_author">
+                                            <span class="shine text_shine"></span>
+                                        </p>
+                                        <h2 class="functitle" id="aboutDream_id">
+                                            <span class="shine about_user_shine"></span>
+                                        </h2>
+                                        <p id="donate_dream_about_dream">
+                                            <span class="shine text_shine"></span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="tabs__block" id="btn_tracing">
+                        <div class="container">
+                            <ul class="projects-info">
+                                <li class="project-info-item">
+                                    <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
+                                        <div class="project-img-box">
+                                            <span class="shine"></span>
+
+                                        </div>
+
+                                        <div class="project-info-box">
+                                            <h5 class="projecthead">
+                                                <span class="shine h5_shine"></span>
+                                            </h5>
+                                            <div class="bottomline">
+                                                <p class="projectdesc">
+                                                    <span class="shine descr_shine"></span><br/><span
+                                                        class="shine descr_shine"></span>
+                                                </p>
+
+                                                <button class="cardthumb shine"></button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="project-info-item">
+                                    <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
+                                        <div class="project-img-box">
+                                            <span class="shine"></span>
+
+                                        </div>
+
+                                        <div class="project-info-box">
+                                            <h5 class="projecthead">
+                                                <span class="shine h5_shine"></span>
+                                            </h5>
+                                            <div class="bottomline">
+                                                <p class="projectdesc">
+                                                    <span class="shine descr_shine"></span><br/><span
+                                                        class="shine descr_shine"></span>
+                                                </p>
+
+                                                <button class="cardthumb shine"></button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="project-info-item">
+                                    <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
+                                        <div class="project-img-box">
+                                            <span class="shine"></span>
+
+                                        </div>
+
+                                        <div class="project-info-box">
+                                            <h5 class="projecthead">
+                                                <span class="shine h5_shine"></span>
+                                            </h5>
+                                            <div class="bottomline">
+                                                <p class="projectdesc">
+                                                    <span class="shine descr_shine"></span><br/><span
+                                                        class="shine descr_shine"></span>
+                                                </p>
+
+                                                <button class="cardthumb shine"></button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="tabs__block" id="btn_myInvest">
+                        <div class="container">
+                            <ul class="projects-info" id="dream_cards">
+                                <li class="project-info-item">
+                                    <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
+                                        <div class="project-img-box">
+                                            <span class="shine"></span>
+
+                                        </div>
+
+                                        <div class="project-info-box">
+                                            <h5 class="projecthead">
+                                                <span class="shine h5_shine"></span>
+                                            </h5>
+                                            <div class="bottomline">
+                                                <p class="projectdesc">
+                                                    <span class="shine descr_shine"></span><br/><span
+                                                        class="shine descr_shine"></span>
+                                                </p>
+
+                                                <button class="cardthumb shine"></button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="project-info-item">
+                                    <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
+                                        <div class="project-img-box">
+                                            <span class="shine"></span>
+
+                                        </div>
+
+                                        <div class="project-info-box">
+                                            <h5 class="projecthead">
+                                                <span class="shine h5_shine"></span>
+                                            </h5>
+                                            <div class="bottomline">
+                                                <p class="projectdesc">
+                                                    <span class="shine descr_shine"></span><br/><span
+                                                        class="shine descr_shine"></span>
+                                                </p>
+
+                                                <button class="cardthumb shine"></button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="project-info-item">
+                                    <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
+                                        <div class="project-img-box">
+                                            <span class="shine"></span>
+
+                                        </div>
+
+                                        <div class="project-info-box">
+                                            <h5 class="projecthead">
+                                                <span class="shine h5_shine"></span>
+                                            </h5>
+                                            <div class="bottomline">
+                                                <p class="projectdesc">
+                                                    <span class="shine descr_shine"></span><br/><span
+                                                        class="shine descr_shine"></span>
+                                                </p>
+
+                                                <button class="cardthumb shine"></button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+            </ul>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="container footer-div-box">
+        <div class="footer-widget contact-info">
+            <a class="footerlogo" href="/">Web<span class="footerlogospan">Studio</span></a>
+            <ul class="footer-list">
+                <li class="footer-list-item">
+                    <address class="footer-address">г. Киев, пр-т Леси Украинки, 26</address>
+                </li>
+                <li class="footer-list-item">
+                    <a class="footer-mail" href="mailto:info@devstudio.com">info@devstudio.com</a>
+                </li>
+                <li class="footer-list-item">
+                    <a class="footer-tel" href="tel:+380961111111">+38 096 111 11 11</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer-widget join-us">
+            <p class="join-us-header">Присоединяйтесь</p>
+            <ul class="list-footer-social-icons">
+                <li class="footer-social-icons-item">
+                    <a
+                            aria-label="Instagram"
+                            class="footer-social-icons-link"
+                            href="https://instagram.com/"
+                            rel="noopener noreferer"
+                            target="_blank"
+                    >
+                        <svg class="footer-social-icons-svg">
+                            <use href="./images/sprite.svg#instagram"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="footer-social-icons-item">
+                    <a
+                            aria-label="Twitter"
+                            class="footer-social-icons-link"
+                            href="https://twitter.com/"
+                            rel="noopener noreferer"
+                            target="_blank"
+                    >
+                        <svg class="footer-social-icons-svg">
+                            <use href="./images/sprite.svg#twitter"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="footer-social-icons-item">
+                    <a
+                            aria-label="Facebook"
+                            class="footer-social-icons-link"
+                            href="https://facebook.com/"
+                            rel="noopener noreferer"
+                            target="_blank"
+                    >
+                        <svg class="footer-social-icons-svg">
+                            <use href="./images/sprite.svg#facebook"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="footer-social-icons-item">
+                    <a
+                            aria-label="LinkedIn"
+                            class="footer-social-icons-link"
+                            href="https://linkedin.com/"
+                            rel="noopener noreferer"
+                            target="_blank"
+                    >
+                        <svg class="footer-social-icons-svg">
+                            <use href="./images/sprite.svg#linkedin"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="subscribe">
+            <p class="subscribe-to-us">Подпишитесь на рассылку</p>
+
+            <form class="footer-form" method="post">
+                <input class="subscr-mail" name="e-mail" placeholder="E-mail" type="email"/>
+                <button class="subscr-btn" type="submit">
+                    Подписаться
+                    <svg class="subscr-btn-arrow-svg">
+                        <use href="./images/sprite.svg#icon-send-1"></use>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</footer>
+<script src="./js/menu.js"></script>
+
+<!-- Optional JavaScript -->
+<!-- FontAwesome -->
+<script src="https://kit.fontawesome.com/e65b271c14.js"></script>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script> -->
+<script crossorigin="anonymous "
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "></script>
+<!--<script src="js_old/bootstrap.min.js"></script>-->
+<script src="js_old/main.js"></script>
+<!--<script src="js_old/infiniteScroll.js"></script>-->
+<script src="js_old/cards.js"></script>
+<script src="js_old/categories.js"></script>
+<!--<script src="js_old/profile.js"></script>-->
+<script src="js_old/generateFooter.js"></script>
+<!--<script src="js_old/starsBackground.js"></script>-->
+
+
+<script src="js/Dream.js"></script>
+<script src="js/profile.js"></script>
+<!--<script src="js/slider.js"></script>-->
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+</body>
+</html>
