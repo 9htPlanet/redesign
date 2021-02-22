@@ -1,60 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
     function loadProfile() {
-        $.getJSON("https://api.9thplanet.ca/dreams", function (data) {
-            temp = "";
-            for (let key in data.slice(0, 8)) {
-                //#region Шаблон карточки с переменными
+        apiGetJson("dreams")
+            .then(function (data) {
+                temp = "";
+                for (let key in data.slice(0, 8)) {
+                    //#region Шаблон карточки с переменными
 
-                let percent = Math.round(
-                    (data[key]["money"] * 100) / data[key]["price"]
-                );
-                let dreamName = "Dream#10";
-                let dreamDescrip = data[key]["infoAboutDream"].slice(0, 50) + "...";
-                let image = data[key]["photos"][0]["sizes"]["medium"];
-                let dayCount = diffDates(
-                    new Date(data[key]["expirationTime"]),
-                    new Date(data[key]["created"])
-                );
-                let moneyRound = Math.round(data[key]["money"] / 100000, 1);
-                let priceRound = Math.round(data[key]["price"] / 100000, 1);
-                let dollarCurrently = moneyRound.toString().replace(".", ",");
-                let dollarNeeded = priceRound.toString().replace(".", ",");
-                let dreamLocation = data[key]["city"]["names"]["en-us"];
+                    let percent = Math.round(
+                        (data[key]["money"] * 100) / data[key]["price"]
+                    );
+                    let dreamName = "Dream#10";
+                    let dreamDescrip = data[key]["infoAboutDream"].slice(0, 50) + "...";
+                    let image = data[key]["photos"][0]["sizes"]["medium"];
+                    let dayCount = diffDates(
+                        new Date(data[key]["expirationTime"]),
+                        new Date(data[key]["created"])
+                    );
+                    let moneyRound = Math.round(data[key]["money"] / 100000, 1);
+                    let priceRound = Math.round(data[key]["price"] / 100000, 1);
+                    let dollarCurrently = moneyRound.toString().replace(".", ",");
+                    let dollarNeeded = priceRound.toString().replace(".", ",");
+                    let dreamLocation = data[key]["city"]["names"]["en-us"];
 
-                let dreamId = data[key]["id"];
-                let cardTemplate =
-                    '<div class="dream-card"><div class="progress progress-bar-vertical"><div class="progress-bar" role="progressbar" aria-valuenow="' +
-                    percent +
-                    '" aria-valuemin="0" aria-valuemax="100" style="height: ' +
-                    percent +
-                    '%;"><span class="sr-only">' +
-                    percent +
-                    '% Complete</span></div></div><div class="main_info"><a href="donate.html?' +
-                    dreamId +
-                    '"><div class="img_card"><img src="' +
-                    image +
-                    '"alt=""></div></a><div class="detail_info"><div class="dream_title">' +
-                    dreamName +
-                    '</div><div class="dream_descrip">' +
-                    dreamDescrip +
-                    '</div><div class="dream_bottom"><div class="dream_percent">' +
-                    percent +
-                    '%</div><div class="days_people"><div class="dream_days"><span>' +
-                    dayCount +
-                    '</span> days to go</div><div class="dream_people"><span>' +
-                    dollarCurrently +
-                    "k</span> out of <span>" +
-                    dollarNeeded +
-                    'k</span></div></div><div class="dream_location"><i class="fas fa-map-marker-alt fa-2x" data-toggle="tooltip" data-placement="bottom" title="' +
-                    dreamLocation +
-                    '"></i></div><div class="dream_like"><input type="checkbox" class="like__input"><i class="far fa-thumbs-up fa-2x like__heart"></i></div></div></div></div></div>';
+                    let dreamId = data[key]["id"];
+                    let cardTemplate =
+                        '<div class="dream-card"><div class="progress progress-bar-vertical"><div class="progress-bar" role="progressbar" aria-valuenow="' +
+                        percent +
+                        '" aria-valuemin="0" aria-valuemax="100" style="height: ' +
+                        percent +
+                        '%;"><span class="sr-only">' +
+                        percent +
+                        '% Complete</span></div></div><div class="main_info"><a href="donate.html?' +
+                        dreamId +
+                        '"><div class="img_card"><img src="' +
+                        image +
+                        '"alt=""></div></a><div class="detail_info"><div class="dream_title">' +
+                        dreamName +
+                        '</div><div class="dream_descrip">' +
+                        dreamDescrip +
+                        '</div><div class="dream_bottom"><div class="dream_percent">' +
+                        percent +
+                        '%</div><div class="days_people"><div class="dream_days"><span>' +
+                        dayCount +
+                        '</span> days to go</div><div class="dream_people"><span>' +
+                        dollarCurrently +
+                        "k</span> out of <span>" +
+                        dollarNeeded +
+                        'k</span></div></div><div class="dream_location"><i class="fas fa-map-marker-alt fa-2x" data-toggle="tooltip" data-placement="bottom" title="' +
+                        dreamLocation +
+                        '"></i></div><div class="dream_like"><input type="checkbox" class="like__input"><i class="far fa-thumbs-up fa-2x like__heart"></i></div></div></div></div></div>';
 
-                //#endregion
+                    //#endregion
 
-                temp += cardTemplate;
-            }
-            document.getElementById("dream_cards").innerHTML = temp;
-        });
+                    temp += cardTemplate;
+                }
+                document.getElementById("dream_cards").innerHTML = temp;
+            })
     }
 
     //Обновить данные логина  в header-е
@@ -97,21 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Получить имя пользователя и вывести это в шапке
     $(function () {
-        let token = window.localStorage.getItem("Token");
-        if (token == null) {
-            return
-        }
-        $.ajax({
-            crossDomain: true,
-            url: "https://api.9thplanet.ca/user",
-            headers: {
-                accept: "application/json",
-                accessToken: token,
-            },
-        })
-            .then(function (response) {
-                let stringified = JSON.stringify(response);
-                var person = JSON.parse(stringified);
+        apiGetJson("user")
+            .then(function (person) {
                 const userName = person["firstName"] + ' ' + person["lastName"]
 
                 console.log(person);
@@ -225,14 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	`;
 
-        $.ajax({
-            crossDomain: true,
-            url: "https://api.9thplanet.ca/dreams/my",
-            headers: {
-                accept: "application/json",
-                accessToken: token,
-            },
-        })
+        apiGetJson("dreams/my", true)
             .then(function (response) {
                 $("document").ready(function () {
                     let stringified = JSON.stringify(response);
@@ -318,20 +299,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function onLogoutClickSetup() {
         let logout = document.getElementById("logoutid");
         logout.onclick = function () {
-            let token = window.localStorage.getItem("Token");
 
             window.localStorage.removeItem("Token");
             window.localStorage.removeItem("UserId");
 
-            $.ajax({
-                crossDomain: true,
-                url: "https://api.9thplanet.ca/auth",
-                type: "DELETE",
-                headers: {
-                    accept: "application/json",
-                    accessToken: token,
-                },
-            })
+            apiDeleteJson("auth")
                 .then(function (response) {
                     window.localStorage.removeItem("Token");
                     window.localStorage.removeItem("UserId");

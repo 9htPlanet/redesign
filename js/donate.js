@@ -84,23 +84,10 @@ function fillCurrentDream(data) {
 
 function GetDreamById(dreamId) {
 
-    let getFullPathDream = "https://api.9thplanet.ca/dreams/" + dreamId;
-    // let userId = window.localStorage.getItem("UserId");
+    let getFullPathDream = "dreams/" + dreamId;
     console.log(getFullPathDream)
-    let token = window.localStorage.getItem("Token");
-    let headers = {
-        accept: "application/json"
-    }
-    if (token) {
-        headers.accessToken = token
-    }
 
-    $.ajax({
-        crossDomain: true,
-        url: getFullPathDream,
-        type: 'GET',
-        headers: headers
-    })
+    apiGetJson(getFullPathDream)
         .then(function (data) {
             fillCurrentDream(data)
         })

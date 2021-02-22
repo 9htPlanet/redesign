@@ -100,22 +100,15 @@ function previewFile2(file, id) {
 
 
 function GetIdForPhoto() {
-    let token = window.localStorage.getItem("Token");
 
-    $.ajax({
-        crossDomain: true,
-        url: "https://api.9thplanet.ca/photos/upload",
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
-    }).done(function (response) {
-        let stringified = JSON.stringify(response);
-        var photoId = JSON.parse(stringified)["id"];
-        console.log(photoId);
+    apiGetJson("photos/upload")
+        .then(function (response) {
+            let stringified = JSON.stringify(response);
+            var photoId = JSON.parse(stringified)["id"];
+            console.log(photoId);
 
-        return photoId;
-    });
+            return photoId;
+        });
 }
 
 function uploadFile(file, i) {
@@ -123,77 +116,21 @@ function uploadFile(file, i) {
 
     // console.log(elem);
 
-    $.ajax({
-        crossDomain: true,
-        url: "https://api.9thplanet.ca/photos/upload",
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
-    }).done(function (response) {
-        let stringified = JSON.stringify(response);
-        var photoId = JSON.parse(stringified)["id"];
-        console.log(photoId);
-        window.localStorage.setItem("imgId", photoId)
-        let elem = document.getElementById("fileElem").files[0];
-        previewFile2(elem, photoId);
+    apiGetJson("photos/upload")
+        .then((data) => {
+            const photoId = data["id"];
+            console.log(photoId);
+            window.localStorage.setItem("imgId", photoId)
+            let elem = document.getElementById("fileElem").files[0];
+            previewFile2(elem, photoId);
 
-        fetch("https://api.9thplanet.ca/photos/" + photoId, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                accessToken: token,
-            },
-            body: elem,
+            return apiPutFileJson("photos/" + photoId, elem)
+
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-
-        // $.ajax({
-        //     crossDomain: true,
-        //     contentType: "image/*",
-        //     url: 'https://api.9thplanet.ca/photos/' + photoId,
-
-        //     type: 'PUT',
-        //     headers: {
-        //         accept: "application/json",
-        //         accessToken: token,
-        //     },
-        //     data: elem
-        // })
-        //     .then(function (response) {
-        //         console.log("Put photo response", response);
-
-        //     })
-        //     .catch(function (err) {
-        //         console.log("Put photo error", err);
-        //     });
-
-        // var xhr = new XMLHttpRequest()
-        // var formData = new FormData()
-        // xhr.open('POST', url, true)
-        // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
-
-        // // Update progress (can be used to show progress indicator)
-        // xhr.upload.addEventListener("progress", function(e) {
-        //     updateProgress(i, (e.loaded * 100.0 / e.total) || 100)
-        // })
-
-        // xhr.addEventListener('readystatechange', function(e) {
-        //     if (xhr.readyState == 4 && xhr.status == 200) {
-        //         updateProgress(i, 100) // <- Add this
-        //     } else if (xhr.readyState == 4 && xhr.status != 200) {
-        //         // Error. Inform the user
-        //     }
-        // })
-
-        // formData.append('upload_preset', 'ujpu6gyk')
-        // formData.append('file', file)
-        // xhr.send(formData)
-    });
+        .then((data) => {
+            console.log("Success:", data);
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+        });
 }

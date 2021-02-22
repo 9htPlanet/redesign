@@ -44,7 +44,8 @@ function calc(input) {
 }
 
 function getMoneyById(dreamId) {
-    let getFullPathDream = "https://api.9thplanet.ca/dreams/" + dreamId;
+    let getFullPathDream = "dreams/" + dreamId;
+
     $.getJSON(getFullPathDream, function (data) {
         let balance = data["price"] - data["money"];
         let input = document.getElementById("donate_count");
@@ -54,12 +55,14 @@ function getMoneyById(dreamId) {
 }
 
 function getMoneyById2(dreamId) {
-    let getFullPathDream = "https://api.9thplanet.ca/dreams/" + dreamId;
+    let getFullPathDream = "dreams/" + dreamId;
     let money = 0;
-    $.getJSON(getFullPathDream, function (data) {
-        let balance = data["price"] - data["money"];
-        money = balance / 1000;
-    });
+
+    apiGetJson(getFullPathDream)
+        .then(function (newData) {
+            let balance = data["price"] - data["money"];
+            money = balance / 1000;
+        });
     return money;
 }
 
@@ -85,19 +88,20 @@ function fillMoney2(balance) {
 
 $("document").ready(function () {
     let getDreamId = window.location.href.toString().split(".html?")[1];
-    let getFullPathDream = "https://api.9thplanet.ca/dreams/" + getDreamId;
+    let getFullPathDream = "dreams/" + getDreamId;
 
-    $.getJSON(getFullPathDream, function (data) {
-        let balance = data["price"] - data["money"];
-        let money123 = balance / 1000;
-        fillMoney2(money123);
-        calculatePayment(money123);
-        let input = document.getElementById("donate_count");
-        input.setAttribute("max", money123);
-        $("#donate_count").on("input", function () {
-            $(this).val((i, v) => Math.max(this.min, Math.min(this.max, v)));
+    apiGetJson(getFullPathDream)
+        .then(function (data) {
+            let balance = data["price"] - data["money"];
+            let money123 = balance / 1000;
+            fillMoney2(money123);
+            calculatePayment(money123);
+            let input = document.getElementById("donate_count");
+            input.setAttribute("max", money123);
+            $("#donate_count").on("input", function () {
+                $(this).val((i, v) => Math.max(this.min, Math.min(this.max, v)));
+            });
         });
-    });
 
     showPaymentForm(getDreamId);
 
@@ -133,30 +137,12 @@ function showPaymentForm(getDreamId) {
     });
     var form = document.getElementById("payment-form");
     form.addEventListener("submit", function (event) {
-
         var paymentAmount = parseInt(document.getElementById("donate_count").value) * 100
-
-        //Теперь вызываем метод createPaymentIntent
-        const formData = new FormData();
-
-        formData.append('donate', paymentAmount);
-        formData.append('dreamId', getDreamId);
-
-        let token = window.localStorage.getItem("Token");
-
-        fetch("https://api.9thplanet.ca/payment/createPaymentIntent", {
-            method: "POST",
-            headers: {
-                "accessToken": token
-            },
-            body: formData
-        }).then(function (result) {
-            return result.json();
-        }).then(function (data) {
-            // Complete payment when the submit button is clicked
-            payWithCard(stripe, card, data.secret);
-        });
-
+        apiPostJson("payment/createPaymentIntent", {donate: paymentAmount, dreamId: getDreamId})
+            .then(function (data) {
+                // Complete payment when the submit button is clicked
+                payWithCard(stripe, card, data.secret);
+            });
 
         event.preventDefault();
 

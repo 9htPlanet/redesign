@@ -38,24 +38,16 @@ function showPaymentForm() {
         var paymentAmount = parseInt(document.getElementById("donate_count").value) * 100
 
         //Теперь вызываем метод createPaymentIntent
-        const formData = new FormData();
+        const formData = {
+            donate: paymentAmount,
+            dreamId: "5fa0719ad800ff509084e1ae"
+        };
 
-        formData.append('donate', paymentAmount);
-        formData.append('dreamId', "5fa0719ad800ff509084e1ae");
-
-        fetch("https://api.9thplanet.ca/payment/createPaymentIntent", {
-            method: "POST",
-            headers: {
-                "accessToken": "AGjOmQdCtNQOMJRAoQSA4U75Xq1aQ9Xe"
-            },
-            body: formData
-        }).then(function (result) {
-            return result.json();
-        }).then(function (data) {
-            // Complete payment when the submit button is clicked
-            payWithCard(stripe, card, data.secret);
-        });
-
+        apiPostJson("payment/createPaymentIntent", formData)
+            .then(function (data) {
+                // Complete payment when the submit button is clicked
+                payWithCard(stripe, card, data.secret);
+            });
 
         event.preventDefault();
 
