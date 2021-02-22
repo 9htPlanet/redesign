@@ -2,50 +2,50 @@
 
 function makeOptionCityStructure() {
     let cities = document.getElementsByClassName("options-container-city")[0];
-    $.getJSON('https://api.9thplanet.ca/dictionary/cities', function (data) {
-        let sortedCities = data.sort(function (obj1, obj2) {
-            if (obj1.id < obj2.id) return -1;
-            if (obj1.id > obj2.id) return 1;
-        });
+    apiGetJson("dictionary/cities")
+        .then(function (data) {
+            let sortedCities = data.sort(function (obj1, obj2) {
+                if (obj1.id < obj2.id) return -1;
+                if (obj1.id > obj2.id) return 1;
+            });
 
-        let opts = '';
-        for (let i = 0; i < sortedCities.length; i++) {
+            let opts = '';
+            for (let i = 0; i < sortedCities.length; i++) {
 
-            let opt = `<div class="option option-city">
+                let opt = `<div class="option option-city">
                         <input type="radio" class="radio" id="${sortedCities[i]['id']}" name="city"/>
                         <label for="${sortedCities[i]['id']}">${sortedCities[i]['names']['en-us']}</label>
                        </div>`
-            opts += opt;
-        }
-        cities.innerHTML += opts;
-        customSelectBoxCity();
+                opts += opt;
+            }
+            cities.innerHTML += opts;
+            customSelectBoxCity();
 
-    });
-
+        })
 }
 
 function makeOptionCategoryStructure() {
     let categories = document.getElementsByClassName("options-container-category")[0];
 
-    $.getJSON('https://api.9thplanet.ca/dictionary/categories', function (data) {
-        let sortedCateg = data.sort(function (obj1, obj2) {
-            if (obj1.key < obj2.key) return -1;
-            if (obj1.key > obj2.key) return 1;
-        });
+    apiGetJson("dictionary/categories")
+        .then((data) => {
+            let sortedCateg = data.sort(function (obj1, obj2) {
+                if (obj1.key < obj2.key) return -1;
+                if (obj1.key > obj2.key) return 1;
+            });
 
-        let opts = '';
-        for (let i = 0; i < sortedCateg.length; i++) {
+            let opts = '';
+            for (let i = 0; i < sortedCateg.length; i++) {
 
-            let opt = `<div class="option option-category">
+                let opt = `<div class="option option-category">
                         <input type="radio" class="radio" id="${sortedCateg[i]['key']}" name="category"/>
                         <label for="${sortedCateg[i]['key']}">${sortedCateg[i]['details'][0]['name']}</label>
                        </div>`
-            opts += opt;
-        }
-        categories.innerHTML += opts;
-        customSelectBoxCategory();
-
-    });
+                opts += opt;
+            }
+            categories.innerHTML += opts;
+            customSelectBoxCategory();
+        })
 
 }
 

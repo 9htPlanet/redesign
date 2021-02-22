@@ -10,22 +10,8 @@ Dropzone.options.myAwesomeDropzone = false;
 let fileIds = [];
 
 async function upload(file) {
-    const uploadRequest = await fetch('https://api.9thplanet.ca/photos/upload', {
-        headers: {
-            "Content-Type": "application/json",
-            accessToken: token,
-        },
-    });
-    const json = await uploadRequest.json();
-    const urlForUpload = "https://api.9thplanet.ca/photos/" + json['id'];
-
-    let result = await fetch(urlForUpload, {
-        method: 'PUT',
-        body: file,
-        headers: {
-            accessToken: token
-        }
-    });
+    const json = await apiGetJson('photos/upload');
+    const result = await apiPutFileJson(`photos/${json['id']}`, file);
 
     fileIds.push(json['id']);
     window.localStorage.setItem("photosId", fileIds);

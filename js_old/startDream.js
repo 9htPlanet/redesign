@@ -1,24 +1,26 @@
 $('document').ready(function () {
 
-    $.getJSON("https://api.9thplanet.ca/dictionary/cities", function (data) {
-        let contents = []
-        for (let key in data) {
-            let city = data[key]['id'];
-            contents.push('<input type="button" class="dropdown-item" type="button" value="' + city + '"/>')
-        }
-        $('#menuItems_2').append(contents.join(""))
-        $('#empty').hide()
-    });
+    apiGetJson("dictionary/cities")
+        .then(function (data) {
+            let contents = []
+            for (let key in data) {
+                let city = data[key]['id'];
+                contents.push('<input type="button" class="dropdown-item" type="button" value="' + city + '"/>')
+            }
+            $('#menuItems_2').append(contents.join(""))
+            $('#empty').hide()
+        })
 
-    $.getJSON("https://api.9thplanet.ca/dictionary/categories", function (data) {
-        let contents = []
-        for (let key in data) {
-            let category = data[key]['key'];
-            contents.push('<input type="button" class="dropdown-item" type="button" value="' + category + '"/>')
-        }
-        $('#menuItems').append(contents.join(""))
-        $('#empty').hide()
-    });
+    apiGetJson("dictionary/categories")
+        .then(function (data) {
+            let contents = []
+            for (let key in data) {
+                let category = data[key]['key'];
+                contents.push('<input type="button" class="dropdown-item" type="button" value="' + category + '"/>')
+            }
+            $('#menuItems').append(contents.join(""))
+            $('#empty').hide()
+        })
 
 
     //Find the input searchCategory box
@@ -119,18 +121,25 @@ $('document').ready(function () {
         let dreamInformation = document.getElementById('dreamInform').value;
         let dreamPrice = document.getElementById('price').value;
         const request = new XMLHttpRequest();
-        const url = "https://api.9thplanet.ca/dreams";
-        const params = "name=" + dreamName + "&infoAboutYourself=" + infoAbouYourSelf + "&infoAboutDream=" + dreamInformation + "&price=" + dreamPrice + "&photos=" + photos + "&city=" + dreamCitites + "&category=" + dreamCategory + "&videos=" + dreamPrice + "&documents=" + documents;
-        console.log(params);
-        request.open("POST", url, true);
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        request.setRequestHeader("accessToken", window.localStorage.getItem('Token'));
-        request.addEventListener("readystatechange", () => {
-            if (request.readyState === 4 && request.status === 200) {
-                console.log(request.responseText);
-            }
-        });
-        request.send(params);
+
+        //todo: нет поддержки videos
+        const params = {
+            name: dreamName,
+            infoAboutYourself: infoAbouYourSelf,
+            infoAboutDream: dreamInformation,
+            price: dreamPrice,
+            photos: photos,
+            city: dreamCitites,
+            category: dreamCategory,
+            documents: documents
+        }
+
+        apiPost("dreams", params, true)
+            .then((response) => {
+                if (response.readyState === 4 && response.status === 200) {
+                    console.log(request.responseText);
+                }
+            });
         event.preventDefault();
     });
 

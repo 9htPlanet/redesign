@@ -4,16 +4,7 @@ class Dream {
     }
 
     static PutLikeToDream(dreamId, elem) {
-        let token = window.localStorage.getItem("Token");
-        $.ajax({
-            crossDomain: true,
-            url: "https://api.9thplanet.ca/dreams/" + dreamId + "/like",
-            type: 'PUT',
-            headers: {
-                accept: "application/json",
-                accessToken: token,
-            },
-        })
+        apiPutJson("dreams/" + dreamId + "/like")
             .then(function (response) {
                 console.log("Put like response", response);
                 elem.classList.remove("far");
@@ -25,16 +16,7 @@ class Dream {
     }
 
     static RemoveLikeToDream(dreamId, elem) {
-        let token = window.localStorage.getItem("Token");
-        $.ajax({
-            crossDomain: true,
-            url: "https://api.9thplanet.ca/dreams/" + dreamId + "/like",
-            type: 'DELETE',
-            headers: {
-                accept: "application/json",
-                accessToken: token,
-            },
-        })
+        apiDelete(`dreams/${dreamId}/like`)
             .then(function (response) {
                 console.log("Remove like response", response);
                 elem.classList.remove("fas");
@@ -47,16 +29,7 @@ class Dream {
     }
 
     static PutFavoriteToDream(dreamId, elem) {
-        let token = window.localStorage.getItem("Token");
-        $.ajax({
-            crossDomain: true,
-            url: "https://api.9thplanet.ca/user/favorites/" + dreamId,
-            type: 'POST',
-            headers: {
-                accept: "application/json",
-                accessToken: token,
-            },
-        })
+        apiPost(`user/favorites/${dreamId}`)
             .then(function (response) {
                 console.log("Put favorite response", response);
                 elem.classList.remove("far");
@@ -68,16 +41,7 @@ class Dream {
     }
 
     static RemoveFavoriteToDream(dreamId, elem) {
-        let token = window.localStorage.getItem("Token");
-        $.ajax({
-            crossDomain: true,
-            url: "https://api.9thplanet.ca/user/favorites/" + dreamId,
-            type: 'DELETE',
-            headers: {
-                accept: "application/json",
-                accessToken: token,
-            },
-        })
+        apiDelete(`user/favorites/${dreamId}`,)
             .then(function (response) {
                 console.log("Remove favorite response", response);
                 elem.classList.remove("fas");

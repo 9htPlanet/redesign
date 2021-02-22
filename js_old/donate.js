@@ -4,23 +4,10 @@ function diffDates(day_one, day_two) {
 
 function GetDreamById(dreamId) {
 
-    let getFullPathDream = "https://api.9thplanet.ca/dreams/" + dreamId;
+    let getFullPathDream = "dreams/" + dreamId;
     let userId = window.localStorage.getItem("UserId");
 
-    let token = window.localStorage.getItem("Token");
-    let headers = {
-        accept: "application/json"
-    }
-    if (token) {
-        headers.accessToken = token
-    }
-
-    $.ajax({
-        crossDomain: true,
-        url: getFullPathDream,
-        type: 'GET',
-        headers: headers
-    })
+    apiGetJson(getFullPathDream)
         .then(function (data) {
             console.log("GetDreamWithToken Success", data);
 
@@ -145,16 +132,7 @@ function GetDreamById(dreamId) {
 }
 
 function PutLikeToDream(dreamId, elem) {
-    let token = window.localStorage.getItem("Token");
-    $.ajax({
-        crossDomain: true,
-        url: "https://api.9thplanet.ca/dreams/" + dreamId + "/like",
-        type: 'PUT',
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
-    })
+    apiPutJson(`dreams/${dreamId}/like`)
         .then(function (response) {
             console.log("Put like response", response);
             elem.classList.remove("far");
@@ -166,16 +144,7 @@ function PutLikeToDream(dreamId, elem) {
 }
 
 function RemoveLikeToDream(dreamId, elem) {
-    let token = window.localStorage.getItem("Token");
-    $.ajax({
-        crossDomain: true,
-        url: "https://api.9thplanet.ca/dreams/" + dreamId + "/like",
-        type: 'DELETE',
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
-    })
+    apiDeleteJson(`dreams/${dreamId}/like`)
         .then(function (response) {
             console.log("Remove like response", response);
             elem.classList.remove("fas");
@@ -188,16 +157,7 @@ function RemoveLikeToDream(dreamId, elem) {
 }
 
 function PutFavoriteToDream(dreamId, elem) {
-    let token = window.localStorage.getItem("Token");
-    $.ajax({
-        crossDomain: true,
-        url: "https://api.9thplanet.ca/user/favorites/" + dreamId,
-        type: 'POST',
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
-    })
+    apiPostJson(`user/favorites/${dreamId}`, {})
         .then(function (response) {
             console.log("Put favorite response", response);
             elem.classList.remove("far");
@@ -209,16 +169,7 @@ function PutFavoriteToDream(dreamId, elem) {
 }
 
 function RemoveFavoriteToDream(dreamId, elem) {
-    let token = window.localStorage.getItem("Token");
-    $.ajax({
-        crossDomain: true,
-        url: "https://api.9thplanet.ca/user/favorites/" + dreamId,
-        type: 'DELETE',
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
-    })
+    apiDeleteJson(`user/favorites/${dreamId}`)
         .then(function (response) {
             console.log("Remove favorite response", response);
             elem.classList.remove("fas");
@@ -239,28 +190,6 @@ function Carusel(photoList) {
     }
     document.getElementById('donateCarouselId').innerHTML = temp;
     document.getElementsByClassName('carousel-item')[0].classList.add('active')
-}
-
-
-function GetDreamWithToken(getFullPathDream) {
-    let token = window.localStorage.getItem("Token");
-    $.ajax({
-        crossDomain: true,
-        url: getFullPathDream,
-        type: 'GET',
-        headers: {
-            accept: "application/json",
-            accessToken: token,
-        },
-    })
-        .then(function (response) {
-            console.log("GetDreamWithToken Success", response);
-            return response;
-        })
-        .catch(function (err) {
-            console.log("GetDreamWithToken Error", err);
-        });
-
 }
 
 

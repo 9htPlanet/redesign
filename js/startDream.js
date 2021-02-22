@@ -22,31 +22,29 @@ $("document").ready(function () {
         let sourceDreamPrice = document.getElementById('required_money_id').value;
         let preparedDreamPrice = parseFloat(sourceDreamPrice.replace(/,/, '.')) * 100
 
-        const url = "https://api.9thplanet.ca/dreams";
-        const params =
-            "name=" + dreamName +
-            "&infoAboutYourself=" + infoAboutYourSelf +
-            "&infoAboutDream=" + dreamInformation +
-            "&price=" + preparedDreamPrice +
-            "&photos=" + photoIds +
-            "&city=" + city +
-            "&category=" + category +
-            "&videos=" + "" +
-            "&documents=" + "";
 
-        const request = new XMLHttpRequest();
-        request.open("POST", url, true);
-        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        request.setRequestHeader("accessToken", window.localStorage.getItem('Token'));
-        request.addEventListener("readystatechange", () => {
-            if (request.readyState === 4 && request.status === 200) {
-                location.href = 'donate.html?' + request.responseText["id"];
-                console.log(request.responseText["id"]);
-            } else {
-                document.getElementById("server_response_id").innerHTML = request.responseText;
-            }
-        });
-        request.send(params);
+        const params = {
+            name: dreamName,
+            infoAboutYourself: infoAboutYourSelf,
+            infoAboutDream: dreamInformation,
+            price: preparedDreamPrice,
+            photos: photoIds,
+            city: city,
+            category: category,
+            videos: "",
+            documents: ""
+        }
+
+
+        apiPost("dreams", params)
+            .then((request) => {
+                if (request.readyState === 4 && request.status === 200) {
+                    location.href = 'donate.html?' + request.responseText["id"];
+                    console.log(request.responseText["id"]);
+                } else {
+                    document.getElementById("server_response_id").innerHTML = request.responseText;
+                }
+            })
 
         event.preventDefault();
 

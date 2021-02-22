@@ -44,19 +44,19 @@ $('document').ready(function () {
                 if (chb_2 && chb_3 && checkEmail && checkPassword && checkFirstName && checkLastName) {
                     $('.error_msg').html("");
 
-                    $.post("https://api.9thplanet.ca/auth/reg", {
-                            firstName: firstName_id,
-                            lastName: lastName_id,
-                            email: email_id,
-                            password: psw_id
-                        },
-                        function (data) {
+                    apiPostJson("auth/reg", {
+                        firstName: firstName_id,
+                        lastName: lastName_id,
+                        email: email_id,
+                        password: psw_id
+                    }).then(data => {
+                        if (!data['errorMessage'] && data['access']) {
                             window.localStorage.setItem('Token', data['access']['accessToken']);
-                            document.location.href = "profile.html"
+                            document.location.href = "profile.html";
+                        } else {
+                            $('.error_msg').html(data['errorMessage']);
                         }
-                    ).fail(function (error) {
-                        $('.error_msg').html(error.responseJSON['errorMessage']);
-                    });
+                    })
 
                 } else {
                     if (!checkEmail) {
@@ -87,21 +87,23 @@ $('document').ready(function () {
 
         function LogInFoo(loginId, passId) {
             let log_in_email = document.getElementById(loginId).value;
-
             let log_in_password = document.getElementById(passId).value;
 
             $(function () {
-
-                $.post("https://api.9thplanet.ca/auth", {email: log_in_email, password: log_in_password},
-                    function (data) {
-                        window.localStorage.setItem('Token', data.accessToken);
-                        document.location.href = "index.html"
-                    }
-                )
+                apiPostJson("auth", {email: log_in_email, password: log_in_password})
+                    .then((data) => {
+                        debugger;
+                        if (data.accessToken) {
+                            window.localStorage.setItem('Token', data.accessToken);
+                            document.location.href = "index.html";
+                        } else {
+                            $('.error_msg').html(data['errorMessage']);
+                        }
+                    })
                     .fail(function (error) {
-                        $('.error_msg').html(error.responseJSON['errorMessage']);
+                        debugger;
+                        $('.error_msg').html(error['errorMessage']);
                     });
-
             });
 
         }
