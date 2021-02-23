@@ -1,5 +1,7 @@
 let swiper = new Swiper('.swiper-container', {
-    spaceBetween: 10,
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
     effect: 'fade',
     pagination: {
         el: '.swiper-pagination',
