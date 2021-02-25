@@ -34,11 +34,10 @@ function fillCurrentDream(data) {
     let userId = window.localStorage.getItem("UserId");
     const getDreamId = data["id"];
 
-    let getFavorite = '';
     let onFavoriteClick = `Dream.addToFavorites('${getDreamId}', this)`;
     let isFavorite = data['isInFavorites'];
     if (isFavorite) {
-        getFavorite = 'getLike';
+        document.getElementById('track_button').classList.toggle('getLike');
         onFavoriteClick = `Dream.removeFromFavorites('${getDreamId}', this)`;
     }
 
@@ -47,10 +46,9 @@ function fillCurrentDream(data) {
     let backers = data['donatesCount'];
 
 
-    let getLike = '';
     let onLikeClick = `Dream.addLike('${getDreamId}', this)`;
     if (data['likes'].indexOf(userId) !== -1) {
-        getLike = 'getLike';
+        document.getElementById('donate_like_button').classList.toggle('getLike');
         onLikeClick = `Dream.removeLike('${getDreamId}', this)`;
     }
 
@@ -73,10 +71,9 @@ function fillCurrentDream(data) {
     document.getElementById('donate_dream_about_dream').innerHTML = dreamDescrip;
 
     document.getElementById('donate_like_button').setAttribute("onclick", onLikeClick)
-    document.getElementById('donate_like_button').classList.add(getLike);
+
 
     document.getElementById('track_button').setAttribute("onclick", onFavoriteClick)
-    document.getElementById('track_button').classList.add(getFavorite);
 
 
     let swiper = new Swiper('.swiper-container', {
