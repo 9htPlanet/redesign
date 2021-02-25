@@ -58,7 +58,7 @@ function Calc(input) {
 }
 
 function getMoneyById(dreamId) {
-    apiGetJsonQuery(`dreams/${dreamId}`)
+    apiGetJson(`dreams/${dreamId}`)
         .then(data => {
             let balance = data["price"] - data["money"];
             let input = document.getElementById("paymentCadId");
