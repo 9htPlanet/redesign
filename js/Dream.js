@@ -54,30 +54,44 @@ class Dream {
         })
     }
 
-
-    static PutFavoriteToDream(dreamId, elem) {
-        apiPost(`user/favorites/${dreamId}`)
-            .then(function (response) {
-                console.log("Put favorite response", response);
-                elem.classList.remove("far");
-                elem.classList.add("fas");
-            })
-            .catch(function (err) {
-                console.log("Put favorite error", err);
-            });
+    static addToFavorites(dreamId, elem) {
+        ifAuth(() => {
+            elem.disabled = true
+            elem.classList.toggle('getLike');
+            apiPostJson(`user/favorites/${dreamId}`)
+                .then(function (response) {
+                    elem.disabled = false;
+                    if (response.id) {
+                        elem.setAttribute("onclick", `Dream.removeFromFavorites('${dreamId}', this)`);
+                    } else {
+                        elem.classList.toggle('getLike');
+                    }
+                })
+                .catch(function (err) {
+                    elem.classList.toggle('getLike');
+                    elem.disabled = false
+                });
+        })
     }
 
-    static RemoveFavoriteToDream(dreamId, elem) {
-        apiDelete(`user/favorites/${dreamId}`,)
-            .then(function (response) {
-                console.log("Remove favorite response", response);
-                elem.classList.remove("fas");
-                elem.classList.add("far");
-
-            })
-            .catch(function (err) {
-                console.log("Remove favorite error", err);
-            });
+    static removeFromFavorites(dreamId, elem) {
+        ifAuth(() => {
+            elem.disabled = true
+            elem.classList.toggle('getLike');
+            apiDeleteJson(`user/favorites/${dreamId}`)
+                .then(function (response) {
+                    elem.disabled = false;
+                    if (response.id) {
+                        elem.setAttribute("onclick", `Dream.addToFavorites('${dreamId}', this)`);
+                    } else {
+                        elem.classList.toggle('getLike');
+                    }
+                })
+                .catch(function (err) {
+                    elem.classList.toggle('getLike');
+                    elem.disabled = false
+                });
+        })
     }
 
     static fillCurrentDream(dataList) {
@@ -113,20 +127,6 @@ class Dream {
 
         }
         let getLike = '';
-        // if (data['likes'].indexOf(userId) != -1) {
-        //     getLike = 'fas';
-        // } else {
-        //     getLike = 'far';
-        // }
-
-        let getFavorite = '';
-        let isFavorite = data['isInFavorites'];
-        if (isFavorite) {
-            getFavorite = 'fas';
-        } else {
-            getFavorite = 'far';
-        }
-
 
         let getLikeCount = data['likesCount'];
         let backers = data['donatesCount'];
@@ -212,6 +212,14 @@ class Dream {
             onLikeClick = `Dream.removeLike('${getDreamId}', this)`;
         }
 
+        let getFavorite = '';
+        let onFavoriteClick = `Dream.addToFavorites('${getDreamId}', this)`;
+        let isFavorite = data['isInFavorites'];
+        if (isFavorite) {
+            getFavorite = 'getLike';
+            onFavoriteClick = `Dream.removeFromFavorites('${getDreamId}', this)`;
+        }
+
         let likesHTML = `<button class="like-it ${getLike}" onclick="${onLikeClick}">
                             <svg class="footer-social-icons-svg">
                                 <use href="./img/sprite.svg#thumbs"></use>
@@ -219,13 +227,12 @@ class Dream {
                             <span>${getLikeCount}</span> Like It
                          </button>
 
-                        <div class="track-it">
+                        <button class="track-it ${getFavorite}" onclick="${onFavoriteClick}">
                             <svg class="footer-social-icons-svg">
                                 <use href="./images/sprite.svg#trackIt"></use>
                             </svg>
                             <span>Track It</span>
-
-                        </div>`
+                        </button>`
         document.getElementById('donate_dream_like').innerHTML = likesHTML;
 
 
