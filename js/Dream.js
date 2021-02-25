@@ -166,7 +166,7 @@ class Dream {
     }
 
     static fillCurrentDreamWithShimmer(dataList) {
-        let data = dataList[1];
+        let data = dataList[0];
         let percent = Math.round(data['money'] * 100 / data['price'])
 
         //Доллары
@@ -201,12 +201,23 @@ class Dream {
         document.getElementById('donate_dream_location').innerHTML = locationHTML;
 
         let getLikeCount = data['likesCount'];
-        let likesHTML = `<div class="like-it">
+
+        let userId = window.localStorage.getItem("UserId");
+        const getDreamId = data["id"];
+
+        let getLike = '';
+        let onLikeClick = `Dream.addLike('${getDreamId}', this)`;
+        if (data['likes'].indexOf(userId) !== -1) {
+            getLike = 'getLike';
+            onLikeClick = `Dream.removeLike('${getDreamId}', this)`;
+        }
+
+        let likesHTML = `<button class="like-it ${getLike}" onclick="${onLikeClick}">
                             <svg class="footer-social-icons-svg">
                                 <use href="./img/sprite.svg#thumbs"></use>
                             </svg>
-                            <span>${getLikeCount} Like It</span>
-                         </div>
+                            <span>${getLikeCount}</span> Like It
+                         </button>
 
                         <div class="track-it">
                             <svg class="footer-social-icons-svg">

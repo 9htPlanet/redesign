@@ -29,12 +29,6 @@ function fillCurrentDream(data) {
         }
 
     }
-    let getLike = '';
-    // if (data['likes'].indexOf(userId) != -1) {
-    //     getLike = 'fas';
-    // } else {
-    //     getLike = 'far';
-    // }
 
     let getFavorite = '';
     let isFavorite = data['isInFavorites'];
@@ -47,6 +41,16 @@ function fillCurrentDream(data) {
 
     let getLikeCount = data['likesCount'];
     let backers = data['donatesCount'];
+
+    let userId = window.localStorage.getItem("UserId");
+    const getDreamId = data["id"];
+
+    let getLike = '';
+    let onLikeClick = `Dream.addLike('${getDreamId}', this)`;
+    if (data['likes'].indexOf(userId) !== -1) {
+        getLike = 'getLike';
+        onLikeClick = `Dream.removeLike('${getDreamId}', this)`;
+    }
 
     //#endregion
 
@@ -65,9 +69,13 @@ function fillCurrentDream(data) {
 
     document.getElementById('donate_dream_about_author').innerHTML = aboutAuthor;
     document.getElementById('donate_dream_about_dream').innerHTML = dreamDescrip;
-    // document.getElementById('donate_dream_like').classList.add(getLike);
+    document.getElementById('donate_like_button').setAttribute("onclick", onLikeClick)
+    document.getElementById('donate_like_button').classList.add(getLike);
+
     // document.getElementById('donate_favorite_icon').classList.add(getFavorite);
     // $('#donate_dream_progress_bar').attr('aria-valuenow', percent).css('height', percent + "%");
+
+
     let swiper = new Swiper('.swiper-container', {
         spaceBetween: 10,
         effect: 'fade',
@@ -83,7 +91,6 @@ function fillCurrentDream(data) {
 }
 
 function GetDreamById(dreamId) {
-
     let getFullPathDream = "dreams/" + dreamId;
     console.log(getFullPathDream)
 
