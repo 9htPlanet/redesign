@@ -3,30 +3,57 @@ class Dream {
         return Math.round((day_one - day_two) / (60 * 60 * 24 * 1000));
     }
 
-    static putLikeToDream(dreamId, elem) {
-        apiPutJson("dreams/" + dreamId + "/like")
-            .then(function (response) {
-                console.log("Put like response", response);
-                elem.classList.remove("far");
-                elem.classList.add("fas");
-            })
-            .catch(function (err) {
-                console.log("Put like error", err);
-            });
+    static addLike(dreamId, elem) {
+        ifAuth(() => {
+            elem.disabled = true
+            elem.querySelector('span').innerHTML = parseInt(elem.querySelector('span').innerHTML) + 1;
+            elem.classList.toggle('getLike');
+            apiPutJson("dreams/" + dreamId + "/like")
+                .then(function (response) {
+                    elem.disabled = false;
+                    let newLikesCount = response.likesCount;
+                    if (newLikesCount >= 0) {
+                        elem.querySelector('span').innerHTML = newLikesCount;
+                        elem.setAttribute("onclick", `Dream.removeLike('${response.id}', this)`);
+                    } else {
+                        elem.classList.toggle('getLike');
+                        elem.querySelector('span').innerHTML = parseInt(elem.querySelector('span').innerHTML) - 1;
+                    }
+                })
+                .catch(function (err) {
+                    elem.classList.toggle('getLike');
+                    elem.querySelector('span').innerHTML = parseInt(elem.querySelector('span').innerHTML) - 1;
+                    elem.disabled = false
+                    console.log("Put like error", err);
+                });
+        })
     }
 
-    static RemoveLikeToDream(dreamId, elem) {
-        apiDelete(`dreams/${dreamId}/like`)
-            .then(function (response) {
-                console.log("Remove like response", response);
-                elem.classList.remove("fas");
-                elem.classList.add("far");
-
-            })
-            .catch(function (err) {
-                console.log("Remove like error", err);
-            });
+    static removeLike(dreamId, elem) {
+        ifAuth(() => {
+            elem.disabled = true
+            elem.querySelector('span').innerHTML = parseInt(elem.querySelector('span').innerHTML) - 1;
+            elem.classList.toggle('getLike');
+            apiDeleteJson("dreams/" + dreamId + "/like")
+                .then(function (response) {
+                    elem.disabled = false;
+                    let newLikesCount = response.likesCount;
+                    if (newLikesCount >= 0) {
+                        elem.querySelector('span').innerHTML = newLikesCount;
+                        elem.setAttribute("onclick", `Dream.addLike('${response.id}', this)`);
+                    } else {
+                        elem.classList.toggle('getLike');
+                    }
+                })
+                .catch(function (err) {
+                    elem.classList.toggle('getLike');
+                    elem.querySelector('span').innerHTML = parseInt(elem.querySelector('span').innerHTML) + 1;
+                    elem.disabled = false;
+                    console.log("Remove like error", err);
+                });
+        })
     }
+
 
     static PutFavoriteToDream(dreamId, elem) {
         apiPost(`user/favorites/${dreamId}`)
@@ -291,22 +318,8 @@ class Dream {
         });
     }
 
-    static GetDreamByIdWithShimmer(fullPathDream) {
-
-        let token = window.localStorage.getItem("Token");
-        let headers = {
-            accept: "application/json"
-        }
-        if (token) {
-            headers.accessToken = token
-        }
-
-        $.ajax({
-            crossDomain: true,
-            url: fullPathDream,
-            type: 'GET',
-            headers: headers
-        })
+    static getMyDreamWithShimmer() {
+        apiGetJson("dreams/my")
             .then(function (data) {
                 Dream.fillCurrentDreamWithShimmer(data)
             })

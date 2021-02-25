@@ -24,8 +24,12 @@ refsLogin.closeModalBtn.addEventListener('click', toggleModalLogin);
 
 function toggleModalLogin() {
     refsLogin.modal.classList.toggle('is-hidden');
+    setTimeout(() => {
+        if (!isLoginOrSignUpShown()) {
+            AuthCallbacks.clearQueue();
+        }
+    }, 2000);
 }
-
 
 //open sign up
 const refsSignUp = {
@@ -39,6 +43,16 @@ refsSignUp.closeModalBtn.addEventListener('click', toggleModalSignUp);
 
 function toggleModalSignUp() {
     refsSignUp.modal.classList.toggle('is-hidden');
+    setTimeout(() => {
+        if (!isLoginOrSignUpShown()) {
+            AuthCallbacks.clearQueue();
+        }
+    }, 2000);
+}
+
+function switchFromLoginToSignUp() {
+    //при переключении между окнами очередь из callback-ов не трогаем
+
 }
 
 
@@ -57,7 +71,7 @@ function toggleModalStartDream() {
 }
 
 function isLoginOrSignUpShown() {
-    return !refsLogin.modal.classList.contains("is-hidden") && !refsSignUp.modal.classList.contains("is-hidden")
+    return !(refsLogin.modal.classList.contains("is-hidden") && refsSignUp.modal.classList.contains("is-hidden"))
 }
 
 function hideAllLoginPopups() {

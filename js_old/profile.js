@@ -43,7 +43,22 @@ function updateLoginDataInHeader() {
         const op = document.getElementById("header-right-buttons");
         op.innerHTML = dropDown;
 
-        onLogoutClickSetup()
+        onLogoutClickSetup();
+    } else {
+        const noLogin =
+            `<li class="item" id="loginId">
+                <button class="upper-contacts-item" data-modal-login-open="">
+                    Log In
+                </button>
+            </li>
+            <li class="item" id="signUpId">
+                <button class="upper-contacts-item" data-modal-sign-up-open="">
+                    Sign Up
+                </button>
+            </li>
+                    `;
+        const op = document.getElementById("header-right-buttons");
+        op.innerHTML = noLogin;
     }
 }
 

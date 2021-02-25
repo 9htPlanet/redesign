@@ -3,12 +3,12 @@ $('document').ready(function () {
 
         //Вход
         $("#log_in_id").submit(function (event) {
-            LogInFoo('log_in_email', 'log_in_password');
+            logInFoo('log_in_email', 'log_in_password');
             event.preventDefault();
         });
 
         $("#log_in_id_popup").submit(function (event) {
-            LogInFoo('log_in_email_popup', 'log_in_password_popup');
+            logInFoo('log_in_email_popup', 'log_in_password_popup');
             event.preventDefault();
         });
 
@@ -52,7 +52,7 @@ $('document').ready(function () {
                     }).then(data => {
                         if (!data['errorMessage'] && data['access']) {
                             window.localStorage.setItem('Token', data['access']['accessToken']);
-                            if (AuthCallbacks.queue.length > 0) {
+                            if (AuthCallbacks.isWaiting()) {
                                 hideAllLoginPopups()
                                 updateCurrentUserInfo()
                                 AuthCallbacks.executeCallbacks()
@@ -91,7 +91,7 @@ $('document').ready(function () {
 
         }
 
-        function LogInFoo(loginId, passId) {
+        function logInFoo(loginId, passId) {
             let log_in_email = document.getElementById(loginId).value;
             let log_in_password = document.getElementById(passId).value;
 
@@ -100,9 +100,9 @@ $('document').ready(function () {
                     .then((data) => {
                         if (data.accessToken) {
                             window.localStorage.setItem('Token', data.accessToken);
-                            hideAllLoginPopups()
-                            updateCurrentUserInfo()
-                            if (AuthCallbacks.queue.length > 0) {
+                            if (AuthCallbacks.isWaiting()) {
+                                hideAllLoginPopups()
+                                updateCurrentUserInfo()
                                 AuthCallbacks.executeCallbacks()
                             } else {
                                 document.location.reload();

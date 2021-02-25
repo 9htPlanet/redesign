@@ -1,5 +1,14 @@
 const AuthCallbacks = {
     queue: [],
+    addCallback: function (callback) {
+        this.queue.push(callback);
+    },
+    isWaiting: function () {
+        return this.queue.length > 0
+    },
+    clearQueue: function () {
+        this.queue = [];
+    },
     executeCallbacks() {
         while (this.queue.length > 0) {
             (this.queue.shift())()
@@ -15,7 +24,7 @@ function ifAuth(f) {
     if (isAuth()) {
         f()
     } else {
-        AuthCallbacks.queue.push(f);
+        AuthCallbacks.addCallback(f);
         showLoginPopup();
     }
 }
