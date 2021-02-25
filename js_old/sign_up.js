@@ -52,7 +52,13 @@ $('document').ready(function () {
                     }).then(data => {
                         if (!data['errorMessage'] && data['access']) {
                             window.localStorage.setItem('Token', data['access']['accessToken']);
-                            document.location.href = "profile.html";
+                            if (AuthCallbacks.queue.length > 0) {
+                                hideAllLoginPopups()
+                                updateCurrentUserInfo()
+                                AuthCallbacks.executeCallbacks()
+                            } else {
+                                document.location.href = "profile.html";
+                            }
                         } else {
                             $('.error_msg').html(data['errorMessage']);
                         }
@@ -92,16 +98,21 @@ $('document').ready(function () {
             $(function () {
                 apiPostJson("auth", {email: log_in_email, password: log_in_password})
                     .then((data) => {
-                        debugger;
                         if (data.accessToken) {
                             window.localStorage.setItem('Token', data.accessToken);
-                            document.location.href = "index.html";
+                            hideAllLoginPopups()
+                            updateCurrentUserInfo()
+                            if (AuthCallbacks.queue.length > 0) {
+                                AuthCallbacks.executeCallbacks()
+                            } else {
+                                document.location.reload();
+                            }
+
                         } else {
                             $('.error_msg').html(data['errorMessage']);
                         }
                     })
                     .fail(function (error) {
-                        debugger;
                         $('.error_msg').html(error['errorMessage']);
                     });
             });

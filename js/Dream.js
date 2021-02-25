@@ -3,7 +3,7 @@ class Dream {
         return Math.round((day_one - day_two) / (60 * 60 * 24 * 1000));
     }
 
-    static PutLikeToDream(dreamId, elem) {
+    static putLikeToDream(dreamId, elem) {
         apiPutJson("dreams/" + dreamId + "/like")
             .then(function (response) {
                 console.log("Put like response", response);
