@@ -130,30 +130,7 @@ function GetDreamById(dreamId) {
 
 
 }
-
-function PutLikeToDream(dreamId, elem) {
-    apiPutJson(`dreams/${dreamId}/like`)
-        .then(function (response) {
-            console.log("Put like response", response);
-            elem.classList.remove("far");
-            elem.classList.add("fas");
-        })
-        .catch(function (err) {
-            console.log("Put like error", err);
-        });
-}
-
-function RemoveLikeToDream(dreamId, elem) {
-    apiDeleteJson(`dreams/${dreamId}/like`)
-        .then(function (response) {
-            console.log("Remove like response", response);
-            elem.classList.remove("fas");
-            elem.classList.add("far");
-
-        })
-        .catch(function (err) {
-            console.log("Remove like error", err);
-        });
+/*
 }
 
 function PutFavoriteToDream(dreamId, elem) {
@@ -179,7 +156,7 @@ function RemoveFavoriteToDream(dreamId, elem) {
         .catch(function (err) {
             console.log("Remove favorite error", err);
         });
-}
+}*/
 
 function Carusel(photoList) {
     temp = '';

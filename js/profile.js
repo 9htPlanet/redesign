@@ -1,6 +1,5 @@
 $('document').ready(function () {
-    let fullPath = "https://api.9thplanet.ca/dreams/my";
-    Dream.GetDreamByIdWithShimmer(fullPath)
+    Dream.getMyDreamWithShimmer();
 });
 
 
