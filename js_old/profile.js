@@ -1,3 +1,104 @@
+function updateCurrentUserInfo() {
+    apiGetJson("user")
+        .then(function (person) {
+            const userName = person["firstName"] + ' ' + person["lastName"]
+
+            console.log(person);
+            window.localStorage.setItem("UserId", person["id"]);
+            window.localStorage.setItem("UserName", userName);
+
+            updateLoginDataInHeader()
+        })
+        .catch(function (err) {
+            console.log("err", err);
+        });
+}
+
+//Обновить данные логина  в header-е
+function updateLoginDataInHeader() {
+    let token = window.localStorage.getItem("Token");
+    let userName = window.localStorage.getItem("UserName");
+
+    if (token != null && userName != null) {
+        $("#profile-name").remove();
+        $("#logoutid").remove();
+
+
+        const dropDown = `<li class="item" id="profile-name">
+									<a href="profile.html#btn_myDream" class="upper-contacts-item">
+										${userName}
+									</a>
+								</li>
+								<li class="item" id="logoutid">
+									<button class="upper-contacts-item" title="Log out">
+										<svg class="upper-contacts-svg-two upper-contacts-svg">
+											<use href="./images/sprite.svg#exit"></use>
+										</svg>
+									</button>
+								</li>
+								`;
+
+        //$("#headerSectionRight").append(dropDown);
+
+        const op = document.getElementById("header-right-buttons");
+        op.innerHTML = dropDown;
+
+        onLogoutClickSetup();
+    } else {
+        const noLogin =
+            `<li class="item" id="loginId">
+                <button class="upper-contacts-item" data-modal-login-open="">
+                    Log In
+                </button>
+            </li>
+            <li class="item" id="signUpId">
+                <button class="upper-contacts-item" data-modal-sign-up-open="">
+                    Sign Up
+                </button>
+            </li>
+                    `;
+        const op = document.getElementById("header-right-buttons");
+        op.innerHTML = noLogin;
+    }
+}
+
+function onLogoutClickSetup() {
+    let logout = document.getElementById("logoutid");
+    logout.onclick = function () {
+
+        window.localStorage.removeItem("Token");
+        window.localStorage.removeItem("UserId");
+
+        apiDeleteJson("auth")
+            .then(function (response) {
+                window.localStorage.removeItem("Token");
+                window.localStorage.removeItem("UserId");
+                document.location.href = "index.html";
+                /*$("#profile-name").remove();
+                $("#logoutid").remove();
+
+                let loginButtons  = '<li class="item" id="loginId">\n' +
+                    '                <button class="upper-contacts-item" data-modal-login-open>\n' +
+                    '                    Log In\n' +
+                    '                </button>\n' +
+                    '            </li>\n' +
+                    '            <li class="item" id="signUpId">\n' +
+                    '                <button class="upper-contacts-item" data-modal-login-open>\n' +
+                    '                    Sign Up\n' +
+                    '                </button>\n' +
+                    '            </li>'
+
+                const op = document.getElementById("header-right-buttons");
+                op.innerHTML = loginButtons;*/
+
+                console.log("Success: ", response);
+            })
+            .catch(function (err) {
+                console.log("Error: ", err);
+            });
+    };
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     function loadProfile() {
         apiGetJson("dreams")
@@ -58,38 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
     }
 
-    //Обновить данные логина  в header-е
-    function updateLoginDataInHeader() {
-        let token = window.localStorage.getItem("Token");
-        let userName = window.localStorage.getItem("UserName");
-
-        if (token != null && userName != null) {
-            $("#profile-name").remove();
-            $("#logoutid").remove();
-
-
-            const dropDown = `<li class="item" id="profile-name">
-									<a href="profile.html#btn_myDream" class="upper-contacts-item">
-										${userName}
-									</a>
-								</li>
-								<li class="item" id="logoutid">
-									<button class="upper-contacts-item" title="Log out">
-										<svg class="upper-contacts-svg-two upper-contacts-svg">
-											<use href="./images/sprite.svg#exit"></use>
-										</svg>
-									</button>
-								</li>
-								`;
-
-            //$("#headerSectionRight").append(dropDown);
-
-            const op = document.getElementById("header-right-buttons");
-            op.innerHTML = dropDown;
-
-            onLogoutClickSetup()
-        }
-    }
 
     //Показать имя пользователя и кнопку Log out, если пользователь авторизирован
     $(function () {
@@ -98,19 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Получить имя пользователя и вывести это в шапке
     $(function () {
-        apiGetJson("user")
-            .then(function (person) {
-                const userName = person["firstName"] + ' ' + person["lastName"]
-
-                console.log(person);
-                window.localStorage.setItem("UserId", person["id"]);
-                window.localStorage.setItem("UserName", userName);
-
-                updateLoginDataInHeader()
-            })
-            .catch(function (err) {
-                console.log("err", err);
-            });
+        updateCurrentUserInfo(updateLoginDataInHeader);
     });
 
     //отображение мечты текущего пользователя в профиле
@@ -296,42 +353,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    function onLogoutClickSetup() {
-        let logout = document.getElementById("logoutid");
-        logout.onclick = function () {
-
-            window.localStorage.removeItem("Token");
-            window.localStorage.removeItem("UserId");
-
-            apiDeleteJson("auth")
-                .then(function (response) {
-                    window.localStorage.removeItem("Token");
-                    window.localStorage.removeItem("UserId");
-                    document.location.href = "index.html";
-                    /*$("#profile-name").remove();
-                    $("#logoutid").remove();
-
-                    let loginButtons  = '<li class="item" id="loginId">\n' +
-                        '                <button class="upper-contacts-item" data-modal-login-open>\n' +
-                        '                    Log In\n' +
-                        '                </button>\n' +
-                        '            </li>\n' +
-                        '            <li class="item" id="signUpId">\n' +
-                        '                <button class="upper-contacts-item" data-modal-login-open>\n' +
-                        '                    Sign Up\n' +
-                        '                </button>\n' +
-                        '            </li>'
-
-                    const op = document.getElementById("header-right-buttons");
-                    op.innerHTML = loginButtons;*/
-
-                    console.log("Success: ", response);
-                })
-                .catch(function (err) {
-                    console.log("Error: ", err);
-                });
-        };
-    }
 
     // My investment
     function BigCard() {

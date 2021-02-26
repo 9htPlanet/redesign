@@ -20,7 +20,7 @@ function loadDreams(categories = null, page = 1) {
             let currentHref = window.location.href;
             let newData = [];
             if (currentHref.includes('index')) {
-                newData = data.slice(0, 8);
+                newData = data.slice(0, 6);
                 console.log(currentHref);
                 console.log(newData);
             } else {
@@ -31,6 +31,8 @@ function loadDreams(categories = null, page = 1) {
 
             }
             for (let key in newData) { //Потом обратотать чтобы при переходе к категориям не было ограничений
+                let getDreamId = newData[key]["id"];
+
                 //#region Шаблон карточки с переменными
                 let percent = Math.round(newData[key]['money'] * 100 / newData[key]['price'])
                 let dreamName = newData[key]['name']
@@ -51,38 +53,44 @@ function loadDreams(categories = null, page = 1) {
                     image = 'img/No_image.png';
                 }
                 let getLike = '';
-                if (newData[key]['likes'].indexOf(userId) != -1) {
+                let onLikeClick = `Dream.addLike('${getDreamId}', this)`;
+                if (newData[key]['likes'].indexOf(userId) !== -1) {
                     getLike = 'getLike';
+                    onLikeClick = `Dream.removeLike('${getDreamId}', this)`;
                 }
 
-                let getDreamId = newData[key]["id"];
                 let likesCount = newData[key].likesCount;
 
-                let cardTemplate2 = `<li class="project-info-item">
-                    <a class="project-box-link" href="donate.html?${getDreamId}" rel="noopener noreferer" href="#">
-                        <div class="project-img-box">
-                            <img src="${image}" alt=""/>
-                            <p class="project-box-desc">${dreamDescrip}</p>
-                        </div>
-                        <div class="percentscale-container">
-                            <span>100%</span>
-                            <div class="percentscale" style="width: ${percent}%"></div>
-                        </div>
+                let cardTemplate2 = `<li class="project-info-item" id="dream_card_${getDreamId}">
+                    <div class="project-box-link" rel="noopener noreferer" href="#">
+                        <a href="donate.html?${getDreamId}">
+                            <div class="project-img-box">
+                                <img src="${image}" alt=""/>
+                                <p class="project-box-desc">${dreamDescrip}</p>
+                            </div>
+                            <div class="percentscale-container">
+                                <span>100%</span>
+                                <div class="percentscale" style="width: ${percent}%"></div>
+                            </div>
+                        </a>
+                
                         <div class="project-info-box">
                             <h5 class="projecthead">${dreamName}</h5>
                             <div class="bottomline">
-                                <p class="projectdesc"><span>${dayCount}</span> days to go <br/> <span>${dollarCurrently}k</span> out of <span>${dollarNeeded}k</span></p>
-                                <button class="cardthumb ${getLike}">
+                                <p class="projectdesc"><span>${dayCount}</span> days to go <br/> <span>${dollarCurrently}k</span> out of
+                                    <span>${dollarNeeded}k</span>
+                                </p>
+                                <button class="cardthumb ${getLike}" onclick="${onLikeClick}">
                                     <span>${likesCount}</span>
                                     <svg>
                                         <use href="./img/sprite.svg#thumbs"></use>
                                     </svg>
                                 </button>
                             </div>
-
-
+                
+                
                         </div>
-                    </a>
+                    </div>
                 </li>`
 
                 // let cardTemplate = '<div class="dream-card"><div class="progress progress-bar-vertical"><div class="progress-bar" role="progressbar" aria-valuenow="' + percent + '" aria-valuemin="0" aria-valuemax="100" style="height: ' + percent + '%;"><span class="sr-only">' + percent + '% Complete</span></div></div><div class="main_info"><a href="donate.html?' + getDreamId + '"><div class="img_card"><img src="' + image + '"alt=""></div></a><div class="detail_info"><div class="dream_title">' + dreamName + '</div><div class="dream_descrip">' + dreamDescrip + '</div><div class="dream_bottom"><div class="dream_percent">' + percent + '%</div><div class="days_people"><div class="dream_days"><span>' + dayCount + '</span> days to go</div><div class="dream_people"><span>' + dollarCurrently + 'k</span> out of <span>' + dollarNeeded + 'k</span></div></div><div class="dream_location"><i class="fas fa-map-marker-alt fa-2x" data-toggle="tooltip" data-placement="bottom" title="' + dreamLocation + '"></i></div><div class="dream_like"><input type="checkbox" class="like__input"><i id="' + getDreamId + '"  title="Likes: ' + likesCount + '" class="' + getLike + ' fa-thumbs-up fa-2x like__heart"></i></div></div></div></div></div>';
@@ -96,7 +104,6 @@ function loadDreams(categories = null, page = 1) {
                 document.getElementById('dream_cards').innerHTML += temp;
             } else {
                 document.getElementById('dream_cards').innerHTML = temp;
-
             }
 
             infiniteScroll.loading = false;
@@ -108,46 +115,6 @@ function loadDreams(categories = null, page = 1) {
 
 }
 
-//Вкл/выкл лайк
-function ToggleLike() {
-    window.onclick = function (e) {
-        var elem = e ? e.target : window.event.returnValue;
-        if (elem.classList.contains("like__heart")) {
-            if (elem.classList.contains("far")) {
-                PutLikeToDream(elem);
-            }
-            if (elem.classList.contains("fas")) {
-                RemoveLikeToDream(elem);
-            }
-        }
-    }
-}
-
-function PutLikeToDream(elem) {
-    apiPutJson(`dreams/${elem.id}/like`)
-        .then(function (response) {
-            console.log("Put like response", response);
-            elem.classList.remove("far");
-            elem.classList.add("fas");
-        })
-        .catch(function (err) {
-            console.log("Put like error", err);
-        });
-}
-
-function RemoveLikeToDream(elem) {
-    apiDelete(`dreams/${elem.id}/like`)
-        .then(function (response) {
-            console.log("Remove like response", response);
-            elem.classList.remove("fas");
-            elem.classList.add("far");
-
-        })
-        .catch(function (err) {
-            console.log("Remove like error", err);
-        });
-}
-
 $('document').ready(function () {
     let categories = null
 
@@ -157,7 +124,6 @@ $('document').ready(function () {
         categories = urlParams.get('categories');
     }
     loadDreams(categories);
-    ToggleLike();
 });
 
 
