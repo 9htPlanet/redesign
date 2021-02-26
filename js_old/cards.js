@@ -48,7 +48,7 @@ function loadDreams(categories = null, page = 1) {
                 let dreamLocation = newData[key]['city']['names']['en-us']
                 let image = '';
                 try {
-                    image = newData[key]['photos'][0]['sizes']['medium'];
+                    image = newData[key]['photos'][0]['sizes']['small'];
                 } catch (error) {
                     image = 'img/No_image.png';
                 }
