@@ -1779,6 +1779,7 @@ select {
 .project-info-box {
   padding: 20px 24px;
   border: 1px solid #eeeeee;
+  cursor: auto;
 }
 
 .projecthead {

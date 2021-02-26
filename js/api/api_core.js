@@ -83,7 +83,7 @@ async function api(patch, method, formParams = null, file = null, requireAuth = 
     const url = new URL(API_PATCH + patch)
     url.search = new URLSearchParams(queryParams).toString();
 
-    const response = await fetch(API_PATCH + patch, params)
+    const response = await fetch(url.toString(), params)
 
     if (response.status === 401) {
         window.localStorage.clear()
