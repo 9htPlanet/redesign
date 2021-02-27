@@ -79,6 +79,8 @@ function setupButtonsToCategory(categories) {
 }
 
 $('document').ready(function () {
+    initLoadCategories();
+
     infiniteScroll.initScroll()
     $(".category-button").click(function (data) {
         const category = data.target.id.split("btn_").join("")
@@ -105,3 +107,15 @@ $('document').ready(function () {
         processCategory(categories)
     });
 });
+
+function initLoadCategories() {
+
+    let categories = null
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (window.location.href.indexOf("categories.html") > -1) {
+        categories = urlParams.get('categories');
+    }
+    loadDreams(categories);
+}
