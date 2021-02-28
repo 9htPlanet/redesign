@@ -25,7 +25,7 @@ function updateLoginDataInHeader() {
 
 
         const dropDown = `<li class="item" id="profile-name">
-									<a href="profile.html#btn_myDream" class="upper-contacts-item">
+									<a href="profile.html" class="upper-contacts-item">
 										${userName}
 									</a>
 								</li>

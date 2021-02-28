@@ -283,19 +283,20 @@
             <h1></h1>
             <ul class="project-button-group">
                 <li class="project-button-item">
-                    <a class="projectbutton category-button" href="#btn_myDream" type="button">Profile</a>
+                    <button class="projectbutton category-button" id="button_profile" type="button">Profile</button>
                 </li>
                 <li class="project-button-item">
-                    <a class="projectbutton category-button" href="#btn_tracing" type="button">Tracing</a>
+                    <button class="projectbutton category-button" id="button_tracing" type="button">Tracing</button>
                 </li>
                 <li class="project-button-item">
-                    <a class="projectbutton category-button" href="#btn_myInvest" type="button">My investment</a>
+                    <button class="projectbutton category-button" id="button_investments" type="button">My investment
+                    </button>
                 </li>
             </ul>
 
             <ul class="projects-info">
                 <div class="tabs__body">
-                    <div class="tabs__block" id="btn_myDream">
+                    <div class="tabs__block" id="tab_profile">
                         <section class="ourprojects" style="padding-top: 0">
                             <div class="container">
                                 <div class="donate-row">
@@ -368,11 +369,11 @@
                             </div>
                         </section>
                     </div>
-                    <div class="tabs__block" id="btn_tracing">
+                    <div class="tabs__block" id="tab_tracing">
                         <div class="container">
-                            <ul class="projects-info">
+                            <ul class="projects-info" id="tab_tracing_content">
                                 <li class="project-info-item">
-                                    <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
+                                    <div class="project-box-link" rel="noopener noreferer">
                                         <div class="project-img-box">
                                             <span class="shine"></span>
 
@@ -447,9 +448,9 @@
 
                         </div>
                     </div>
-                    <div class="tabs__block" id="btn_myInvest">
+                    <div class="tabs__block" id="tab_investments">
                         <div class="container">
-                            <ul class="projects-info" id="dream_cards">
+                            <ul class="projects-info" id="tab_investments_content">
                                 <li class="project-info-item">
                                     <div class="project-box-link" href="#" rel="noopener noreferer" target="_blank">
                                         <div class="project-img-box">
@@ -636,11 +637,9 @@
 <!--<script src="js_old/bootstrap.min.js"></script>-->
 <script src="js_old/infiniteScroll.js"></script>
 <script src="js_old/cards.js"></script>
-<script src="js_old/categories.js"></script>
 <script src="js/api/api_core.js"></script>
 <script src="js/auth_callback.js"></script>
 <!--<script src="js_old/profile.js"></script>-->
-<script src="js_old/generateFooter.js"></script>
 <!--<script src="js_old/starsBackground.js"></script>-->
 
 
