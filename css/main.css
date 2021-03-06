@@ -1683,11 +1683,10 @@ select {
 }
 
 .getLike {
-    color: #2196f3 !important;
+  color: #2196f3 !important;
 }
-
 .getLike svg {
-    fill: #2196f3 !important;
+  fill: #2196f3 !important;
 }
 
 .percentscale-container {
@@ -1958,14 +1957,14 @@ select {
   border-radius: 2px;
 }
 .donate-column-1 .slider {
-    border: 2px solid black;
-    /* width: 100%; */
-    max-width: 100%;
-    /* height: 300px; */
-    margin: 20px auto;
-    overflow: hidden;
-    position: relative;
-    max-height: 700px;
+  border: 2px solid black;
+  /* width: 100%; */
+  max-width: 100%;
+  /* height: 300px; */
+  margin: 20px auto;
+  overflow: hidden;
+  position: relative;
+  max-height: 700px;
 }
 .donate-column-1 .slider-line {
   width: 1024px;
@@ -2128,36 +2127,34 @@ select {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
-
 @media only screen and (max-width: 600px) {
-    form {
-        width: 80vw;
-    }
+  form {
+    width: 80vw;
+  }
 }
-
 .like-it, .track-it {
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: none;
-    overflow: hidden;
-    outline: none;
-    color: #757575;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  outline: none;
+  color: #757575;
 }
 
 .select-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .select-box .options-container {
-    z-index: 1;
-    position: absolute;
+  z-index: 1;
+  position: absolute;
   background: #ffffff;
   color: #212121;
   max-height: 0;
