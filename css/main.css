@@ -1956,14 +1956,12 @@ select {
   color: #eeeeee;
   text-shadow: 1px 1px 1px #2196FB;
 }
-
 .donate-column-1 .percentscale-container-donate-var2 .percentscale-donate-var2 {
   background: #2196f3;
   height: 20%;
   box-shadow: 1px 1px 8px #2196f3;
   border-radius: 2px;
 }
-
 .donate-column-1 .slider {
   border: 2px solid black;
   /* width: 100%; */
@@ -1973,7 +1971,6 @@ select {
   overflow: hidden;
   position: relative;
 }
-
 .donate-column-1 .slider-line {
   width: 1024px;
   display: flex;
@@ -1982,7 +1979,6 @@ select {
   left: 0;
   transition: all ease 1s;
 }
-
 .donate-column-1 .slider-prev, .donate-column-1 .slider-next {
   position: absolute;
   display: block;
@@ -1990,12 +1986,10 @@ select {
   height: 35px;
   cursor: pointer;
 }
-
 .donate-column-1 .slider-prev:hover,
 .donate-column-1 .slider-next:hover {
   opacity: 0.6;
 }
-
 .donate-column-1 .slider-prev {
   height: 60px;
   width: 60px;
@@ -2004,7 +1998,6 @@ select {
   background: url("../images/arrow-down_2.svg") no-repeat;
   transform: rotate(90deg);
 }
-
 .donate-column-1 .slider-next {
   height: 60px;
   width: 60px;
@@ -2019,7 +2012,6 @@ select {
   padding-left: 0;
   padding-top: 15px;
 }
-
 @media (min-width: 480px) {
   .donate-column-2 {
     padding-left: 0;
@@ -2068,7 +2060,6 @@ select {
   text-align: left;
   margin-bottom: 28px;
 }
-
 .donate-column-3 p {
   line-height: 36px;
   padding-bottom: 64px;
@@ -2136,7 +2127,6 @@ select {
     transform: rotate(360deg);
   }
 }
-
 @keyframes loading {
   0% {
     -webkit-transform: rotate(0deg);
@@ -2147,13 +2137,11 @@ select {
     transform: rotate(360deg);
   }
 }
-
 @media only screen and (max-width: 600px) {
   form {
     width: 80vw;
   }
 }
-
 .select-box {
   position: relative;
   display: flex;
