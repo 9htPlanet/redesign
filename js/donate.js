@@ -1,5 +1,4 @@
 function fillCurrentDream(data) {
-    console.log(data)
     let percent = Math.round(data['money'] * 100 / data['price'])
     let dreamDescrip = data['infoAboutDream'];
     let aboutAuthor = data['infoAboutYourself'];
@@ -7,22 +6,18 @@ function fillCurrentDream(data) {
     if (dayCount < 0) {
         dayCount = '0';
     }
+    Dream.changeContentForExpiredDream(dayCount);
     let moneyRound = Math.round(data['money'] / 100000, 1);
     let priceRound = Math.round(data['price'] / 100000, 1);
     let dollarCurrently = (moneyRound).toString().replace('.', ',');
     let dollarNeeded = (priceRound).toString().replace('.', ',');
     let dreamLocation = data['city']['names']['en-us']
     let image = '';
-    console.log(data['photos'].length)
     for (let i = 0; i < data['photos'].length; i++) {
         try {
-            //image += data['photos'][0]['sizes']['medium'];
-            let div = document.createElement('div');
-            div.className = 'swiper-slide';
             let img = document.createElement('img');
             img.src = data['photos'][i]['sizes']['medium'];
-            div.appendChild(img);
-            document.getElementsByClassName('swiper-wrapper')[0].appendChild(div);
+            document.getElementsByClassName('slider-line')[0].appendChild(img);
         } catch (error) {
 
             image += 'img/No_image.png';
@@ -56,6 +51,8 @@ function fillCurrentDream(data) {
 
     document.getElementById('donate_dream_name').innerHTML = data['name'];
     document.getElementById('donate_dream_percent').innerHTML = percent + "%";
+    document.getElementsByClassName('percentscale-donate')[0].style.width = percent + "%";
+
     document.getElementById('donate_dream_count_day').innerHTML = dayCount;
     document.getElementById('donate_dream_count_backer').innerHTML = backers;
     document.getElementById('donate_dream_count_money').innerHTML = dollarCurrently + "k";
@@ -64,7 +61,7 @@ function fillCurrentDream(data) {
     document.getElementById('donate_dream_like').innerHTML = getLikeCount;
     // document.getElementById('donate_dream_photo').src =image;
     // document.getElementById('donate_dream_photo-var-2_1').src = data['photos'][0]['sizes']['medium'];
-    document.getElementsByClassName('percentscale-donate-var2')[0].setAttribute("style", "height:" + percent + "%;");
+    // document.getElementsByClassName('percentscale-donate-var2')[0].setAttribute("style", "height:" + percent + "%;");
     // document.getElementById('donate_dream_like').innerHTML =getLikeCount;
 
     document.getElementById('donate_dream_about_author').innerHTML = aboutAuthor;
@@ -75,33 +72,23 @@ function fillCurrentDream(data) {
 
     document.getElementById('track_button').setAttribute("onclick", onFavoriteClick)
 
-
-    let swiper = new Swiper('.swiper-container', {
-        spaceBetween: 10,
-        effect: 'fade',
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
 }
 
 function GetDreamById(dreamId) {
     let getFullPathDream = "dreams/" + dreamId;
-    console.log(getFullPathDream)
 
     apiGetJson(getFullPathDream)
         .then(function (data) {
             fillCurrentDream(data)
+            // let dayCount = Dream.diffDates(new Date(data['expirationTime']), new Date());
+            // Dream.changeContentForExpiredDream(dayCount);
+
         })
         .catch(function (err) {
             console.log("GetDreamWithToken Error", err);
         });
 }
+
 
 $('document').ready(function () {
     let getDreamId = window.location.href.toString().split('.html?')[1];

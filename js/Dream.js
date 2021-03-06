@@ -143,7 +143,7 @@ class Dream {
         document.getElementById('donate_dream_like').innerHTML = getLikeCount;
         // document.getElementById('donate_dream_photo').src =image;
         // document.getElementById('donate_dream_photo-var-2_1').src = data['photos'][0]['sizes']['medium'];
-        document.getElementsByClassName('percentscale-donate-var2')[0].setAttribute("style", "height:" + percent + "%;");
+        document.getElementsByClassName('percentscale-donate')[0].setAttribute("style", "height:" + percent + "%;");
         // document.getElementById('donate_dream_like').innerHTML =getLikeCount;
 
         document.getElementById('donate_dream_about_author').innerHTML = aboutAuthor;
@@ -165,13 +165,20 @@ class Dream {
         });
     }
 
-    static fillCurrentDreamWithShimmer(dataList) {
-        let data = dataList[0];
+    static fillCurrentDreamWithShimmer(dataSrc) {
+        let data = "";
+        if (Array.isArray(dataSrc)) {
+            data = dataSrc[dataSrc.length - 1]
+        } else {
+            data = dataSrc;
+        }
         let percent = Math.round(data['money'] * 100 / data['price'])
 
         //Доллары
-        let moneyRound = Math.round(data['money'] / 100000, 1);
-        let priceRound = Math.round(data['price'] / 100000, 1);
+        let moneyRound = Math.round(data['money'] / 100, 1);
+        let priceRound = Math.round(data['price'] / 100, 1);
+        console.log(data)
+        console.log(moneyRound)
         let dollarCurrently = (moneyRound).toString().replace('.', ',');
         let dollarNeeded = (priceRound).toString().replace('.', ',');
         let dollarCurrentlyHTML = `<span>${dollarCurrently}k
@@ -183,6 +190,9 @@ class Dream {
         if (dayCount < 0) {
             dayCount = '0';
         }
+
+        Dream.changeContentForExpiredDream(dayCount);
+
         let daysHTML = `<span>${dayCount}</span> days to go`
         document.getElementById('donate_dream_count_day').innerHTML = daysHTML;
 
@@ -220,27 +230,26 @@ class Dream {
             onFavoriteClick = `Dream.removeFromFavorites('${getDreamId}', this)`;
         }
 
-        let likesHTML = `<button class="like-it ${getLike}" onclick="${onLikeClick}">
+        let likesHTML = `<a class="like-it ${getLike}" onclick="${onLikeClick}">
                             <svg class="footer-social-icons-svg">
                                 <use href="./img/sprite.svg#thumbs"></use>
                             </svg>
                             <span>${getLikeCount}</span> Like It
-                         </button>
+                         </a>
 
-                        <button class="track-it ${getFavorite}" onclick="${onFavoriteClick}">
+                        <a class="track-it ${getFavorite}" onclick="${onFavoriteClick}">
                             <svg class="footer-social-icons-svg">
                                 <use href="./images/sprite.svg#trackIt"></use>
                             </svg>
                             <span>Track It</span>
-                        </button>`
+                        </a>`
         document.getElementById('donate_dream_like').innerHTML = likesHTML;
 
 
         //Имя мечты
         document.getElementById('donate_dream_name').innerHTML = data['name'];
         //Процент мечты
-        document.getElementById('donate_dream_percent').innerHTML = percent + "%";
-
+        document.getElementsByClassName('percentscale-donate')[0].style.width = percent + "%";
         //Подгрузка кнопки и значков соц сетей
         document.getElementById('backIt_id').classList.remove("shine");
 
@@ -281,69 +290,53 @@ class Dream {
         document.getElementById('donate_dream_about_author').innerHTML = aboutAuthor;
         document.getElementById('aboutDream_id').innerHTML = "Dream information";
         document.getElementById('donate_dream_about_dream').innerHTML = dreamDescrip;
+        document.getElementById('donate_dream_percent').innerHTML = percent + "%";
 
 
-        //Загрузка изображений
         let teplateForImg = `
-                         <div class="swiper-container">
-                            <div class="swiper-wrapper">
-
-                            </div>
-                            <!-- Add Pagination -->
-                            <div class="swiper-pagination"></div>
-                            <!-- Add Arrows -->
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                         <div class="slider">
+                            <div class="slider-line"></div>
                         </div>
-
-
-                        <div class="percentscale-container-donate-var2">
-                            <div class="percentscale-donate-var2"></div>
-                        </div>`
-        let image = '';
+                        <div class="slider-prev"></div>
+                        <div class="slider-next"></div>`
 
         document.getElementById('donate_img_id').innerHTML = teplateForImg;
-        document.getElementsByClassName('percentscale-donate-var2')[0].setAttribute("style", "height:" + percent + "%;");
+        let getPercentScale = document.getElementsByClassName('percentscale-container-donate')[0];
+        if (getPercentScale.classList.contains('hidden')) {
+            getPercentScale.classList.remove('hidden');
+        }
 
+
+        let image = '';
         for (let i = 0; i < data['photos'].length; i++) {
             try {
-                //image += data['photos'][0]['sizes']['medium'];
-                let div = document.createElement('div');
-                div.className = 'swiper-slide';
                 let img = document.createElement('img');
                 img.src = data['photos'][i]['sizes']['medium'];
-                div.appendChild(img);
-                document.getElementsByClassName('swiper-wrapper')[0].appendChild(div);
+                document.getElementsByClassName('slider-line')[0].appendChild(img);
             } catch (error) {
 
                 image += 'img/No_image.png';
             }
 
         }
-
-
-        let swiper = new Swiper('.swiper-container', {
-            spaceBetween: 10,
-            effect: 'fade',
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
     }
 
     static getMyDreamWithShimmer() {
         apiGetJson("dreams/my")
             .then(function (data) {
-                Dream.fillCurrentDreamWithShimmer(data)
+                Dream.fillCurrentDreamWithShimmer(data);
+
             })
             .catch(function (err) {
                 console.log("GetDreamWithToken Error", err);
             });
+    }
+
+
+    static changeContentForExpiredDream(dreamStatus) {
+        if (dreamStatus <= 0) {
+            document.getElementById("paymentForm_id").innerHTML = "Sorry, this dream is expired. Select another dream."
+        }
     }
 
 
