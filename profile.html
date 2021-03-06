@@ -192,7 +192,7 @@
                         <use href="./images/sprite.svg#btnclose"></use>
                     </svg>
                 </button>
-                <div class="fieldset">
+                <div class="fieldset" id="paymentForm_id">
 
                     <form class="service-order" id="payment-form">
 
@@ -303,6 +303,10 @@
                                     <div class="donate-column-1">
                                         <div class="donate-img" id="donate_img_id" style="width: 100%">
                                             <span class="shine img_shine"></span>
+                                        </div>
+
+                                        <div class="percentscale-container-donate hidden">
+                                            <div class="percentscale-donate"></div>
                                         </div>
 
 
@@ -630,22 +634,22 @@
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script> -->
 <script crossorigin="anonymous "
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
         src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "></script>
-<!--<script src="js_old/bootstrap.min.js"></script>-->
 <script src="js_old/infiniteScroll.js"></script>
 <script src="js_old/cards.js"></script>
 <script src="js/api/api_core.js"></script>
 <script src="js/auth_callback.js"></script>
-<!--<script src="js_old/profile.js"></script>-->
-<!--<script src="js_old/starsBackground.js"></script>-->
 
+<script src="https://js.stripe.com/v3/"></script>
 
 <script src="js/Dream.js"></script>
+<!--<script src="js/donate.js"></script>-->
 <script src="js/profile.js"></script>
-<!--<script src="js/slider.js"></script>-->
+<script src="js/slider.js"></script>
+<script src="js/payment.js"></script>
+
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Portfolio</title>
+    <title>Donate</title>
     <link
             href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Roboto:wght@400;500;700;900&display=swap"
             rel="stylesheet"
@@ -64,7 +64,7 @@
                         <use href="./images/sprite.svg#btnclose"></use>
                     </svg>
                 </button>
-                <div class="fieldset">
+                <div class="fieldset" id="paymentForm_id">
 
                     <form class="service-order" id="payment-form">
 
@@ -73,17 +73,17 @@
                             <div class="field form-field-card" id="card-element">
                                 <!--Stripe.js injects the Card Element--></div>
                         </div>
-                       <div class="form-field">
-                           <label class="field-label" for="donate_count">Amount:</label>
-                           <div class="form-field-amount">
-                               <div class="form-field-amount-left">
-                                   <input class="field" id="donate_count" name="pass" type="text"/>
-                                   <svg class="service-order-svg">
-                                       <use href="./images/sprite.svg#dollar"></use>
-                                   </svg>
-                               </div>
-                               <div class="form-field-amount-right">
-                                   <span class="form-field-amount-right-cad">CAD</span>
+                        <div class="form-field">
+                            <label class="field-label" for="donate_count">Amount:</label>
+                            <div class="form-field-amount">
+                                <div class="form-field-amount-left">
+                                    <input class="field" id="donate_count" name="pass" type="text"/>
+                                    <svg class="service-order-svg">
+                                        <use href="./images/sprite.svg#dollar"></use>
+                                    </svg>
+                                </div>
+                                <div class="form-field-amount-right">
+                                    <span class="form-field-amount-right-cad">CAD</span>
                                     <a class="form-field-amount-right-full-money" id="fullPaymentButtonId"
                                        type="button">Full money</a>
                                 </div>
@@ -154,24 +154,17 @@
         <div class="container">
             <div class="donate-row">
                 <div class="donate-column-1">
-                    <div class="donate-img" style="width: 100%">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-
-                            </div>
-                            <!-- Add Pagination -->
-                            <div class="swiper-pagination"></div>
-                            <!-- Add Arrows -->
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                    <div class="donate-img" id="donate_img_id">
+                        <div class="slider">
+                            <div class="slider-line"></div>
                         </div>
 
-
-                        <div class="percentscale-container-donate-var2">
-                            <div class="percentscale-donate-var2"></div>
-                        </div>
+                        <div class="slider-prev"></div>
+                        <div class="slider-next"></div>
                     </div>
-
+                    <div class="percentscale-container-donate">
+                        <div class="percentscale-donate"></div>
+                    </div>
 
                     <div class="line-under-img">
                         <div class="donate-location">
@@ -181,7 +174,7 @@
                             <span id="donate_dream_location"></span>
                         </div>
                         <div class="donate-like-track">
-                            <button id="donate_like_button">
+                            <button class="like-it" id="donate_like_button">
                                 <svg class="footer-social-icons-svg">
                                     <use href="./img/sprite.svg#thumbs"></use>
                                 </svg>
@@ -209,39 +202,6 @@
                     <p><span id="donate_dream_count_backer"></span> backers</p>
                     <p><span id="donate_dream_count_day"></span> days to go</p>
                     <a class="herobutton donate-btn" data-modal-back-it-open type="button">Back It</a>
-                    <div class="donate-group-btn">
-                        <ul class="list-footer-social-icons">
-                            <li class="footer-social-icons-item">
-                                <a
-                                        class="footer-social-icons-link"
-                                        href="https://twitter.com/"
-                                        target="_blank"
-                                        rel="noopener noreferer"
-                                        aria-label="Twitter"
-                                >
-                                    <svg class="footer-social-icons-svg">
-                                        <use href="./images/sprite.svg#twitter"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                            <li class="footer-social-icons-item">
-                                <a
-                                        class="footer-social-icons-link"
-                                        href="https://facebook.com/"
-                                        target="_blank"
-                                        rel="noopener noreferer"
-                                        aria-label="Facebook"
-                                >
-                                    <svg class="footer-social-icons-svg">
-                                        <use href="./images/sprite.svg#facebook"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-
-
-                    </div>
-
 
                 </div>
                 <div class="donate-column-3">
@@ -365,7 +325,7 @@
 <script src="js/Dream.js"></script>
 <script src="js/donate.js"></script>
 <script src="js/payment.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<!--<script src="js/slider.js"></script>-->
+<!--<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>-->
+<script src="js/slider.js"></script>
 </body>
 </html>

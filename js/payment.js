@@ -45,17 +45,6 @@ function calc(input) {
 
 function getMoneyById(dreamId) {
     let getFullPathDream = "dreams/" + dreamId;
-
-    $.getJSON(getFullPathDream, function (data) {
-        let balance = data["price"] - data["money"];
-        let input = document.getElementById("donate_count");
-        input.value = balance / 1000;
-        calc(input);
-    });
-}
-
-function getMoneyById2(dreamId) {
-    let getFullPathDream = "dreams/" + dreamId;
     let money = 0;
 
     apiGetJson(getFullPathDream)
@@ -66,35 +55,42 @@ function getMoneyById2(dreamId) {
     return money;
 }
 
-function fillMoney(dreamId) {
-    window.onclick = function (e) {
-        var elem = e ? e.target : window.event.returnValue;
-        if (elem.id === "fullPaymentButtonId") {
-            getMoneyById(dreamId);
-        }
-    };
-}
-
-function fillMoney2(balance) {
+function fillMoney(balance) {
     window.onclick = function (e) {
         var elem = e ? e.target : window.event.returnValue;
         if (elem.id === "fullPaymentButtonId") {
             let input = document.getElementById("donate_count");
             input.value = balance;
-            let calc = calc(input);
+            calc(input);
         }
     };
 }
 
 $("document").ready(function () {
     let getDreamId = window.location.href.toString().split(".html?")[1];
-    let getFullPathDream = "dreams/" + getDreamId;
+    console.log(getDreamId);
+    let getFullPathDream = "";
+
+    if (getDreamId == 'profile' || getDreamId == null) {
+        getFullPathDream = "dreams/my";
+    } else {
+        getFullPathDream = "dreams/" + getDreamId;
+    }
 
     apiGetJson(getFullPathDream)
-        .then(function (data) {
+        .then(function (dataSrc) {
+
+            let data = "";
+            if (Array.isArray(dataSrc)) {
+                data = dataSrc[dataSrc.length - 1]
+            } else {
+                data = dataSrc;
+            }
+            // console.log(Array.isArray(data))
             let balance = data["price"] - data["money"];
-            let money123 = balance / 1000;
-            fillMoney2(money123);
+            let money123 = balance / 100;
+            console.log(data["price"]);
+            fillMoney(money123);
             calculatePayment(money123);
             let input = document.getElementById("donate_count");
             input.setAttribute("max", money123);

@@ -61,6 +61,7 @@ $('document').ready(function () {
         processPage(category)
     });
 
+
 });
 
 function loadCards(category) {
