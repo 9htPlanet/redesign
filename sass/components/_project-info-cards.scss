@@ -94,24 +94,32 @@
   }
 }
 
+//.getLike {
+//  span {
+//    color: $hover-button-color;
+//  }
+//
+//  svg {
+//    fill: $hover-button-color;
+//  }
+//
+//  &:hover,
+//  &:focus {
+//    span {
+//      color: $hover-button-color;
+//    }
+//
+//    svg {
+//      fill: $hover-button-color;
+//    }
+//  }
+//}
+
 .getLike {
-  span {
-    color: $hover-button-color;
-  }
+  color: $hover-button-color !important;
 
   svg {
-    fill: $hover-button-color;
-  }
-
-  &:hover,
-  &:focus {
-    span {
-      color: $hover-button-color;
-    }
-
-    svg {
-      fill: $hover-button-color;
-    }
+    fill: $hover-button-color !important;
   }
 }
 
