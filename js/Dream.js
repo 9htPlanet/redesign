@@ -172,7 +172,13 @@ class Dream {
         } else {
             data = dataSrc;
         }
-        let percent = Math.round(data['money'] * 100 / data['price'])
+
+        if (!data) {
+            document.querySelector(`#tab_profile`).innerHTML = getEmptyContent("")
+            return
+        }
+
+        let percent = Math.round(data['money'] * 100 / data['price']);
 
         //Доллары
         let moneyRound = Math.round(data['money'] / 100, 1);

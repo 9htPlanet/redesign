@@ -25,8 +25,7 @@
             <ul class="site-nav">
                 <!--                <li class="site-nav-item"><a href="./index.html" class="link current">Home</a></li>-->
                 <li class="site-nav-item"><a class="link" href="./categories.html">Categories</a></li>
-                <li class="site-nav-item"><a href="" class="link">Reviews</a></li>
-                <li class="site-nav-item"><a href="" class="link">Team</a></li>
+                <li class="site-nav-item"><a class="link" href="./index.html#team">Team</a></li>
             </ul>
             <button
                     type="button"
@@ -44,19 +43,19 @@
 
         <ul class="upper-contacts" id="header-right-buttons">
             <li class="item" id="loginId">
-                <button class="upper-contacts-item" data-modal-login-open>
+                <button class="upper-contacts-item" onclick="toggleModalLogin()">
                     Log In
                 </button>
             </li>
             <li class="item" id="signUpId">
-                <button class="upper-contacts-item" data-modal-sign-up-open>
+                <button class="upper-contacts-item" onclick="toggleModalSignUp()">
                     Sign Up
                 </button>
             </li>
         </ul>
         <div class="backdrop is-hidden" data-modal-login>
             <div class="modal">
-                <button class="btn-close" data-modal-login-close>
+                <button class="btn-close" onclick="toggleModalLogin()">
                     <svg class="close-btn-svg">
                         <use href="./images/sprite.svg#btnclose"></use>
                     </svg>
@@ -95,7 +94,7 @@
 
         <div class="backdrop is-hidden" data-modal-sign-up>
             <div class="modal">
-                <button class="btn-close" data-modal-sign-up-close>
+                <button class="btn-close" onclick="toggleModalSignUp()">
                     <svg class="close-btn-svg">
                         <use href="./images/sprite.svg#btnclose"></use>
                     </svg>
@@ -192,12 +191,12 @@
             <li class="mobile-menu-item">
                 <a href="./index.html" class="mobile-link mobile-current">Home</a>
             </li>
-            <li class="mobile-menu-item"><a href="./portfolio.html" class="mobile-link">Categories</a></li>
-            <li class="mobile-menu-item"><a href="" class="mobile-link">Контакты</a></li>
+            <li class="mobile-menu-item"><a class="mobile-link" href="./categories.html">Categories</a></li>
+            <li class="mobile-menu-item"><a class="mobile-link" href="./index.html#team">Team</a></li>
         </ul>
 
         <ul class="list mobile-contacts">
-            <li class="mobile-contacts-item">
+            <!--<li class="mobile-contacts-item">
                 <a href="mailto:info@devstudio.com" class="mobile-contacts-item"
                 >
                     <svg class="mobile-contacts-svg-one mobile-contacts-svg">
@@ -215,7 +214,7 @@
                     >
                     +38 096 111 11 11</a
                 >
-            </li>
+            </li>-->
         </ul>
     </div>
 </header>
@@ -227,13 +226,14 @@
                 9th Planet - Is A Unique Alternative World Where The Relations Of The Society Are Built And Concentrated
                 Not On Profit Or Oil Prices, But Only On Gratuitous Help To People In Realization Of Their Dreams.
             </h1>
-            <button class="herobutton" data-modal-start-dream-open id="start_dream_button" type="button">Start Dream
+            <button class="herobutton" id="start_dream_button" onclick="toggleModalStartDream()" type="button">Start
+                Dream
             </button>
 
             <!--            Open modal Start Dream-->
             <div class="backdrop is-hidden" data-modal-start-dream>
                 <div class="modal">
-                    <button class="btn-close" data-modal-start-dream-close>
+                    <button class="btn-close" onclick="toggleModalStartDream()">
                         <svg class="close-btn-svg">
                             <use href="./images/sprite.svg#btnclose"></use>
                         </svg>
@@ -599,7 +599,7 @@
 
         </div>
     </section>
-    <section class="team">
+    <section class="team" id="team">
         <div class="container">
             <h2 class="teamheader">Our team</h2>
             <ul class="flex-container">
@@ -940,37 +940,25 @@
     </div>
 </footer>
 
+<!--Required scripts for all pages-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
 <script src="js/api/api_core.js"></script>
-<script src="js_old/infiniteScroll.js"></script>
 <script src="js/auth_callback.js"></script>
-<script src="js/Dream.js"></script>
-
 <script src="./js/menu.js"></script>
 <script src="./js/modal.js"></script>
-
-
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>-->
-<script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
-        crossorigin="anonymous ">
-
-</script>
-
 <script src="js/startDream.js"></script>
 <script src="js/startDreamSelectBox.js"></script>
 <script src="js/dropzone.js"></script>
 <script src="js/startDreamUploadPhoto.js"></script>
 
-<script src="js_old/bootstrap.min.js "></script>
-<script src="js_old/toTop.js "></script>
+<!--Files for this particular page-->
+<!--Infinite Scroll for cards-->
+<!--<script src="js_old/infiniteScroll.js"></script>-->
+<!--<script src="js/Dream.js"></script>-->
 <script src="js_old/cards.js "></script>
 <script src="js_old/sign_up.js "></script>
 <script src="js_old/profile.js"></script>
 <script src="js_old/main.js"></script>
-
 <script src="js/index_page.js"></script>
 
 <!-- <script src="js/loadMoreDreams.js"></script> -->
