@@ -2122,7 +2122,6 @@ select {
     transform: rotate(360deg);
   }
 }
-
 @keyframes loading {
   0% {
     -webkit-transform: rotate(0deg);
@@ -2133,7 +2132,6 @@ select {
     transform: rotate(360deg);
   }
 }
-
 @media only screen and (max-width: 600px) {
   form {
     width: 80vw;

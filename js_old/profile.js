@@ -47,12 +47,12 @@ function updateLoginDataInHeader() {
     } else {
         const noLogin =
             `<li class="item" id="loginId">
-                <button class="upper-contacts-item" data-modal-login-open="">
+                <button class="upper-contacts-item" onclick="toggleModalLogin()">
                     Log In
                 </button>
             </li>
             <li class="item" id="signUpId">
-                <button class="upper-contacts-item" data-modal-sign-up-open="">
+                <button class="upper-contacts-item" onclick="toggleModalSignUp()">
                     Sign Up
                 </button>
             </li>

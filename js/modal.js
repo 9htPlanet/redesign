@@ -1,26 +1,9 @@
-// const refs = {
-//     openModalBtn: document.querySelector('[data-modal-open]'),
-//     closeModalBtn: document.querySelector('[data-modal-close]'),
-//     modal: document.querySelector('[data-modal]'),
-// };
-//
-// refs.openModalBtn.addEventListener('click', toggleModal);
-// refs.closeModalBtn.addEventListener('click', toggleModal);
-//
-// function toggleModal() {
-//     refs.modal.classList.toggle('is-hidden');
-// }
-
-
 //open login
 const refsLogin = {
     openModalBtn: document.querySelector('[data-modal-login-open]'),
     closeModalBtn: document.querySelector('[data-modal-login-close]'),
     modal: document.querySelector('[data-modal-login]'),
 };
-
-refsLogin.openModalBtn.addEventListener('click', toggleModalLogin);
-refsLogin.closeModalBtn.addEventListener('click', toggleModalLogin);
 
 function toggleModalLogin() {
     refsLogin.modal.classList.toggle('is-hidden');
@@ -38,9 +21,6 @@ const refsSignUp = {
     modal: document.querySelector('[data-modal-sign-up]'),
 };
 
-refsSignUp.openModalBtn.addEventListener('click', toggleModalSignUp);
-refsSignUp.closeModalBtn.addEventListener('click', toggleModalSignUp);
-
 function toggleModalSignUp() {
     refsSignUp.modal.classList.toggle('is-hidden');
     setTimeout(() => {
@@ -50,11 +30,6 @@ function toggleModalSignUp() {
     }, 2000);
 }
 
-function switchFromLoginToSignUp() {
-    //при переключении между окнами очередь из callback-ов не трогаем
-
-}
-
 
 //open start dream
 const refsStartDream = {
@@ -62,9 +37,6 @@ const refsStartDream = {
     closeModalBtn: document.querySelector('[data-modal-start-dream-close]'),
     modal: document.querySelector('[data-modal-start-dream]'),
 };
-
-refsStartDream.openModalBtn.addEventListener('click', toggleModalStartDream);
-refsStartDream.closeModalBtn.addEventListener('click', toggleModalStartDream);
 
 function toggleModalStartDream() {
     ifAuth(() => refsStartDream.modal.classList.toggle('is-hidden'))

@@ -36,13 +36,12 @@ $("document").ready(function () {
         }
 
 
-        apiPost("dreams", params)
-            .then((request) => {
-                if (request.readyState === 4 && request.status === 200) {
-                    location.href = 'donate.html?' + request.responseText["id"];
-                    console.log(request.responseText["id"]);
+        apiPostJson("dreams", params)
+            .then((response) => {
+                if (!response.errorMessage) {
+                    location.href = 'profile.html'
                 } else {
-                    document.getElementById("server_response_id").innerHTML = request.responseText;
+                    document.getElementById("server_response_id").innerHTML = response.errorMessage;
                 }
             })
 

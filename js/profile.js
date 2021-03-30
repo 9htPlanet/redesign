@@ -254,6 +254,8 @@ function getEmptyContent(category) {
         emptyDescription = "You don't follow any dreams yet 🐣";
     } else if (category === "investments") {
         emptyDescription = "You have not invested anywhere yet 🦉";
+    } else {
+        emptyDescription = "You haven't got a dream yet 🦔 <br/><br/><button class='projectbutton' onclick='toggleModalStartDream()'>Create a dream now!</button>"
     }
 
     return `<div class="container"><h1 class="empty_dream_block">${emptyDescription}</h1></div>`;
