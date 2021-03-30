@@ -7,15 +7,10 @@ window.onload = () => {
 
         function init() {
             width = document.querySelector('.slider').offsetWidth;
-            // let height = document.querySelector('.slider').offsetHeight/2;
-            // document.getElementsByClassName("slider-prev")[0].style.top = height.toString() + "px";
-            // console.log(prev)
-            sliderLine.style.width = width * images.length + 'px';
-            images.forEach(item => {
-                item.style.width = width + 'px';
-                // item.style.height = 'auto';
-            });
             rollSlider();
+            imgByCenter();
+
+
         }
 
         init();
@@ -40,6 +35,20 @@ window.onload = () => {
         function rollSlider() {
             sliderLine.style.transform = 'translate(-' + count * width + 'px)';
 
+        }
+
+        function imgByCenter() {
+            for (let i = 0; i < images.length; i++) {
+                let prevDifference;
+                let currentDifference = (width - images[i].width) / 2;
+                if (images[i - 1] == null) {
+                    images[i].style.marginLeft = currentDifference + "px";
+                } else {
+                    prevDifference = (width - images[i - 1].width) / 2;
+                    images[i].style.marginLeft = (prevDifference + currentDifference) + "px";
+                }
+
+            }
         }
     }, 0)
 }

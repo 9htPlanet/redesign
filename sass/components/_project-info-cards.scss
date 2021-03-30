@@ -94,32 +94,26 @@
   }
 }
 
-//.getLike {
-//  span {
-//    color: $hover-button-color;
-//  }
-//
-//  svg {
-//    fill: $hover-button-color;
-//  }
-//
-//  &:hover,
-//  &:focus {
-//    span {
-//      color: $hover-button-color;
-//    }
-//
-//    svg {
-//      fill: $hover-button-color;
-//    }
-//  }
-//}
-
 .getLike {
   color: $hover-button-color !important;
 
+  span {
+    color: $hover-button-color;
+  }
+
   svg {
     fill: $hover-button-color !important;
+  }
+
+  &:hover,
+  &:focus {
+    span {
+      color: $hover-button-color;
+    }
+
+    svg {
+      fill: $hover-button-color;
+    }
   }
 }
 

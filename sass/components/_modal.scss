@@ -351,6 +351,16 @@ select {
   height: 40px;
 }
 
+.result-message-success {
+  color: $success-color;
+}
+
+.error_msg-error {
+  color: $error-color;
+
+}
+
+
 //.stripe-commission{
 //  display: flex;
 //}

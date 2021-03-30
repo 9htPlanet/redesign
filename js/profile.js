@@ -18,6 +18,8 @@
 function processPage(category) {
     if (!category || category === "profile") {
         Dream.getMyDreamWithShimmer();
+        Slider.loadSlider();
+
     } else if (category === "tracing" || category === "investments") {
         loadCards(category);
     }
