@@ -147,6 +147,16 @@ function showPaymentForm(getDreamId) {
 
 // The items the customer wants to buy
 
+function resetValue() {
+    let input = document.getElementById("donate_count");
+    input.value = "";
+    let stripeComission = document.getElementById("paymentStripeId");
+    stripeComission.innerText = 0;
+    let planetComission = document.getElementById("paymentPlanetId");
+    planetComission.innerText = 0;
+    let btnText = document.getElementById("button-text");
+    btnText.innerHTML = "Pay " + 0 + " CAD";
+}
 
 // Calls stripe.confirmCardPayment
 // If the card requires authentication Stripe shows a pop-up modal to
@@ -166,6 +176,7 @@ var payWithCard = function (stripe, card, clientSecret) {
             } else {
                 // The payment succeeded!
                 orderComplete(result.paymentIntent.id);
+                resetValue();
             }
         });
 };
@@ -173,13 +184,7 @@ var payWithCard = function (stripe, card, clientSecret) {
 // Shows a success message when the payment is complete
 var orderComplete = function (paymentIntentId) {
     loading(false);
-    // document
-    //     .querySelector(".result-message")
-    //     .setAttribute(
-    //         "href",
-    //         "https://dashboard.stripe.com/test/payments/" + paymentIntentId
-    //     );
-    document.querySelector(".result-message").classList.remove("hidden");
+    document.querySelector(".result-message-success").classList.remove("hidden");
     document.querySelector("button").disabled = true;
 };
 // Show the customer the error from Stripe if their card fails to charge

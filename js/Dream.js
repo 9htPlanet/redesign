@@ -331,6 +331,7 @@ class Dream {
         apiGetJson("dreams/my")
             .then(function (data) {
                 Dream.fillCurrentDreamWithShimmer(data);
+                Slider.loadSlider();
 
             })
             .catch(function (err) {
