@@ -71,7 +71,7 @@ $("document").ready(function () {
     console.log(getDreamId);
     let getFullPathDream = "";
 
-    if (getDreamId == 'profile' || getDreamId == null) {
+    if (window.location.href.toString().includes("profile.html")) {
         getFullPathDream = "dreams/my";
     } else {
         getFullPathDream = "dreams/" + getDreamId;

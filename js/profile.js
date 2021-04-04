@@ -15,10 +15,20 @@
 
 })();
 
+const profileCategories = [
+    "profile",
+    "tracing",
+    "investments"
+]
+
 function processPage(category) {
-    if (!category || category === "profile") {
+    if (!category || !profileCategories.includes(category) || category === "profile") {
         Dream.getMyDreamWithShimmer();
-        Slider.loadSlider();
+        try {
+            Slider.loadSlider();
+        } catch (e) {
+            console.log(e)
+        }
 
     } else if (category === "tracing" || category === "investments") {
         loadCards(category);
@@ -26,7 +36,10 @@ function processPage(category) {
 }
 
 function setupButtonsToCategory(category) {
-    $(".category-button").removeClass("selected-button")
+    if (!profileCategories.includes(category)) {
+        category = "profile"
+    }
+    $(".category-button").removeClass("selected-button");
     if (!category || category === "profile") {
         $("#button_profile").toggleClass("selected-button");
     } else {
