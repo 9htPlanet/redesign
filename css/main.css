@@ -820,7 +820,7 @@ ul {
 }
 
 textarea {
-  resize: none;
+    resize: none;
     line-height: 30px !important;
     text-indent: 5px;
     padding-top: 5px !important;
@@ -849,11 +849,12 @@ select {
         padding-top: 30px;
     }
 }
+
 @media (min-width: 1200px) {
-  .description {
-    padding-top: 94px;
-    padding-bottom: 94px;
-  }
+    .description {
+        padding-top: 94px;
+        padding-bottom: 94px;
+    }
 }
 
 .aboutus {
@@ -1694,19 +1695,15 @@ select {
 .getLike {
     color: #2196f3 !important;
 }
-
 .getLike span {
     color: #2196f3;
 }
-
 .getLike svg {
     fill: #2196f3 !important;
 }
-
 .getLike:hover span, .getLike:focus span {
     color: #2196f3;
 }
-
 .getLike:hover svg, .getLike:focus svg {
     fill: #2196f3;
 }
@@ -1719,7 +1716,6 @@ select {
     border-left: 1px solid #eee;
     border-right: 1px solid #eee;
 }
-
 .percentscale-container span {
   display: none;
   position: absolute;
