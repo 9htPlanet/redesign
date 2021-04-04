@@ -3,29 +3,29 @@ $('document').ready(function () {
 
         //Вход
         $("#log_in_id").submit(function (event) {
-            logInFoo('log_in_email', 'log_in_password');
             event.preventDefault();
+            logInFoo('log_in_email', 'log_in_password');
         });
 
         $("#log_in_id_popup").submit(function (event) {
-            logInFoo('log_in_email_popup', 'log_in_password_popup');
             event.preventDefault();
+            logInFoo('log_in_email_popup', 'log_in_password_popup');
         });
 
 
         //Регистрация
         $("#sign_up_id").submit(function (event) {
-            SignUpFoo('firstName_id', 'lastName_id', 'email_id', 'sign_up_password');
             event.preventDefault();
+            signUpFoo('firstName_id', 'lastName_id', 'email_id', 'sign_up_password');
         });
 
         $("#sign_up_id_popup").submit(function (event) {
-            SignUpFoo('firstName_id_popup', 'lastName_id_popup', 'email_id_popup', 'sign_up_password_popup');
             event.preventDefault();
+            signUpFoo('firstName_id_popup', 'lastName_id_popup', 'email_id_popup', 'sign_up_password_popup');
         });
 
 
-        function SignUpFoo(firstNameId, lastNameId, emailId, signUpPasswordId) {
+        function signUpFoo(firstNameId, lastNameId, emailId, signUpPasswordId) {
             let firstName_id = document.getElementById(firstNameId).value;
             let lastName_id = document.getElementById(lastNameId).value;
             let email_id = document.getElementById(emailId).value;
@@ -57,10 +57,10 @@ $('document').ready(function () {
                                 updateCurrentUserInfo()
                                 AuthCallbacks.executeCallbacks()
                             } else {
-                                document.location.href = "profile.html";
+                                document.location.reload();
                             }
                         } else {
-                            $('.error_msg').html(data['errorMessage']);
+                            $('.error_msg_small').html(data['errorMessage']);
                         }
                     })
 

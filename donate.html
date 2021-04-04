@@ -24,9 +24,9 @@
         <nav class="navigation">
             <a href="./index.html" class="logo">9th<span class="logospan">Planet</span></a>
             <ul class="site-nav">
-                <li class="site-nav-item"><a href="./portfolio.html" class="link">Categories</a></li>
-                <li class="site-nav-item"><a href="" class="link">Reviews</a></li>
-                <li class="site-nav-item"><a href="" class="link">Team</a></li>
+                <!--                <li class="site-nav-item"><a href="./index.html" class="link current">Home</a></li>-->
+                <li class="site-nav-item"><a class="link" href="./categories.html">Categories</a></li>
+                <li class="site-nav-item"><a class="link" href="./index.html#team">Team</a></li>
             </ul>
             <button
                     type="button"
@@ -42,20 +42,149 @@
             </button>
         </nav>
 
-        <ul class="upper-contacts">
-            <li class="item">
-                <a href="mailto:info@devstudio.com" class="upper-contacts-item"
-                >
-                    Gleb Klimov</a
-                >
+        <ul class="upper-contacts" id="header-right-buttons">
+            <li class="item" id="loginId">
+                <button class="upper-contacts-item" onclick="toggleModalLogin()">
+                    Log In
+                </button>
             </li>
-            <li class="item">
-                <a href="mailto:info@devstudio.com" class="upper-contacts-item"
-                >
-                    Log out</a
-                >
+            <li class="item" id="signUpId">
+                <button class="upper-contacts-item" onclick="toggleModalSignUp()">
+                    Sign Up
+                </button>
             </li>
         </ul>
+        <div class="backdrop is-hidden" data-modal-login>
+            <div class="modal">
+                <button class="btn-close" onclick="toggleModalLogin()">
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+                    <p class="service-header">Welcome Back</p>
+                    <form class="service-order" id="log_in_id">
+                        <div class="form-field">
+                            <label class="field-label" for="log_in_email">Email address</label>
+                            <input autofocus class="field" id="log_in_email" name="name" type="email"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#envelope2-1"></use>
+                            </svg>
+                        </div>
+                        <div class="form-field">
+                            <label class="field-label" for="log_in_password">Password</label>
+                            <input class="field" id="log_in_password" name="pass" type="password"/>
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#security"></use>
+                            </svg>
+                        </div>
+
+                        <div class="form-field checkbox-text error_msg">
+                        </div>
+
+                        <div class="form-field checkbox-text">
+                            <a class="link" href="index.html">Forgot your password?</a>
+                        </div>
+
+                        <button class="service-order-btn" id="log_in_btn" type="submit">Log in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="backdrop is-hidden" data-modal-sign-up>
+            <div class="modal">
+                <button class="btn-close" onclick="toggleModalSignUp()">
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+                    <p class="service-header">Welcome</p>
+                    <form class="service-order" id="sign_up_id">
+                        <div class="form-field">
+                            <label class="field-label" for="firstName_id">First name</label>
+                            <input autofocus class="field" id="firstName_id" name="name" type="text"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="first_name_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="lastName_id">Last name</label>
+                            <input class="field" id="lastName_id" name="name" type="text"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="last_name_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="email_id">Email address:</label>
+                            <input class="field" id="email_id" name="name" type="email"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#envelope2-1"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="email_error_id"></div>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="field-label" for="sign_up_password">Password:</label>
+                            <input class="field" id="sign_up_password" name="name" type="password"/>
+
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#security"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="password_error_id"></div>
+                        </div>
+
+
+                        <div class="form-field checkbox-text error_msg" id="error_id">
+                        </div>
+
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_1">
+                                <input class="check-input" id="chb_1" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">Sign me up for the 9thPlanet letter</span>
+                            </label>
+                        </div>
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_2">
+                                <input class="check-input" id="chb_2" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">I am adult</span>
+                            </label>
+                        </div>
+                        <div class="form-field checkbox-text">
+                            <label class="check" for="chb_3">
+                                <input class="check-input" id="chb_3" name="checkbox" type="checkbox"/>
+                                <span class="checkbox-check"></span>
+                                <span class="policy">
+                                    I agree to the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Terms of Use</a>
+                                    and have read and understand the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Privacy Policy</a>
+                                </span>
+
+                            </label>
+                        </div>
+
+                        <button class="service-order-btn" id="btn_submit" type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
         <div class="backdrop is-hidden" data-modal-back-it>
             <div class="modal">
@@ -121,14 +250,14 @@
     <div class="mobile-menu" id="mobile-menu" data-menu>
         <ul class="list mobile-menu-list">
             <li class="mobile-menu-item">
-                <a href="./index.html" class="mobile-link mobile-current">Home</a>
+                <a class="mobile-link" href="./index.html">Home</a>
             </li>
-            <li class="mobile-menu-item"><a href="./portfolio.html" class="mobile-link">Categories</a></li>
-            <li class="mobile-menu-item"><a href="" class="mobile-link">Контакты</a></li>
+            <li class="mobile-menu-item"><a class="mobile-link" href="./categories.html">Categories</a></li>
+            <li class="mobile-menu-item"><a class="mobile-link" href="./index.html#team">Team</a></li>
         </ul>
 
         <ul class="list mobile-contacts">
-            <li class="mobile-contacts-item">
+            <!--<li class="mobile-contacts-item">
                 <a href="mailto:info@devstudio.com" class="mobile-contacts-item"
                 >
                     <svg class="mobile-contacts-svg-one mobile-contacts-svg">
@@ -146,7 +275,7 @@
                     >
                     +38 096 111 11 11</a
                 >
-            </li>
+            </li>-->
         </ul>
     </div>
 </header>
@@ -304,23 +433,25 @@
         </div>
     </div>
 </footer>
-<script src="./js/menu.js"></script>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+<script src="js/api/api_core.js"></script>
+<script src="js/auth_callback.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/modal.js"></script>
+<script src="js/startDream.js"></script>
+<script src="js/startDreamSelectBox.js"></script>
+<script src="js/dropzone.js"></script>
+<script src="js/startDreamUploadPhoto.js"></script>
+<script src="js_old/profile.js"></script>
+<script src="js_old/sign_up.js "></script>
 
 <!-- Optional JavaScript -->
 <!-- FontAwesome -->
 
-<script src="js/api/api_core.js"></script>
-<script src="js_old/infiniteScroll.js"></script>
-<script src="js/auth_callback.js"></script>
-
-<script src="https://kit.fontawesome.com/e65b271c14.js"></script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.3/umd/popper.min.js"
-        integrity="sha512-53CQcu9ciJDlqhK7UD8dZZ+TF2PFGZrOngEYM/8qucuQba+a+BXOIRsp9PoMNJI3ZeLMVNIxIfZLbG/CdHI5PA=="
-        crossorigin="anonymous"></script>
 <script src="https://js.stripe.com/v3/"></script>
 
 <script src="js/Dream.js"></script>

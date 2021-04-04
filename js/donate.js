@@ -74,7 +74,7 @@ function fillCurrentDream(data) {
 
 }
 
-function GetDreamById(dreamId) {
+function getDreamById(dreamId) {
     let getFullPathDream = "dreams/" + dreamId;
 
     apiGetJson(getFullPathDream)
@@ -93,7 +93,7 @@ function GetDreamById(dreamId) {
 $('document').ready(function () {
     let getDreamId = window.location.href.toString().split('.html?')[1];
 
-    GetDreamById(getDreamId)
+    getDreamById(getDreamId)
 });
 
 (() => {

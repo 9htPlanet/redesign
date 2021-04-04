@@ -2,9 +2,17 @@ function diffDates(day_one, day_two) {
     return Math.round((day_one - day_two) / (60 * 60 * 24 * 1000));
 }
 
-function loadDreams(categories = null, page = 1) {
-    infiniteScroll.loading = true
+/**
+ * Загрузка мечты
+ * @param categories список категорий
+ * @param page номер страницы
+ * @param useInfinite если false, то будут показан только перввые 6 карточек, а бесконечный скролл работать не будет
+ */
+function loadDreams(categories = null, page = 1, useInfinite = true) {
 
+    if (useInfinite) {
+        infiniteScroll.loading = true;
+    }
 
     let queryParams = {
         page: page
@@ -17,7 +25,7 @@ function loadDreams(categories = null, page = 1) {
         .then(function (data) {
             let currentHref = window.location.href;
             let newData = [];
-            if (currentHref.includes('index')) {
+            if (!useInfinite) {
                 newData = data.slice(0, 6);
                 console.log(currentHref);
                 console.log(newData);
@@ -37,11 +45,14 @@ function loadDreams(categories = null, page = 1) {
                 document.getElementById('dream_cards').innerHTML = temp;
             }
 
-            infiniteScroll.loading = false;
-            infiniteScroll.curPage++;
-            if (newData.length < 20) {
-                infiniteScroll.scrollFinished = true;
+            if (useInfinite) {
+                infiniteScroll.loading = false;
+                infiniteScroll.curPage++;
+                if (newData.length < 20) {
+                    infiniteScroll.scrollFinished = true;
+                }
             }
+
         })
 
 }

@@ -24,16 +24,15 @@
             <a class="logo" href="./index.html">9th<span class="logospan">Planet</span></a>
             <ul class="site-nav">
                 <!--                <li class="site-nav-item"><a href="./index.html" class="link current">Home</a></li>-->
-                <li class="site-nav-item"><a class="link current" href="./portfolio.html">Categories</a></li>
-                <li class="site-nav-item"><a class="link" href="">Reviews</a></li>
-                <li class="site-nav-item"><a class="link" href="">Team</a></li>
+                <li class="site-nav-item"><a class="link" href="./categories.html">Categories</a></li>
+                <li class="site-nav-item"><a class="link" href="./index.html#team">Team</a></li>
             </ul>
             <button
                     aria-controls="mobile-menu"
-                    aria-expanded="false"
                     class="mobile-menu-btn"
-                    data-menu-button
+                    aria-expanded="false"
                     type="button"
+                    data-menu-button
             >
                 <svg class="mobile-menu-btn-svg" height="24" width="24">
                     <use class="icon-menu" href="./images/sprite.svg#header-menu-button"></use>
@@ -44,19 +43,19 @@
 
         <ul class="upper-contacts" id="header-right-buttons">
             <li class="item" id="loginId">
-                <button class="upper-contacts-item" data-modal-login-open>
+                <button class="upper-contacts-item" onclick="toggleModalLogin()">
                     Log In
                 </button>
             </li>
             <li class="item" id="signUpId">
-                <button class="upper-contacts-item" data-modal-sign-up-open>
+                <button class="upper-contacts-item" onclick="toggleModalSignUp()">
                     Sign Up
                 </button>
             </li>
         </ul>
         <div class="backdrop is-hidden" data-modal-login>
             <div class="modal">
-                <button class="btn-close" data-modal-login-close>
+                <button class="btn-close" onclick="toggleModalLogin()">
                     <svg class="close-btn-svg">
                         <use href="./images/sprite.svg#btnclose"></use>
                     </svg>
@@ -95,7 +94,7 @@
 
         <div class="backdrop is-hidden" data-modal-sign-up>
             <div class="modal">
-                <button class="btn-close" data-modal-sign-up-close>
+                <button class="btn-close" onclick="toggleModalSignUp()">
                     <svg class="close-btn-svg">
                         <use href="./images/sprite.svg#btnclose"></use>
                     </svg>
@@ -243,15 +242,131 @@
             </div>
         </div>
 
+        <div class="backdrop is-hidden" data-modal-start-dream>
+            <div class="modal">
+                <button class="btn-close" onclick="toggleModalStartDream()">
+                    <svg class="close-btn-svg">
+                        <use href="./images/sprite.svg#btnclose"></use>
+                    </svg>
+                </button>
+                <div class="fieldset">
+                    <p class="service-header">Start Dream</p>
+
+                    <form class="service-order" id="start_dream_id">
+                        <div class="form-field">
+
+
+                            <label class="field-label" for="dream_name_id">Dream name:</label>
+                            <input class="field" id="dream_name_id" name="dreamName" required type="text"/>
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person"></use>
+                            </svg>
+                            <div class="error_msg_small" id="dream_name_error_id"></div>
+
+
+                            <label class="field-label">Category:</label>
+                            <div class="select-box select-box-category">
+                                <div class="options-container options-container-category">
+                                </div>
+
+                                <div class="selected selected-category">
+                                    <svg class="service-order-svg select-icon">
+                                        <use href="./images/sprite.svg#category"></use>
+                                    </svg>
+                                    <span class="select-label">Select Category...</span>
+                                </div>
+
+                                <div class="search-box search-box-category">
+                                    <input name="category" placeholder="Start Typing..." type="text"/>
+                                </div>
+                            </div>
+
+
+                            <label class="field-label">City:</label>
+                            <div class="select-box select-box-city">
+                                <div class="options-container options-container-city">
+                                </div>
+
+                                <div class="selected selected-city">
+                                    <svg class="service-order-svg select-icon">
+                                        <use href="./images/sprite.svg#location"></use>
+                                    </svg>
+                                    <span class="select-label">Select City...</span>
+                                </div>
+
+                                <div class="search-box search-box-city">
+                                    <input name="city" placeholder="Start Typing..." type="text"/>
+                                </div>
+                            </div>
+
+
+                            <label class="field-label" for="info_id">Information about youself:</label>
+                            <textarea class="field" id="info_id" name="infoAboutYourself" placeholder="Max 250 symbols"
+                                      required
+                                      type="text"></textarea>
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#person-info"></use>
+                            </svg>
+
+                            <div class="error_msg_small" id="info_error_id"></div>
+
+
+                            <label class="field-label" for="dream_info_id">Information about dream:</label>
+                            <textarea class="field" id="dream_info_id" name="infoAboutDream"
+                                      placeholder="Max 700 symbols"
+                                      required
+                                      type="text"></textarea>
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#info"></use>
+                            </svg>
+                            <div class="error_msg_small" id="dream_info_error_id"></div>
+
+
+                            <label class="field-label" for="required_money_id">Required amount of money:</label>
+                            <input class="field" id="required_money_id" min="0.00" name="price" required step="0.01"
+                                   type="number"/>
+                            <svg class="service-order-svg">
+                                <use href="./images/sprite.svg#dollar"></use>
+                            </svg>
+                            <div class="error_msg_small" id="required_money_error_id"></div>
+
+
+                            <div class="dropzone" id="upload_file_id"></div>
+
+
+                            <div class="form-field checkbox-text">
+                                <label class="check" for="chb_strt_drm">
+                                    <input class="check-input" id="chb_strt_drm" name="checkbox" required
+                                           type="checkbox"/>
+                                    <span class="checkbox-check"></span>
+                                    <span class="policy">
+                                    I agree to the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Terms of Use</a>
+                                    and have read and understand the
+                                    <a class="conditions-link" href="#" rel="noopener noreferer" target="_blank">Privacy Policy</a>
+                                </span>
+
+                                </label>
+                            </div>
+
+
+                        </div>
+
+                        <button class="service-order-btn" id="dream_submit" type="submit">Start</button>
+                        <div class="error_msg_small" id="server_response_id"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
     </div>
     <div class="mobile-menu" data-menu id="mobile-menu">
         <ul class="list mobile-menu-list">
             <li class="mobile-menu-item">
-                <a class="mobile-link mobile-current" href="./index.html">Home</a>
+                <a class="mobile-link" href="./index.html">Home</a>
             </li>
-            <li class="mobile-menu-item"><a class="mobile-link " href="./portfolio.html">Categories</a></li>
-            <li class="mobile-menu-item"><a class="mobile-link" href="">Контакты</a></li>
+            <li class="mobile-menu-item"><a class="mobile-link" href="./categories.html">Categories</a></li>
+            <li class="mobile-menu-item"><a class="mobile-link" href="./index.html#team">Team</a></li>
         </ul>
 
         <ul class="list mobile-contacts">
@@ -625,30 +740,41 @@
         </div>
     </div>
 </footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+<script src="js/api/api_core.js"></script>
+<script src="js/auth_callback.js"></script>
 <script src="./js/menu.js"></script>
+<script src="./js/modal.js"></script>
+<script src="js/startDream.js"></script>
+<script src="js/startDreamSelectBox.js"></script>
+<script src="js/dropzone.js"></script>
+<script src="js/startDreamUploadPhoto.js"></script>
+
+<!--Files for this particular page-->
+<!--Infinite Scroll for cards-->
+<script src="js_old/infiniteScroll.js"></script>
+<script src="js/Dream.js"></script>
+<script src="js_old/cards.js "></script>
+<script src="js_old/sign_up.js "></script>
+<script src="js_old/profile.js"></script>
+<script src="js_old/main.js"></script>
+<script src="js/index_page.js"></script>
+
 
 <!-- Optional JavaScript -->
 <!-- FontAwesome -->
 <script src="https://kit.fontawesome.com/e65b271c14.js"></script>
 
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script crossorigin="anonymous "
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
         src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "></script>
-<script src="js_old/infiniteScroll.js"></script>
-<script src="js_old/cards.js"></script>
-<script src="js/api/api_core.js"></script>
-<script src="js/auth_callback.js"></script>
 
 <script src="https://js.stripe.com/v3/"></script>
 
 
 <script src="js/Slider2.js"></script>
-<script src="js/Dream.js"></script>
-<!--<script src="js/donate.js"></script>-->
-<script src="js/profile.js"></script>
 <!--<script src="js/slider.js"></script>-->
 <script src="js/payment.js"></script>
 
