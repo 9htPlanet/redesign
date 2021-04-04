@@ -1,4 +1,5 @@
 function fillCurrentDream(data) {
+    document.title = `9th Planet — ${data['name']}`
     let percent = Math.round(data['money'] * 100 / data['price'])
     let dreamDescrip = data['infoAboutDream'];
     let aboutAuthor = data['infoAboutYourself'];
