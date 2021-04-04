@@ -112,7 +112,7 @@ $('document').ready(function () {
                             $('.error_msg').html(data['errorMessage']);
                         }
                     })
-                    .fail(function (error) {
+                    .catch(function (error) {
                         $('.error_msg').html(error['errorMessage']);
                     });
             });
