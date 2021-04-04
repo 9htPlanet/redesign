@@ -29,8 +29,10 @@ function setupButtonsToCategory(category) {
     $(".category-button").removeClass("selected-button")
     if (!category || category === "profile") {
         $("#button_profile").toggleClass("selected-button");
+        document.title = "9th Planet — Profile"
     } else {
         $("#button_" + category).toggleClass("selected-button");
+        document.title = "9th Planet — " + capitalizeFirstLetter(category)
     }
 
     $(".tabs__block").hide()
@@ -39,6 +41,10 @@ function setupButtonsToCategory(category) {
     } else {
         $("#tab_" + category).show();
     }
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 $('document').ready(function () {
