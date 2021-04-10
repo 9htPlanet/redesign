@@ -843,13 +843,11 @@ select {
   padding-top: 60px;
   padding-bottom: 30px;
 }
-
 @media (min-width: 768px) {
   .description {
     padding-top: 30px;
   }
 }
-
 @media (min-width: 1200px) {
   .description {
     padding-top: 94px;

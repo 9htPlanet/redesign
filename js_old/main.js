@@ -6,11 +6,11 @@
     if (isAuth()) {
         apiGetJson("dreams/my")
             .then((data) => {
+                button.disabled = false;
                 if (data.length > 0) {
                     button.innerHTML = "Go To My Dream";
                     button.setAttribute("onclick", "location.href='profile.html'");
                 } else {
-                    button.disabled = false;
                     button.innerHTML = "Start Dream";
                 }
             })
