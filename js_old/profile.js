@@ -20,6 +20,7 @@ function updateLoginDataInHeader() {
     let userName = window.localStorage.getItem("UserName");
 
     if (token != null && userName != null) {
+        document.querySelectorAll(".profile-link").forEach(it => it.style.display = "block");
         $("#profile-name").remove();
         $("#logoutid").remove();
 
@@ -41,9 +42,9 @@ function updateLoginDataInHeader() {
 
         const op = document.getElementById("header-right-buttons");
         op.innerHTML = dropDown;
-        document.querySelector("#profile-link").style.display = ""
         onLogoutClickSetup();
     } else {
+        document.querySelectorAll(".profile-link").forEach(it => it.style.display = "none");
         const noLogin =
             `<li class="item" id="loginId">
                 <button class="upper-contacts-item" onclick="toggleModalLogin()">
@@ -58,7 +59,6 @@ function updateLoginDataInHeader() {
                     `;
         const op = document.getElementById("header-right-buttons");
         op.innerHTML = noLogin;
-        document.querySelector("#profile-link").style.display = "none";
     }
 }
 
