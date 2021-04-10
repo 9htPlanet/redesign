@@ -23,7 +23,6 @@ function updateLoginDataInHeader() {
         $("#profile-name").remove();
         $("#logoutid").remove();
 
-
         const dropDown = `<li class="item" id="profile-name">
 									<a href="profile.html" class="upper-contacts-item">
 										${userName}
@@ -42,7 +41,7 @@ function updateLoginDataInHeader() {
 
         const op = document.getElementById("header-right-buttons");
         op.innerHTML = dropDown;
-
+        document.querySelector("#profile-link").style.display = ""
         onLogoutClickSetup();
     } else {
         const noLogin =
@@ -59,6 +58,7 @@ function updateLoginDataInHeader() {
                     `;
         const op = document.getElementById("header-right-buttons");
         op.innerHTML = noLogin;
+        document.querySelector("#profile-link").style.display = "none";
     }
 }
 
