@@ -1,5 +1,5 @@
 .footer {
-  padding-top: 60px;
+  padding-top: 34px;
   padding-bottom: 60px;
   background-color: $hero-background-color;
   flex-direction: column;
@@ -39,7 +39,7 @@
   @include for-size(tablet) {
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-around;
   }
 }
