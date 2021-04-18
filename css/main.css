@@ -105,7 +105,6 @@ ul {
   padding: 16px;
   color: #ffffff;
 }
-
 .top_email .hidden {
   display: none;
 }
@@ -113,7 +112,6 @@ ul {
 .main-nav {
   margin-bottom: 16px;
 }
-
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .main-nav {
     display: flex;
@@ -1625,6 +1623,7 @@ select {
   display: flex;
   padding-bottom: 60px;
   padding-top: 60px;
+  min-height: calc(100vh - 245px);
 }
 @media (min-width: 1200px) {
   .ourprojects {
