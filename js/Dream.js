@@ -187,8 +187,8 @@ class Dream {
         console.log(moneyRound)
         let dollarCurrently = (moneyRound).toString().replace('.', ',');
         let dollarNeeded = (priceRound).toString().replace('.', ',');
-        let dollarCurrentlyHTML = `<span>${dollarCurrently}k
-                                   </span> out of <span>${dollarNeeded}k</span>`
+        let dollarCurrentlyHTML = `<span>${dollarCurrently}
+                                   </span> out of <span>${dollarNeeded}</span>`
         document.getElementById('donate_dream_count_money').innerHTML = dollarCurrentlyHTML;
 
         //Остаток дней
@@ -307,13 +307,12 @@ class Dream {
                         <div class="slider-next"></div>`
 
         document.getElementById('donate_img_id').innerHTML = teplateForImg;
-        let getPercentScale = document.getElementsByClassName('percentscale-container-donate')[0];
-        if (getPercentScale.classList.contains('hidden')) {
-            getPercentScale.classList.remove('hidden');
-        }
 
 
         let image = '';
+        let imageInterval;
+
+
         for (let i = 0; i < data['photos'].length; i++) {
             try {
                 let img = document.createElement('img');
@@ -325,10 +324,46 @@ class Dream {
             }
 
         }
+
+        let getPercentScale = document.getElementsByClassName('percentscale-container-donate')[0];
+        let imgShimmer = document.getElementById('donate_img_shimmer');
+        let imgLoader = document.getElementById('donate_img_id');
+        let images = document.querySelectorAll('#donate_img_id img');
+
+        imageInterval = setInterval(() => {
+            if (images[0].complete) {
+                clearInterval(imageInterval);
+                if (getPercentScale.classList.contains('hidden')) {
+                    getPercentScale.classList.remove('hidden');
+                }
+                if (!imgShimmer.classList.contains('hidden')) {
+                    imgShimmer.classList.add('hidden');
+                }
+                if (imgLoader.classList.contains('hidden')) {
+                    imgLoader.classList.remove('hidden');
+                }
+
+            }
+        }, 50);
+
     }
+
 
     static getMyDreamWithShimmer() {
         apiGetJson("dreams/my")
+            .then(function (data) {
+                Dream.fillCurrentDreamWithShimmer(data);
+                Slider.loadSlider();
+
+            })
+            .catch(function (err) {
+                console.log("GetDreamWithToken Error", err);
+            });
+    }
+
+    static getDreamWithShimmerById(id) {
+        let getFullPathDream = "dreams/" + id;
+        apiGetJson(getFullPathDream)
             .then(function (data) {
                 Dream.fillCurrentDreamWithShimmer(data);
                 Slider.loadSlider();

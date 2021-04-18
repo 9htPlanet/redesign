@@ -274,61 +274,76 @@
         <div class="container">
             <div class="donate-row">
                 <div class="donate-column-1">
-                    <div class="donate-img" id="donate_img_id">
-                        <div class="slider">
-                            <div class="slider-line"></div>
-                        </div>
-
-                        <div class="slider-prev"></div>
-                        <div class="slider-next"></div>
+                    <div class="donate-img" id="donate_img_shimmer" style="width: 100%">
+                        <span class="shine img_shine"></span>
                     </div>
-                    <div class="percentscale-container-donate">
+                    <div class="donate-img hidden" id="donate_img_id" style="width: 100%">
+                        <span class="shine img_shine"></span>
+                    </div>
+
+
+                    <div class="percentscale-container-donate hidden">
                         <div class="percentscale-donate"></div>
                     </div>
 
+
                     <div class="line-under-img">
-                        <div class="donate-location">
-                            <svg class="footer-social-icons-svg">
-                                <use href="./images/sprite.svg#location"></use>
-                            </svg>
-                            <span id="donate_dream_location"></span>
+                        <div class="donate-location" id="donate_dream_location">
+                            <span class="shine h5_shine"></span>
+
                         </div>
-                        <div class="donate-like-track">
-                            <button class="like-it" id="donate_like_button">
-                                <svg class="footer-social-icons-svg">
-                                    <use href="./img/sprite.svg#thumbs"></use>
-                                </svg>
-
-                                <span id="donate_dream_like"></span> Like It
-
-                            </button>
-
-                            <button class="track-it" id="track_button">
-                                <svg class="footer-social-icons-svg">
-                                    <use href="./images/sprite.svg#trackIt"></use>
-                                </svg>
-                                <span> Track It</span>
-
-                            </button>
+                        <div class="donate-like-track" id="donate_dream_like">
+                            <span class="shine h5_shine"></span>
                         </div>
                     </div>
 
                 </div>
                 <div class="donate-column-2">
-                    <h2 id="donate_dream_name" class="functitle"></h2>
-                    <h3 id="donate_dream_percent"></h3>
-                    <p><span id="donate_dream_count_money"></span> out of <span id="donate_dream_count_price"></span>
+                    <h2 class="functitle" id="donate_dream_name">
+                        <span class="shine h5_shine"></span>
+                    </h2>
+                    <h3 id="donate_dream_percent">
+                        <span class="shine h5_shine"></span>
+                    </h3>
+                    <p id="donate_dream_count_money">
+                        <span class="shine h5_shine"></span>
                     </p>
-                    <p><span id="donate_dream_count_backer"></span> backers</p>
-                    <p><span id="donate_dream_count_day"></span> days to go</p>
-                    <a class="herobutton donate-btn" data-modal-back-it-open type="button">Back It</a>
+                    <p id="donate_dream_count_backer">
+                        <span class="shine h5_shine"></span>
+                    </p>
+                    <p id="donate_dream_count_day">
+                        <span class="shine h5_shine"></span>
+                    </p>
+                    <a class="herobutton donate-btn shine" data-modal-back-it-open id="backIt_id"
+                       type="button">Back
+                        It</a>
+                    <div class="donate-group-btn">
+                        <ul class="list-footer-social-icons" id="social_icons_id">
+                            <li class="footer-social-icons-item">
+                                <span class="shine icon_shine"></span>
+                            </li>
+                            <li class="footer-social-icons-item">
+                                <span class="shine icon_shine"></span>
+                            </li>
+                        </ul>
+
+                    </div>
+
 
                 </div>
                 <div class="donate-column-3">
-                    <h2 class="functitle">About author</h2>
-                    <p><span id="donate_dream_about_author"></span></p>
-                    <h2 class="functitle">Dream information</h2>
-                    <p><span id="donate_dream_about_dream"></span></p>
+                    <h2 class="functitle" id="aboutYourself_id">
+                        <span class="shine about_user_shine"></span>
+                    </h2>
+                    <p id="donate_dream_about_author">
+                        <span class="shine text_shine"></span>
+                    </p>
+                    <h2 class="functitle" id="aboutDream_id">
+                        <span class="shine about_user_shine"></span>
+                    </h2>
+                    <p id="donate_dream_about_dream">
+                        <span class="shine text_shine"></span>
+                    </p>
 
                 </div>
             </div>
@@ -427,8 +442,11 @@
 
 <script src="js/Dream.js"></script>
 <script src="js/donate.js"></script>
+<!--<script src="js/profile.js"></script>-->
+<script src="js/Slider2.js"></script>
+
 <script src="js/payment.js"></script>
 <!--<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>-->
-<script src="js/slider.js"></script>
+<!--<script src="js/slider.js"></script>-->
 </body>
 </html>

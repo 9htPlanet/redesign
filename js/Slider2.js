@@ -60,14 +60,21 @@ class Slider {
     }
 
     static imgByCenter(images, width) {
-        for (let i = 0; i < images.length; i++) {
-            let prevDifference;
-            let currentDifference = (width - images[i].width) / 2;
-            if (images[i - 1] == null) {
-                images[i].style.marginLeft = currentDifference + "px";
-            } else {
-                prevDifference = (width - images[i - 1].width) / 2;
-                images[i].style.marginLeft = (prevDifference + currentDifference) + "px";
+        if (images != null) {
+            console.log(images.length);
+            for (let i = 0; i < images.length; i++) {
+                let prevDifference;
+                let currentDifference = (width - images[i].width) / 2;
+                if (images[i - 1] == null) {
+                    images[i].style.marginLeft = currentDifference + "px";
+                    console.log("IF CURRENT WIDTH" + width + "__" + currentDifference);
+                } else {
+                    prevDifference = (width - images[i - 1].width) / 2;
+                    images[i].style.marginLeft = (prevDifference + currentDifference) + "px";
+                    console.log("ELSE CURRENT " + currentDifference);
+
+                }
+
             }
 
         }
