@@ -26,6 +26,8 @@
             <a class="logo" href="./index.html"><img alt="9th Planet" src="img/logo/big_blue_dark.svg"/></a>
             <ul class="site-nav">
                 <!--                <li class="site-nav-item"><a href="./index.html" class="link current">Home</a></li>-->
+                <li class="site-nav-item profile-link"><a class="link current" href="./profile.html">Profile</a>
+                </li>
                 <li class="site-nav-item"><a class="link" href="./categories.html">Categories</a></li>
                 <li class="site-nav-item"><a class="link" href="./index.html#team">Team</a></li>
             </ul>
@@ -367,29 +369,19 @@
             <li class="mobile-menu-item">
                 <a class="mobile-link" href="./index.html">Home</a>
             </li>
+            <li class="mobile-menu-item profile-link"><a class="mobile-link mobile-current" href="./profile.html">Profile</a>
+            </li>
             <li class="mobile-menu-item"><a class="mobile-link" href="./categories.html">Categories</a></li>
             <li class="mobile-menu-item"><a class="mobile-link" href="./index.html#team">Team</a></li>
         </ul>
 
         <ul class="list mobile-contacts">
             <li class="mobile-contacts-item">
-                <a class="mobile-contacts-item" href="mailto:info@devstudio.com"
-                >
+                <a class="mobile-contacts-item" href="mailto:info@devstudio.com">
                     <svg class="mobile-contacts-svg-one mobile-contacts-svg">
                         <use href="./images/sprite.svg#envelope"></use>
-                    </svg
-                    >
-                    info@devstudio.com</a
-                >
-            </li>
-            <li class="mobile-contacts-item">
-                <a class="mobile-contacts-item" href="tel:+380961111111">
-                    <svg class="mobile-contacts-svg-two mobile-contacts-svg">
-                        <use href="./images/sprite.svg#phone"></use>
-                    </svg
-                    >
-                    +38 096 111 11 11</a
-                >
+                    </svg>
+                    info@9thplanet.ca</a>
             </li>
         </ul>
     </div>
@@ -661,27 +653,21 @@
 <footer class="footer">
     <div class="container footer-div-box">
         <div class="footer-widget contact-info">
-            <a class="footerlogo" href="/">Web<span class="footerlogospan">Studio</span></a>
+            <a class="footerlogo" href="/"><img src="img/logo/big_blue_light.svg"/></span></a>
             <ul class="footer-list">
                 <li class="footer-list-item">
-                    <address class="footer-address">г. Киев, пр-т Леси Украинки, 26</address>
-                </li>
-                <li class="footer-list-item">
-                    <a class="footer-mail" href="mailto:info@devstudio.com">info@devstudio.com</a>
-                </li>
-                <li class="footer-list-item">
-                    <a class="footer-tel" href="tel:+380961111111">+38 096 111 11 11</a>
+                    <a class="footer-mail" href="mailto:info@9thplanet.ca">Contact</a>
                 </li>
             </ul>
         </div>
         <div class="footer-widget join-us">
-            <p class="join-us-header">Присоединяйтесь</p>
+            <p class="join-us-header">Join us</p>
             <ul class="list-footer-social-icons">
                 <li class="footer-social-icons-item">
                     <a
-                            aria-label="Instagram"
                             class="footer-social-icons-link"
                             href="https://instagram.com/"
+                            aria-label="Instagram"
                             rel="noopener noreferer"
                             target="_blank"
                     >
@@ -692,11 +678,11 @@
                 </li>
                 <li class="footer-social-icons-item">
                     <a
-                            aria-label="Twitter"
                             class="footer-social-icons-link"
                             href="https://twitter.com/"
-                            rel="noopener noreferer"
                             target="_blank"
+                            aria-label="Twitter"
+                            rel="noopener noreferer"
                     >
                         <svg class="footer-social-icons-svg">
                             <use href="./images/sprite.svg#twitter"></use>
@@ -705,11 +691,11 @@
                 </li>
                 <li class="footer-social-icons-item">
                     <a
-                            aria-label="Facebook"
                             class="footer-social-icons-link"
                             href="https://facebook.com/"
-                            rel="noopener noreferer"
                             target="_blank"
+                            aria-label="Facebook"
+                            rel="noopener noreferer"
                     >
                         <svg class="footer-social-icons-svg">
                             <use href="./images/sprite.svg#facebook"></use>
@@ -718,9 +704,9 @@
                 </li>
                 <li class="footer-social-icons-item">
                     <a
-                            aria-label="LinkedIn"
                             class="footer-social-icons-link"
                             href="https://linkedin.com/"
+                            aria-label="LinkedIn"
                             rel="noopener noreferer"
                             target="_blank"
                     >
@@ -730,19 +716,6 @@
                     </a>
                 </li>
             </ul>
-        </div>
-        <div class="subscribe">
-            <p class="subscribe-to-us">Подпишитесь на рассылку</p>
-
-            <form class="footer-form" method="post">
-                <input class="subscr-mail" name="e-mail" placeholder="E-mail" type="email"/>
-                <button class="subscr-btn" type="submit">
-                    Подписаться
-                    <svg class="subscr-btn-arrow-svg">
-                        <use href="./images/sprite.svg#icon-send-1"></use>
-                    </svg>
-                </button>
-            </form>
         </div>
     </div>
 </footer>

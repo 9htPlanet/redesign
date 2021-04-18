@@ -20,9 +20,9 @@ function updateLoginDataInHeader() {
     let userName = window.localStorage.getItem("UserName");
 
     if (token != null && userName != null) {
+        document.querySelectorAll(".profile-link").forEach(it => it.style.display = "block");
         $("#profile-name").remove();
         $("#logoutid").remove();
-
 
         const dropDown = `<li class="item" id="profile-name">
 									<a href="profile.html" class="upper-contacts-item">
@@ -42,9 +42,9 @@ function updateLoginDataInHeader() {
 
         const op = document.getElementById("header-right-buttons");
         op.innerHTML = dropDown;
-
         onLogoutClickSetup();
     } else {
+        document.querySelectorAll(".profile-link").forEach(it => it.style.display = "none");
         const noLogin =
             `<li class="item" id="loginId">
                 <button class="upper-contacts-item" onclick="toggleModalLogin()">
