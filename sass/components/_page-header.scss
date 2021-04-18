@@ -16,3 +16,17 @@
 .border-bottom {
   border-bottom: 1px solid #ececec;
 }
+
+
+.top_email {
+  display: block;
+  width: 100%;
+  background: $hover-button-color;
+  text-align: center;
+  padding: 16px;
+  color: $white;
+
+  & .hidden {
+    display: none;
+  }
+}
