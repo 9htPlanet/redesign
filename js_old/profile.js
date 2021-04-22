@@ -8,6 +8,9 @@ function updateCurrentUserInfo() {
             window.localStorage.setItem("UserName", userName);
 
             updateLoginDataInHeader()
+            if (!person.isEmailConfirmed) {
+                document.querySelector(".top_email").classList.remove("hidden")
+            }
         })
         .catch(function (err) {
             console.log("err", err);

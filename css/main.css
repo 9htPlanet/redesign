@@ -97,6 +97,18 @@ ul {
   border-bottom: 1px solid #ececec;
 }
 
+.top_email {
+  display: block;
+  width: 100%;
+  background: #2196f3;
+  text-align: center;
+  padding: 16px;
+  color: #ffffff;
+}
+.top_email .hidden {
+  display: none;
+}
+
 .main-nav {
   margin-bottom: 16px;
 }
@@ -1611,6 +1623,7 @@ select {
   display: flex;
   padding-bottom: 60px;
   padding-top: 60px;
+  min-height: calc(100vh - 245px);
 }
 @media (min-width: 1200px) {
   .ourprojects {
