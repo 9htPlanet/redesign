@@ -91,6 +91,11 @@
                         <div class="form-field checkbox-text">
                             <a class="link" href="index.html">Forgot your password?</a>
                         </div>
+                        <div class="form-field checkbox-text">
+                            <a class="link change-cursor" onclick="toggleModalLogin(); toggleModalSignUp()"
+                               type="button">Register new account</a>
+                        </div>
+
 
                         <button class="service-order-btn" type="submit" id="log_in_btn">Log in</button>
                     </form>
@@ -185,6 +190,12 @@
                         </div>
 
                         <button class="service-order-btn" id="btn_submit" type="submit">Sign up</button>
+                        <div class="form-field checkbox-text">
+                            <span class="link">Already have an account? </span>
+                            <a class="link change-cursor" onclick="toggleModalSignUp(); toggleModalLogin();"
+                               type="button">Sign in</a>
+                        </div>
+
                     </form>
                 </div>
             </div>

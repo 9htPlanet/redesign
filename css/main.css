@@ -848,21 +848,26 @@ select {
 }
 
 .result-message-success {
-  color: #12B02E;
+    color: #12B02E;
 }
 
 .error_msg-error {
-  color: #b00020;
+    color: #b00020;
+}
+
+.change-cursor {
+    cursor: pointer;
 }
 
 .description {
-  padding-top: 60px;
-  padding-bottom: 30px;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
+
 @media (min-width: 768px) {
-  .description {
-    padding-top: 30px;
-  }
+    .description {
+        padding-top: 30px;
+    }
 }
 @media (min-width: 1200px) {
   .description {
