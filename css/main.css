@@ -689,6 +689,11 @@ ul {
   color: #2196f3;
 }
 
+.checkbox-text .link-without-hover {
+  color: #757575;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .error_msg {
   color: #b00020;
 }
@@ -848,27 +853,28 @@ select {
 }
 
 .result-message-success {
-    color: #12B02E;
+  color: #12B02E;
 }
 
 .error_msg-error {
-    color: #b00020;
+  color: #b00020;
 }
 
 .change-cursor {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .description {
-    padding-top: 60px;
-    padding-bottom: 30px;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
 
 @media (min-width: 768px) {
-    .description {
-        padding-top: 30px;
-    }
+  .description {
+    padding-top: 30px;
+  }
 }
+
 @media (min-width: 1200px) {
   .description {
     padding-top: 94px;
