@@ -1289,21 +1289,18 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 @media (min-width: 768px) {
   .footer-div-box {
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
   }
 }
 
 .footer-list-item {
   margin-bottom: 9px;
-}
-.footer-widget {
-  min-width: 206px;
 }
 @media (min-width: 1200px) {
   .footer-widget {
