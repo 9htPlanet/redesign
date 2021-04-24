@@ -2296,25 +2296,21 @@ input[type=number] {
   display: flex;
   height: 30vh;
 }
-
 @media (min-width: 480px) {
   .img_static_container {
     height: 30vh;
   }
 }
-
 @media (min-width: 768px) {
   .img_static_container {
     height: 50vh;
   }
 }
-
 @media (min-width: 1200px) {
   .img_static_container {
     height: 60vh;
   }
 }
-
 .img_static_container img {
   width: 100%;
 }
