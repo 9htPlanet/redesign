@@ -46,11 +46,40 @@ function isLoginOrSignUpShown() {
     return !(refsLogin.modal.classList.contains("is-hidden") && refsSignUp.modal.classList.contains("is-hidden"))
 }
 
+function isLoginOrSignUpOrForgotPasswordShown() {
+    return !(refsLogin.modal.classList.contains("is-hidden")
+        && refsSignUp.modal.classList.contains("is-hidden")
+        && refsForgotPassword.modal.classList.contains("is-hidden"))
+}
+
+
 function hideAllLoginPopups() {
     if (!refsLogin.modal.classList.contains("is-hidden")) {
-        toggleModalLogin()
+        toggleModalLogin();
     }
     if (!refsSignUp.modal.classList.contains("is-hidden")) {
-        toggleModalSignUp()
+        toggleModalSignUp();
     }
+    if (!refsForgotPassword.modal.classList.contains("is-hidden")) {
+        toggleModalForgotPassword();
+    }
+
+}
+
+
+//Open forgot password
+
+const refsForgotPassword = {
+    openModalBtn: document.querySelector('[data-modal-forgot-password-open]'),
+    closeModalBtn: document.querySelector('[data-modal-forgot-password-close]'),
+    modal: document.querySelector('[data-modal-forgot-password]'),
+};
+
+function toggleModalForgotPassword() {
+    refsForgotPassword.modal.classList.toggle('is-hidden');
+    setTimeout(() => {
+        if (!isLoginOrSignUpOrForgotPasswordShown()) {
+            AuthCallbacks.clearQueue();
+        }
+    }, 2000);
 }

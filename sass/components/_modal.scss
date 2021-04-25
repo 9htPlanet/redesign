@@ -183,6 +183,12 @@
       color: $hover-button-color;
     }
   }
+
+  .link-without-hover {
+    color: $secondary-color;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
 }
 
 .error_msg {
@@ -360,7 +366,6 @@ select {
 
 }
 
-
-//.stripe-commission{
-//  display: flex;
-//}
+.change-cursor {
+  cursor: pointer;
+}
