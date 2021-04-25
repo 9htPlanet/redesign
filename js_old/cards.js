@@ -80,7 +80,7 @@ function getCardsHtmlForDreams(newData) {
         try {
             image = newData[key]['photos'][0]['sizes']['small'];
         } catch (error) {
-            image = 'img/No_image.png';
+            image = 'img/No_image.svg';
         }
         let getLike = '';
         let onLikeClick = `Dream.addLike('${getDreamId}', this)`;
