@@ -87,7 +87,7 @@ async function api(patch, method, formParams = null, file = null, requireAuth = 
 
     if (response.status === 401) {
         window.localStorage.clear()
-        //todo: показать авторизацию
+        throw new Error("401 Unauthorized")
     }
 
     if (useJson) {

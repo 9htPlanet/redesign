@@ -37,7 +37,7 @@ function loadDreams(url) {
                 image = newData[key]['photos'][0]['sizes']['medium'];
             } catch (error) {
 
-                image = 'img/No_image.png';
+                image = 'img/No_image.svg';
             }
             let getLike = '';
             if (newData[key]['likes'].indexOf(userId) != -1) {

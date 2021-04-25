@@ -1,0 +1,78 @@
+
+.img_static_container {
+  flex: 1;
+  display: flex;
+  height: 30vh;
+
+  @include for-size(mobile) {
+    height: 30vh;
+  }
+
+  @include for-size(tablet) {
+    height: 50vh;
+  }
+
+  @include for-size(desktop) {
+    height: 60vh;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.slider_img {
+  object-fit: contain;
+  margin: 0 auto;
+  max-width: initial;
+}
+
+.slider {
+  //max-width: 100%;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  position: relative;
+  background: $team-background-color !important;
+}
+
+.slider-line {
+  background: $team-background-color !important;
+  display: flex;
+  flex: 1;
+  background: white;
+  position: relative;
+  transition: all ease-in-out 0.5s;
+  cursor: pointer;
+}
+
+.slider-prev, .slider-next {
+  position: absolute;
+  display: block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  opacity: .4;
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+  opacity: 1;
+}
+
+.slider-prev {
+  height: 60px;
+  width: 60px;
+  left: 10px;
+  top: 50%;
+  background: url("../images/arrow-down_2.svg") no-repeat;
+  transform: rotate(90deg);
+}
+
+.slider-next {
+  height: 60px;
+  width: 60px;
+  right: 10px;
+  top: 50%;
+  background: url("../images/arrow-down_2.svg") no-repeat;
+  transform: rotate(-90deg);
+}
