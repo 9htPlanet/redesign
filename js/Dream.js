@@ -165,19 +165,19 @@ class Dream {
             onFavoriteClick = `Dream.removeFromFavorites('${getDreamId}', this)`;
         }
 
-        let likesHTML = `<a class="like-it ${getLike}" onclick="${onLikeClick}">
+        let likesHTML = `<button class="like-it ${getLike}" onclick="${onLikeClick}">
                             <svg class="footer-social-icons-svg">
                                 <use href="./img/sprite.svg#thumbs"></use>
                             </svg>
                             <span>${getLikeCount}</span> Like It
-                         </a>
+                         </button>
 
-                        <a class="track-it ${getFavorite}" onclick="${onFavoriteClick}">
+                        <button class="track-it ${getFavorite}" onclick="${onFavoriteClick}">
                             <svg class="footer-social-icons-svg">
                                 <use href="./images/sprite.svg#trackIt"></use>
                             </svg>
                             <span>Track It</span>
-                        </a>`
+                        </button>`
         document.getElementById('donate_dream_like').innerHTML = likesHTML;
 
 
