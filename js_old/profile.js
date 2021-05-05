@@ -77,26 +77,14 @@ function onLogoutClickSetup() {
                 window.localStorage.removeItem("Token");
                 window.localStorage.removeItem("UserId");
                 document.location.href = "index.html";
-                /*$("#profile-name").remove();
-                $("#logoutid").remove();
-
-                let loginButtons  = '<li class="item" id="loginId">\n' +
-                    '                <button class="upper-contacts-item" data-modal-login-open>\n' +
-                    '                    Log In\n' +
-                    '                </button>\n' +
-                    '            </li>\n' +
-                    '            <li class="item" id="signUpId">\n' +
-                    '                <button class="upper-contacts-item" data-modal-login-open>\n' +
-                    '                    Sign Up\n' +
-                    '                </button>\n' +
-                    '            </li>'
-
-                const op = document.getElementById("header-right-buttons");
-                op.innerHTML = loginButtons;*/
 
                 console.log("Success: ", response);
             })
             .catch(function (err) {
+                window.localStorage.removeItem("Token");
+                window.localStorage.removeItem("UserId");
+                document.location.href = "index.html";
+
                 console.log("Error: ", err);
             });
     };
