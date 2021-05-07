@@ -188,10 +188,13 @@ class Dream {
         //Подгрузка кнопки и значков соц сетей
         document.getElementById('backIt_id').classList.remove("shine");
 
+        const dreamLink = "https://9thplanet.ca/donate.html?" + location.search;
+        const shareText = encodeURIComponent("Donate this dream: " + dreamLink);
+
         let iconsHTML = `<li class="footer-social-icons-item">
                                 <a
                                         class="footer-social-icons-link"
-                                        href="https://twitter.com/"
+                                        href="https://twitter.com/intent/tweet?text=${shareText}"
                                         target="_blank"
                                         rel="noopener noreferer"
                                         aria-label="Twitter"
@@ -204,7 +207,7 @@ class Dream {
                             <li class="footer-social-icons-item">
                                 <a
                                         class="footer-social-icons-link"
-                                        href="https://facebook.com/"
+                                        href="https://www.facebook.com/sharer.php?u=${dreamLink}"
                                         target="_blank"
                                         rel="noopener noreferer"
                                         aria-label="Facebook"
