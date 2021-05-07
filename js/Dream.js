@@ -183,6 +183,9 @@ class Dream {
 
         //Имя мечты
         document.getElementById('donate_dream_name').innerHTML = data['name'];
+        //Заголовок страницы
+        document.getElementById("dream_title_id").innerText = "9tPlanet — " + data['name'];
+
         //Процент мечты
         document.getElementsByClassName('percentscale-donate')[0].style.width = percent + "%";
         //Подгрузка кнопки и значков соц сетей
