@@ -1,11 +1,13 @@
 $("document").ready(function () {
     var changeForm = document.getElementById("change_id");
+
     changeForm.addEventListener("submit", function (event) {
+
 
         let oldPassword = document.getElementById('old_pass_id').value;
         let newPassword = document.getElementById('new_pass_id').value;
         let confirmPassword = document.getElementById('confirm_pass_id').value;
-        let code = window.localStorage.getItem("code");
+        let code = window.location.search.split("=").join("");
 
         checkPasswords(newPassword, confirmPassword);
         sendRequest(newPassword, code, oldPassword);
