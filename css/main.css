@@ -109,6 +109,25 @@ ul {
   display: none;
 }
 
+.resend-button {
+  border-radius: 4px;
+  min-width: 200px;
+  text-align: center;
+  outline: none;
+  background: transparent;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  cursor: pointer;
+  border: 0;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.resend-button:hover, .resend-button:focus {
+  color: #e5e5e5;
+}
+
 .main-nav {
   margin-bottom: 16px;
 }
