@@ -23,6 +23,10 @@ function loadDreams(categories = null, page = 1, useInfinite = true) {
 
     apiGetJsonQuery("dreams", queryParams)
         .then(function (data) {
+            if (data.length === 0 && infiniteScroll.curPage === 0) {
+                document.getElementById("dream_cards").innerHTML = getEmptyContentCategory();
+                return;
+            }
             let currentHref = window.location.href;
             let newData = [];
             if (!useInfinite) {

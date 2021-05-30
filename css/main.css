@@ -1651,6 +1651,7 @@ select {
 }
 @media (min-width: 1200px) {
   .ourprojects {
+    align-items: normal;
     flex-wrap: wrap;
     padding: 94px 0;
     margin: 0 auto;

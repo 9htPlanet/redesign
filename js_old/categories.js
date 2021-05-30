@@ -82,3 +82,8 @@ function initLoadCategories() {
     }
     loadDreams(categories);
 }
+
+function getEmptyContentCategory() {
+    let emptyDescription = "There's nothing here yet. 🐣";
+    return `<div class="container"><h1 class="empty_dream_block">${emptyDescription}</h1></div>`;
+}
