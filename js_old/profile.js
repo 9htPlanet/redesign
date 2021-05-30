@@ -237,3 +237,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+function resendEmail() {
+    //    <button class="mobile-menu-btn" id="resendButton" onclick="resendEmail()">Send email again</button>
+    const button = document.querySelector("#resendButton");
+    button.disabled = true;
+    button.textContent = "Sending..."
+    apiGetJson("auth/resendEmail")
+        .then(function (data) {
+            button.textContent = "Email has been sent"
+        });
+}
