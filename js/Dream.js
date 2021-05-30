@@ -183,15 +183,21 @@ class Dream {
 
         //Имя мечты
         document.getElementById('donate_dream_name').innerHTML = data['name'];
+        //Заголовок страницы
+        document.getElementById("dream_title_id").innerText = "9tPlanet — " + data['name'];
+
         //Процент мечты
         document.getElementsByClassName('percentscale-donate')[0].style.width = percent + "%";
         //Подгрузка кнопки и значков соц сетей
         document.getElementById('backIt_id').classList.remove("shine");
 
+        const dreamLink = "https://9thplanet.ca/donate.html?" + location.search;
+        const shareText = encodeURIComponent("Donate this dream: " + dreamLink);
+
         let iconsHTML = `<li class="footer-social-icons-item">
                                 <a
                                         class="footer-social-icons-link"
-                                        href="https://twitter.com/"
+                                        href="https://twitter.com/intent/tweet?text=${shareText}"
                                         target="_blank"
                                         rel="noopener noreferer"
                                         aria-label="Twitter"
@@ -204,7 +210,7 @@ class Dream {
                             <li class="footer-social-icons-item">
                                 <a
                                         class="footer-social-icons-link"
-                                        href="https://facebook.com/"
+                                        href="https://www.facebook.com/sharer.php?u=${dreamLink}"
                                         target="_blank"
                                         rel="noopener noreferer"
                                         aria-label="Facebook"
