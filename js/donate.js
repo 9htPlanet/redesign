@@ -159,11 +159,10 @@ function showShimmers() {
                         </div>`;
 }
 
-
 $('document').ready(function () {
     let dreamId = window.location.href.toString().split('.html?')[1];
-
     Dream.getDreamWithShimmerById(dreamId);
+
     try {
         Slider.loadSlider();
     } catch (e) {

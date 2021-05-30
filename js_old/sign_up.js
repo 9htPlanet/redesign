@@ -60,7 +60,7 @@ $('document').ready(function () {
                                 document.location.reload();
                             }
                         } else {
-                            $('.error_msg_small').html(data['errorMessage']);
+                            $('#email_error_id').html(data['errorMessage']);
                         }
                     })
 
