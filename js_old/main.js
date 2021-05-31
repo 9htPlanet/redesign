@@ -19,4 +19,10 @@
         button.innerHTML = "Start Dream";
     }
 
+    if (location.search) {
+        document.querySelector(".hero").setAttribute("style",
+
+            `background-image: linear-gradient(to right, rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url("${location.search.substring(1)}")`)
+    }
+
 })()
