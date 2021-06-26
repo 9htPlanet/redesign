@@ -565,24 +565,31 @@ ul {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 }
+
 .is-hidden .modal {
-  transform: translate(-50%, 0%) scale(0.5);
+    transform: translate(-50%, 0%) scale(0.5);
 }
+
 @media (min-width: 1200px) {
-  .modal {
-    max-width: 528px;
-  }
+    .modal {
+        max-width: 528px;
+    }
+}
+
+.modal-start-dream {
+    transform: translate(-50%, 0%) scale(1);
+    top: 10%;
 }
 
 .btn-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  background-color: transparent;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
