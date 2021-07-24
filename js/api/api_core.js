@@ -64,6 +64,7 @@ async function api(patch, method, formParams = null, file = null, requireAuth = 
     const params = {
         method: method,
         headers: headers,
+        mode: 'no-cors'
     };
 
     if (formParams != null) {
