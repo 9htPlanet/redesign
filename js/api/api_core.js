@@ -1,4 +1,5 @@
 const API_PATCH = "https://api.9thplanet.ca/"
+// const API_PATCH = "http://0.0.0.0:5000/"
 
 /*
 Пример использования:
@@ -51,7 +52,8 @@ async function apiPutJson(patch, requireAuth = false) {
     return await api(patch, "PUT", null, null, requireAuth, true)
 }
 
-async function api(patch, method, formParams = null, file = null, requireAuth = false, useJson = false, queryParams = {}) {
+async function api(patch, method, formParams = null, file = null, requireAuth = false, useJson = false, queryParams = {},
+                   ignoreErrors = false) {
     const token = window.localStorage.getItem("Token")
     const headers = {
         Accept: "application/json"
@@ -63,8 +65,7 @@ async function api(patch, method, formParams = null, file = null, requireAuth = 
     }
     const params = {
         method: method,
-        headers: headers,
-        mode: 'no-cors'
+        headers: headers
     };
 
     if (formParams != null) {
@@ -85,16 +86,45 @@ async function api(patch, method, formParams = null, file = null, requireAuth = 
     url.search = new URLSearchParams(queryParams).toString();
 
     const response = await fetch(url.toString(), params)
-
-    if (response.status === 401) {
-        window.localStorage.clear()
-        throw new Error("401 Unauthorized")
-    }
-
-    if (useJson) {
+    if (response.status >= 200 && response.status < 300) {
         return response.json();
     } else {
-        return response;
+        if (response.status === 401) {
+            if (token != null) {
+                window.localStorage.clear();
+                window.location = window.location;
+                return;
+            } else {
+                window.localStorage.clear();
+            }
+        }
+        let errorJson
+        try {
+            errorJson = await response.json();
+        } catch (e) {
+            //nothing
+        }
+
+        if (errorJson.errorMessage && errorJson.errorCode) {
+            let error = new PlanetNetworkError(response.status, errorJson.errorCode, errorJson.errorMessage);
+            console.log(error)
+            throw error;
+        } else {
+            console.log("Неожиданная ошибка")
+            console.log(response);
+            //todo: что делать в этом случае?
+            //throw new Error("Что-то пошло не так");
+        }
+    }
+}
+
+class PlanetNetworkError extends Error {
+    constructor(status, code, message) {
+        super(message);
+        this.name = "PlanetNetworkError";
+        this.status = status;
+        this.code = code;
+        this.message = message;
     }
 }
 

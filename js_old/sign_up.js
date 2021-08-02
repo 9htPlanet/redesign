@@ -5,6 +5,7 @@ $('document').ready(function () {
         $("#log_in_id").submit(function (event) {
             event.preventDefault();
             logInFoo('log_in_email', 'log_in_password');
+            document.querySelector("#log_in_id").disabled = true
         });
 
         $("#log_in_id_popup").submit(function (event) {
@@ -23,7 +24,6 @@ $('document').ready(function () {
             event.preventDefault();
             signUpFoo('firstName_id_popup', 'lastName_id_popup', 'email_id_popup', 'sign_up_password_popup');
         });
-
 
         function signUpFoo(firstNameId, lastNameId, emailId, signUpPasswordId) {
             let firstName_id = document.getElementById(firstNameId).value;
@@ -50,7 +50,8 @@ $('document').ready(function () {
                         email: email_id,
                         password: psw_id
                     }).then(data => {
-                        if (!data['errorMessage'] && data['access']) {
+                        console.log("its ok")
+                        if (data.access) {
                             window.localStorage.setItem('Token', data['access']['accessToken']);
                             if (AuthCallbacks.isWaiting()) {
                                 hideAllLoginPopups()
@@ -61,6 +62,14 @@ $('document').ready(function () {
                             }
                         } else {
                             $('#email_error_id').html(data['errorMessage']);
+                        }
+                    }).catch(err => {
+                        if (err instanceof PlanetNetworkError) {
+                            if (err.code === 2) {
+                                $('#email_error_id').html(err.message);
+                            } else {
+                                $('#error_id').html(err.message);
+                            }
                         }
                     })
 
@@ -112,9 +121,13 @@ $('document').ready(function () {
                             $('.error_msg').html(data['errorMessage']);
                         }
                     })
-                    .catch(function (error) {
-                        $('.error_msg').html(error['errorMessage']);
-                    });
+                    .catch(err => {
+                        if (err instanceof PlanetNetworkError) {
+                            $('.error_msg').html(err.message);
+                        } else {
+                            $('.error_msg').html("Unknown error occurred. Please check your network and try again.");
+                        }
+                    })
             });
 
         }

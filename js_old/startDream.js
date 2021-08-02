@@ -95,7 +95,8 @@ $('document').ready(function () {
     // buildDropDown(categories)
     // buildDropDown_2(cities)
 
-    $("#publishDream_id").submit(function (event) {
+    /*$("#publishDream_id").submit(function (event) {
+        debugger;
 
         let allLinks = document.getElementById('gallery');
         let matches = allLinks.querySelectorAll("img");
@@ -141,6 +142,6 @@ $('document').ready(function () {
                 }
             });
         event.preventDefault();
-    });
+    });*/
 
 });

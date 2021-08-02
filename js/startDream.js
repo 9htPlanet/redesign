@@ -38,10 +38,11 @@ $("document").ready(function () {
 
         apiPostJson("dreams", params)
             .then((response) => {
-                if (!response.errorMessage) {
-                    location.href = 'profile.html'
-                } else {
-                    document.getElementById("server_response_id").innerHTML = response.errorMessage;
+                location.href = 'profile.html'
+            })
+            .catch(err => {
+                if (err instanceof PlanetNetworkError) {
+                    document.getElementById("server_response_id").innerHTML = err.message;
                 }
             })
 
