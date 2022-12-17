@@ -1,4 +1,4 @@
-const API_PATCH = "https://api.9thplanet.ca/"
+const API_PATCH = "https://9thplanet.azurewebsites.net/"
 // const API_PATCH = "http://0.0.0.0:5000/"
 
 /*
