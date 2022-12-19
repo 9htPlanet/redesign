@@ -68,6 +68,7 @@ function fillMoney(balance) {
 
 $("document").ready(function () {
     let getDreamId = window.location.href.toString().split(".html?")[1];
+    let dreamId;
     console.log(getDreamId);
     let getFullPathDream = "";
 
@@ -86,6 +87,9 @@ $("document").ready(function () {
             } else {
                 data = dataSrc;
             }
+            dreamId = data["id"];
+            showPaymentForm(dreamId);
+
             // console.log(Array.isArray(data))
             let balance = data["price"] - data["money"];
             let money123 = balance / 100;
@@ -98,8 +102,6 @@ $("document").ready(function () {
                 $(this).val((i, v) => Math.max(this.min, Math.min(this.max, v)));
             });
         });
-
-    showPaymentForm(getDreamId);
 
 });
 

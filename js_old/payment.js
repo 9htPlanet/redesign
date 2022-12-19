@@ -89,6 +89,9 @@ function FillMoney2(balance) {
 
 $("document").ready(function () {
     let getDreamId = window.location.href.toString().split(".html?")[1];
+    if(!getDreamId) {
+        debugger;
+    }
 
     apiGetJson(`dreams/${getDreamId}`)
         .then(function (data) {
@@ -144,7 +147,7 @@ function showPaymentForm(getDreamId) {
             donate: paymentAmount,
             dreamId: getDreamId
         }
-
+        debugger;
         apiPostJson("payment/createPaymentIntent", formData)
             .then(function (data) {
                 // Complete payment when the submit button is clicked
@@ -219,6 +222,7 @@ var loading = function (isLoading) {
 
 
 function PAY(getDreamId, money) {
+debugger;
     let token = window.localStorage.getItem("Token");
     var stripe = Stripe(
         "pk_test_51HQdT5HFUELd0t0Ai498kAvRxEb4BqIq7DyiQP0RYkc2Sjc1yQjuzqmallekbQClxFhtzqscrJXFxTEUF1FbifNF00oZ0oFqBx"
